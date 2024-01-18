@@ -1,20 +1,18 @@
 "use client";
-
 import React, { useState } from "react";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
-
 import { SIDENAV_ITEMS } from "@/constants";
 import { SideNavItem } from "@/types";
 import { Icon } from "@iconify/react";
+import Link from "next/link";
 
 const SideNav = () => {
   return (
-    <div className="md:w-60 bg-white h-screen flex-1 fixed border-r border-zinc-200 hidden md:flex dark:bg-dark">
+    <div className="md:w-60 bg-white h-screen flex-1 fixed  hidden md:flex dark:bg-dark">
       <div className="flex flex-col space-y-6 w-full">
         <Link
           href="/"
-          className="flex flex-row space-x-3 items-center justify-center md:justify-start md:px-6 border-b border-zinc-200 h-12 w-full"
+          className="flex flex-row space-x-3 items-center justify-center md:justify-start md:px-6  h-[65px] w-full"
         >
           <span className="h-7 w-7 bg-zinc-300 rounded-lg" />
           <span className="font-bold text-xl hidden md:flex">Logo</span>
@@ -56,7 +54,11 @@ const MenuItem = ({ item }: { item: SideNavItem }) => {
               </span>
             </div>
 
-            <div className={`${subMenuOpen ? "rotate-180" : ""} flex`}>
+            <div
+              className={`${
+                subMenuOpen ? "rotate-180" : ""
+              } flex dark:text-white`}
+            >
               <Icon icon="lucide:chevron-down" width="24" height="24" />
             </div>
           </button>

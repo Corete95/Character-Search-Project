@@ -10,9 +10,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        dark: "#232A3C",
+        dark: "#121212",
         medium: "#293245",
         gray: "#57585B",
+      },
+      backgroundImage: {
+        main: "url('/images/main.jpg')",
       },
     },
   },

@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
 import Header from "@/components/Header";
 import SideNav from "@/components/Sidenav";
 import HeaderMobile from "@/components/Heardermobile";
+import Providers from "@/components/Providers";
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,19 +20,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <div className="flex">
-          <SideNav />
-          <main className="flex-1">
-            <div className="flex flex-col md:ml-60 sm:border-r sm:border-zinc-700 min-h-screen">
-              <Header />
-              <HeaderMobile />
-              <div className="flex flex-col pt-2 px-4 space-y-2 bg-zinc-100 flex-grow pb-4">
-                {children}
+      <body className={`${inter.className} overflow-hidden`}>
+        <Providers>
+          <div className="flex">
+            <SideNav />
+            <main className="flex-1">
+              <div className="flex flex-col md:ml-60 sm:border-r sm:border-zinc-700 min-h-screen ">
+                <Header />
+                <HeaderMobile />
+                <div className="flex flex-col space-y-2 flex-grow pb-4">
+                  {children}
+                </div>
               </div>
-            </div>
-          </main>
-        </div>
+            </main>
+          </div>
+        </Providers>
       </body>
     </html>
   );
