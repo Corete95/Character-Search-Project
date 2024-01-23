@@ -1,11 +1,11 @@
 "use client";
 import React, { ReactNode, useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SIDENAV_ITEMS } from "@/constants";
 import { SideNavItem } from "@/types";
 import { Icon } from "@iconify/react";
 import { motion, useCycle } from "framer-motion";
+import Link from "next/link";
 import Themetoggle from "./Themetoggle";
 
 type MenuItemWithSubMenuProps = {
@@ -47,7 +47,9 @@ const HeaderMobile = () => {
       ref={containerRef}
     >
       <motion.div
-        className="absolute inset-0 right-0 w-full bg-white"
+        className={`absolute inset-0 right-0 w-full bg-white ${
+          isOpen && "dark:bg-black"
+        }`}
         variants={sidebar}
       />
       <motion.ul
@@ -58,7 +60,7 @@ const HeaderMobile = () => {
           const isLastItem = idx === SIDENAV_ITEMS.length - 1;
 
           return (
-            <div key={idx}>
+            <div key={idx} className="dark:text-white">
               {item.submenu ? (
                 <MenuItemWithSubMenu item={item} toggleOpen={toggleOpen} />
               ) : (

@@ -5,6 +5,7 @@ import SideNav from "@/components/Sidenav";
 import HeaderMobile from "@/components/Heardermobile";
 import Providers from "@/components/Providers";
 import "./globals.css";
+import ReactqueryProvider from "@/providers/ReactqueryProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,20 +22,22 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} overflow-hidden`}>
-        <Providers>
-          <div className="flex">
-            <SideNav />
-            <main className="flex-1">
-              <div className="flex flex-col md:ml-60 sm:border-r sm:border-zinc-700 min-h-screen ">
-                <Header />
-                <HeaderMobile />
-                <div className="flex flex-col space-y-2 flex-grow pb-4">
-                  {children}
+        <ReactqueryProvider>
+          <Providers>
+            <div className="flex">
+              <SideNav />
+              <main className="flex-1">
+                <div className="flex flex-col md:ml-60 sm:border-r sm:border-zinc-700 min-h-screen ">
+                  <Header />
+                  <HeaderMobile />
+                  <div className="flex flex-col space-y-2 flex-grow pb-4 dark:bg-darkGray">
+                    {children}
+                  </div>
                 </div>
-              </div>
-            </main>
-          </div>
-        </Providers>
+              </main>
+            </div>
+          </Providers>
+        </ReactqueryProvider>
       </body>
     </html>
   );

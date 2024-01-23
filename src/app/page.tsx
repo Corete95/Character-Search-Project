@@ -1,3 +1,4 @@
+import SearchBox from "@/components/SearchBox";
 import Image from "next/image";
 
 export default function Home() {
@@ -10,11 +11,12 @@ export default function Home() {
           <div className="flex flex-col text-center gap-4">
             <h1 className="text-6xl font-bold dark:text-white">타이틀</h1>
             <p className="dark:text-white">타이틀 사이트 입니다.</p>
+            <SearchBox />
           </div>
         </div>
       </div>
 
-      <div className="flex flex-col gap-4 p-10 h-screen dark:bg-dark dark:text-[#c6c6c6] ">
+      <div className="flex flex-col gap-4 p-10 h-screen dark:text-[#c6c6c6] ">
         <hr className="border-[#0000001f] dark:border-[#ffffff1f]" />
         <span>타이틀</span>
         <span>2024 타이틀 All rights reserved.</span>
