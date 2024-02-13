@@ -4,7 +4,7 @@ import Image from "next/image";
 const UserStat = ({ props }: any) => {
   console.log("????", props);
   return (
-    <div className="flex flex-wrap mx-3 dark:bg-white">
+    <div className="flex flex-wrap  w-full dark:bg-white">
       <div className="flex flex-col justify-between p-4 w-1/3">
         <div className="badge dark:bg-mainGray text-white ">
           {props.character_class}

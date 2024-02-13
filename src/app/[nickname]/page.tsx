@@ -40,15 +40,22 @@ const NickNamePage = () => {
 
   return (
     <div>
-      <Suspense fallback={<Loading />}>
-        <div className="flex flex-wrap m-10 tablet:flex-col">
-          <div className="w-3/12 tablet:order-2">1</div>
-          <div className="w-3/6 bg-mainGray tablet:order-1 tablet:w-full">
-            <UserStat props={queryResults?.data[0]} />
-          </div>
-          <div className="w-3/12 tablet:order-3">3</div>
+      {/* <Suspense fallback={<Loading />}> */}
+
+      <div className="flex justify-center items-center w-3/6 m-auto">
+        <div className="w-full bg-zinc-400">
+          <div>CHARACTER INFO</div>
+          <UserStat props={queryResults?.data[0]} />
         </div>
-      </Suspense>
+      </div>
+      <div className="flex flex-wrap m-10 tablet:flex-col">
+        <div className="w-3/12 tablet:order-2">1</div>
+        <div className="w-3/6 bg-mainGray tablet:order-1 tablet:w-full">
+          <UserStat props={queryResults?.data[0]} />
+        </div>
+        <div className="w-3/12 tablet:order-3">3</div>
+      </div>
+      {/* </Suspense> */}
     </div>
   );
 };
