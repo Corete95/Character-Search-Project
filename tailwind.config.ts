@@ -10,11 +10,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        dark: "#121212",
-        darkGray: "#15181C",
-        mainGray: "#212529",
+        dark: "#202020",
+        dark_gray: "#272727",
+        main_gray: "#212529",
         medium: "#293245",
         gray: "#57585B",
+        asd: "#323941",
+        title: "#D7FC25",
+        badge_1: "#9CA1AC",
+        badge_2: "#C9CFD0",
       },
       backgroundImage: {
         main: "url('/images/main.jpg')",

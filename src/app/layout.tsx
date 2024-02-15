@@ -32,7 +32,7 @@ export default function RootLayout({
                 <div className="flex flex-col md:ml-60 sm:border-r sm:border-zinc-700 min-h-screen ">
                   <Header />
                   <HeaderMobile />
-                  <div className="flex flex-col space-y-2 flex-grow pb-4 dark:bg-darkGray">
+                  <div className="flex flex-col space-y-2 flex-grow pb-4 dark:bg-dark_gray">
                     {children}
                   </div>
                 </div>

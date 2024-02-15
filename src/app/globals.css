@@ -12,12 +12,23 @@
   .badge {
     @apply inline-block w-full px-1.5 py-1.5 text-[9px] font-bold text-center whitespace-nowrap rounded-2xl dark:text-white;
   }
+
+  .responsive_1 {
+    @apply tablet:w-full tablet:order-1 mobile:w-full mobile:order-1;
+  }
+  .responsive_2 {
+    @apply tablet:w-full tablet:order-2 mobile:w-full mobile:order-2;
+  }
+  .responsive_3 {
+    @apply tablet:w-full tablet:order-3 mobile:w-full mobile:order-3;
+  }
+
   .flexWrap {
     display: flex;
     flex-wrap: wrap;
     margin-top: calc(-1 * var(--bs-gutter-y));
-    margin-right: calc(-.5 * var(--bs-gutter-x));
-    margin-left: calc(-.5 * var(--bs-gutter-x));
+    margin-right: calc(-0.5 * var(--bs-gutter-x));
+    margin-left: calc(-0.5 * var(--bs-gutter-x));
   }
 }
 
