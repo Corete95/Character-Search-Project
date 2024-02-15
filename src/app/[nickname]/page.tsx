@@ -7,8 +7,9 @@ import { usePathname } from "next/navigation";
 import { Suspense } from "react";
 import React from "react";
 import Loading from "./loading";
-import UserStat from "./_component/UserStat";
+import UserInfo from "./_component/UserInfo";
 import HyperStat from "./_component/HyperStat";
+import UserStat from "./_component/UserStat";
 
 const NickNamePage = () => {
   const params = usePathname();
@@ -46,18 +47,20 @@ const NickNamePage = () => {
       <div className="flex justify-center items-center w-3/6 m-auto tablet:w-full">
         <div className="w-full bg-asd pt-0 p-4 rounded-xl">
           <div className="text-title py-2">CHARACTER INFO</div>
-          <UserStat props={queryResults?.data[0]} />
+          <UserInfo props={queryResults?.data[0]} />
         </div>
       </div>
       <div className="flex flex-wrap mt-8 tablet:flex-col mobile:flex-col">
-        <div className="desktop:w-3/12 responsive_2">
+        <div className="desktop:w-3/12 responsive_2 max-w-[330px] m-auto">
           <div className="w-full bg-asd pt-0 p-4 rounded-xl ">
             <div className="text-title py-2">HYPER STAT</div>
             <HyperStat props={queryResults?.data[1]} />
           </div>
         </div>
-        <div className="desktop:w-3/6 responsive_1 bg-asd">
-          <div className="text-title py-2">HYPER STAT</div>
+        <div className="desktop:w-3/6 responsive_1 bg-asd rounded-xl p-4">
+          <div className="text-center p-1 rounded-t-xl bg-badge_1 ">STAT</div>
+          <hr />
+          <UserStat />
         </div>
         <div className="w-3/12 responsive_3">3</div>
       </div>

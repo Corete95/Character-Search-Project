@@ -34,6 +34,9 @@ const config: Config = {
       lineHeight: {
         "lh-1": "1",
       },
+      fontSize: {
+        14: "14px",
+      },
     },
   },
   plugins: [],
