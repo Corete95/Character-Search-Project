@@ -1,6 +1,7 @@
 "use client";
 
 import { HyperStatPreset, HyperStatType } from "@/types/apis/hyper";
+import { Tooltip } from "@nextui-org/react";
 import React, { useState } from "react";
 
 const HyperStat = ({ props }: { props: HyperStatType }) => {
@@ -14,9 +15,25 @@ const HyperStat = ({ props }: { props: HyperStatType }) => {
   return (
     <div className="bg-[#86929E] rounded-lg p-3">
       {props[pick].map((item: HyperStatPreset, index: number) => (
-        <div className="flex justify-between text-14 leading-loose" key={index}>
-          <span>{item.stat_type}</span>
-          <span>Lv.{item.stat_level}</span>
+        <div key={index}>
+          {item.stat_increase ? (
+            <Tooltip
+              showArrow={true}
+              placement="bottom"
+              closeDelay={0}
+              content={item.stat_increase}
+            >
+              <div className="flex justify-between text-14 leading-loose hover:bg-asd">
+                <span>{item.stat_type}</span>
+                <span>Lv.{item.stat_level}</span>
+              </div>
+            </Tooltip>
+          ) : (
+            <div className="flex justify-between text-14 leading-loose">
+              <span>{item.stat_type}</span>
+              <span>Lv.{item.stat_level}</span>
+            </div>
+          )}
         </div>
       ))}
       <div className="flex justify-between mt-3 bg-[#5c6874] text-14 px-5 rounded-xl">

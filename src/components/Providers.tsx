@@ -2,7 +2,7 @@
 
 import { ThemeProvider } from "next-themes";
 import { ReactNode, useEffect, useState } from "react";
-
+import { NextUIProvider } from "@nextui-org/react";
 interface Props {
   children: ReactNode | ReactNode[];
 }
@@ -18,9 +18,11 @@ const Providers = ({ children }: Props) => {
   }
 
   return (
-    <ThemeProvider attribute="class" defaultTheme="system">
-      {children}
-    </ThemeProvider>
+    <NextUIProvider>
+      <ThemeProvider attribute="class" defaultTheme="system">
+        {children}
+      </ThemeProvider>
+    </NextUIProvider>
   );
 };
 
