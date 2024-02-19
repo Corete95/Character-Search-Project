@@ -14,7 +14,7 @@ import UserStat from "./_component/UserStat";
 const NickNamePage = () => {
   const params = usePathname();
   // const key = ["basic", "stat", "popularity", "hyper-stat"];
-  const key = ["basic", "hyper-stat"];
+  const key = ["basic", "hyper-stat", "stat"];
   const { data, isLoading, error } = useQuery({
     queryKey: ["users"],
     queryFn: () => getOcid(params),
@@ -59,8 +59,7 @@ const NickNamePage = () => {
         </div>
         <div className="desktop:w-3/6 responsive_1 bg-asd rounded-xl p-4">
           <div className="text-center p-1 rounded-t-xl bg-badge_1 ">STAT</div>
-          <hr />
-          <UserStat />
+          <UserStat props={queryResults?.data[2]} />
         </div>
         <div className="w-3/12 responsive_3">3</div>
       </div>

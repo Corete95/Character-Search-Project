@@ -24,7 +24,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`font-Pretendard overflow-hidden`}>
+      <body className={`font-Pretendard`}>
         <ReactqueryProvider>
           <Providers>
             <div className="flex">

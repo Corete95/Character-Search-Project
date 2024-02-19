@@ -16,7 +16,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex flex-col gap-4 p-10 h-screen dark:text-[#c6c6c6] ">
+      <div className="flex flex-col gap-4 p-10 dark:text-[#c6c6c6] ">
         <hr className="border-[#0000001f] dark:border-[#ffffff1f]" />
         <span>타이틀</span>
         <span>2024 타이틀 All rights reserved.</span>
