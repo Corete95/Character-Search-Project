@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-const {nextui} = require("@nextui-org/react");
+const { nextui } = require("@nextui-org/react");
 
 const config: Config = {
   content: [
@@ -21,6 +21,10 @@ const config: Config = {
         title: "#D7FC25",
         badge_1: "#9CA1AC",
         badge_2: "#C9CFD0",
+        legendary: "#A3C800",
+        unique: "#EB9A0D",
+        epic: "#8065D8",
+        rare: "#3DC3D9",
       },
       backgroundImage: {
         main: "url('/images/main.jpg')",

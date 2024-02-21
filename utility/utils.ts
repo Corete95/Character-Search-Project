@@ -10,3 +10,14 @@ export const geKoreanNumber = (number: number) => {
   }
   return answer;
 };
+
+export const abilityColor = (ability: string) => {
+  const color: { [key: string]: string } = {
+    레전드리: "bg-legendary",
+    유니크: "bg-unique",
+    에픽: "bg-epic",
+    레어: "bg-rare",
+  };
+
+  return color[ability];
+};

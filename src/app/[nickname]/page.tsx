@@ -10,11 +10,12 @@ import Loading from "./loading";
 import UserInfo from "./_component/UserInfo";
 import HyperStat from "./_component/HyperStat";
 import UserStat from "./_component/UserStat";
+import Ability from "./_component/Ability";
 
 const NickNamePage = () => {
   const params = usePathname();
   // const key = ["basic", "stat", "popularity", "hyper-stat"];
-  const key = ["basic", "hyper-stat", "stat"];
+  const key = ["basic", "hyper-stat", "stat", "ability"];
   const { data, isLoading, error } = useQuery({
     queryKey: ["users"],
     queryFn: () => getOcid(params),
@@ -61,7 +62,13 @@ const NickNamePage = () => {
           <div className="text-center p-1 rounded-t-xl bg-badge_1 ">STAT</div>
           <UserStat props={queryResults?.data[2]} />
         </div>
-        <div className="w-3/12 responsive_3">3</div>
+
+        <div className="desktop:w-3/12 responsive_3 max-w-[330px] m-auto">
+          <div className="w-full bg-asd pt-0 p-4 rounded-xl ">
+            <div className="text-title py-2">ABILITY</div>
+            <Ability props={queryResults?.data[3]} />
+          </div>
+        </div>
       </div>
       {/* </Suspense> */}
     </div>
