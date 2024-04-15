@@ -10,9 +10,14 @@
 }
 @layer components {
   .badge {
-    @apply inline-block w-full px-1.5 py-1.5 text-[9px] font-bold text-center whitespace-nowrap rounded-2xl dark:text-white;
+    @apply inline-block w-full px-1.5 py-1.5 text-[9px] font-bold text-center whitespace-nowrap rounded-2xl bg-white_gray_100 text-dark dark:text-white;
   }
-
+  /* .border_white {
+    @apply border border-black rounded-sm dark:border-red-500 bg-white dark:bg-[#788490];
+  } */
+  .border_12white {
+    @apply bg-red-500 border-red-700;
+  }
   .responsive_1 {
     @apply tablet:w-full tablet:order-1 mobile:w-full mobile:order-1;
   }

@@ -42,15 +42,17 @@ const Ability = ({ props }: any) => {
           </div>
         )
       )}
-      <div className="flex justify-between mt-2 bg-[#bdc4ca] text-14 px-5 rounded-xl">
+      <div className="flex justify-between mt-2 bg-white_gray_100 dark:bg-[#bdc4ca] text-14 px-5 rounded-xl">
         <span className="flex items-center">PRESETS</span>
         <div className="flex gap-3 py-1">
           {[1, 2, 3].map((item: number, index: number) => (
             <button
               key={index}
               className={
-                "w-5 bg-[#788490]" +
-                (item === presetNo ? " border border-white rounded-sm" : "")
+                "w-5 bg-white dark:bg-[#788490]" +
+                (item === presetNo
+                  ? " border  border-black dark:border-white rounded-sm"
+                  : "")
               }
               onClick={() => onChangePrestNo(item)}
             >

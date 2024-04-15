@@ -12,12 +12,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        white_bg: "#FAFAFA",
+        white_gray_100: "#F5F5F6",
         dark: "#202020",
         dark_gray: "#272727",
         main_gray: "#212529",
         medium: "#293245",
         gray: "#57585B",
-        asd: "#323941",
+        dark_bg_100: "#323941",
         title: "#D7FC25",
         badge_1: "#9CA1AC",
         badge_2: "#C9CFD0",

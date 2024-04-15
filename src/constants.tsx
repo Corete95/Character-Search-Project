@@ -4,12 +4,12 @@ import { SideNavItem } from "./types";
 
 export const SIDENAV_ITEMS: SideNavItem[] = [
   {
-    title: "홈",
+    title: "메인",
     path: "/",
     icon: <Icon icon="lucide:home" width="24" height="24" />,
   },
   {
-    title: "홈2",
+    title: "랭킹",
     path: "/home2",
     icon: <Icon icon="lucide:folder" width="24" height="24" />,
     submenu: true,
@@ -20,18 +20,18 @@ export const SIDENAV_ITEMS: SideNavItem[] = [
     ],
   },
   {
-    title: "홈3",
+    title: "주화",
     path: "/home3",
     icon: <Icon icon="lucide:mail" width="24" height="24" />,
   },
   {
-    title: "홈4",
+    title: "큐브",
     path: "/home4",
     icon: <Icon icon="lucide:settings" width="24" height="24" />,
     submenu: true,
   },
   {
-    title: "홈5",
+    title: "준비중",
     path: "/home5",
     icon: <Icon icon="lucide:help-circle" width="24" height="24" />,
   },

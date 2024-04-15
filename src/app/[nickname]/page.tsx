@@ -42,30 +42,34 @@ const NickNamePage = () => {
   if (queryResults.pending) return <div>asdasdasd</div>;
 
   return (
-    <div>
+    <div className="mt-8">
       {/* <Suspense fallback={<Loading />}> */}
 
       <div className="flex justify-center items-center w-3/6 m-auto tablet:w-full">
-        <div className="w-full bg-asd pt-0 p-4 rounded-xl">
-          <div className="text-title py-2">CHARACTER INFO</div>
+        <div className="w-full bg-white_gray_100 dark:bg-dark_bg_100 pt-0 p-4 rounded-xl shadow-md">
+          <div className="text-lime-500 dark:text-title py-2">
+            CHARACTER INFO
+          </div>
           <UserInfo props={queryResults?.data[0]} />
         </div>
       </div>
       <div className="flex flex-wrap mt-8 tablet:flex-col mobile:flex-col">
-        <div className="desktop:w-3/12 responsive_2 max-w-[330px] m-auto">
-          <div className="w-full bg-asd pt-0 p-4 rounded-xl ">
-            <div className="text-title py-2">HYPER STAT</div>
+        <div className="desktop:w-3/12 responsive_2 max-w-[330px] tablet:max-w-full tablet:mt-4 m-auto">
+          <div className="w-full bg-white_gray_100 dark:bg-dark_bg_100 pt-0 p-4 rounded-xl shadow-md">
+            <div className="text-lime-500 dark:text-title py-2">HYPER STAT</div>
             <HyperStat props={queryResults?.data[1]} />
           </div>
         </div>
-        <div className="desktop:w-3/6 responsive_1 bg-asd rounded-xl p-4">
-          <div className="text-center p-1 rounded-t-xl bg-badge_1 ">STAT</div>
+        <div className="desktop:w-3/6 responsive_1 rounded-xl p-4 bg-white_gray_100 dark:bg-dark_bg_100 shadow-md">
+          <div className="text-center p-1 rounded-t-xl bg-white dark:bg-badge_1 ">
+            STAT
+          </div>
           <UserStat props={queryResults?.data[2]} />
         </div>
 
         <div className="desktop:w-3/12 responsive_3 max-w-[330px] m-auto">
-          <div className="w-full bg-asd pt-0 p-4 rounded-xl ">
-            <div className="text-title py-2">ABILITY</div>
+          <div className="w-full pt-0 p-4 rounded-xl bg-white_gray_100 dark:bg-dark_bg_100 shadow-md">
+            <div className="text-lime-500 dark:text-title py-2">ABILITY</div>
             <Ability props={queryResults?.data[3]} />
           </div>
         </div>

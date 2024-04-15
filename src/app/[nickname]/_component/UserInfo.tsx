@@ -4,11 +4,9 @@ import Image from "next/image";
 const UserInfo = ({ props }: any) => {
   console.log("????", props);
   return (
-    <div className="flex flex-wrap  w-full rounded-lg dark:bg-white">
+    <div className="flex flex-wrap  w-full rounded-lg bg-white">
       <div className="flex flex-col justify-between p-4 w-1/3">
-        <div className="badge dark:bg-badge_1 text-white ">
-          {props.character_class}
-        </div>
+        <div className="badge dark:bg-badge_1">{props.character_class}</div>
         <div className="flex flex-col gap-1">
           <div className="badge dark:bg-badge_2 ">1</div>
           <div className="badge dark:bg-badge_2 ">2</div>
@@ -36,7 +34,7 @@ const UserInfo = ({ props }: any) => {
         <div className="badge dark:bg-badge_2">2</div>
       </div>
       <div className="px-4 w-full mb-2">
-        <div className="relative h-4 rounded-full bg-[#414240]">
+        <div className="relative h-4 rounded-full bg-white_gray_100 dark:bg-[#414240]">
           <div
             className="h-4 rounded-full bg-[#AFCD00]"
             style={{ width: `${props.character_exp_rate}%` }}

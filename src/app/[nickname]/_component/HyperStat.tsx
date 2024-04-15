@@ -13,7 +13,7 @@ const HyperStat = ({ props }: { props: HyperStatType }) => {
   };
 
   return (
-    <div className="bg-[#86929E] rounded-lg p-3">
+    <div className="bg-white dark:bg-[#86929E] rounded-lg p-3">
       {props[pick].map((item: HyperStatPreset, index: number) => (
         <div key={index}>
           {item.stat_increase ? (
@@ -23,7 +23,7 @@ const HyperStat = ({ props }: { props: HyperStatType }) => {
               closeDelay={0}
               content={item.stat_increase}
             >
-              <div className="flex justify-between text-14 leading-loose hover:bg-asd">
+              <div className="flex justify-between text-14 leading-loose hover:bg-white_gray_100 dark:hover:bg-dark_bg_100">
                 <span>{item.stat_type}</span>
                 <span>Lv.{item.stat_level}</span>
               </div>
@@ -36,15 +36,17 @@ const HyperStat = ({ props }: { props: HyperStatType }) => {
           )}
         </div>
       ))}
-      <div className="flex justify-between mt-3 bg-[#5c6874] text-14 px-5 rounded-xl">
+      <div className="flex justify-between mt-3 bg-white_gray_100 dark:bg-[#5c6874] text-14 px-5 rounded-xl">
         <span className="flex items-center">PRESETS</span>
         <div className="flex gap-3 py-1">
           {["1", "2", "3"].map((item: string, index: number) => (
             <button
               key={index}
               className={
-                "w-5 bg-[#788490]" +
-                (item === presetNo ? " border border-white rounded-sm" : "")
+                "w-5 bg-white dark:bg-[#788490]" +
+                (item === presetNo
+                  ? " border border-black dark:border-white rounded-sm"
+                  : "")
               }
               onClick={() => onChangePrestNo(item)}
             >
@@ -53,7 +55,7 @@ const HyperStat = ({ props }: { props: HyperStatType }) => {
           ))}
         </div>
       </div>
-      <div className="flex justify-between px-5 mt-2 rounded-xl text-14 bg-[#5c6874]">
+      <div className="flex justify-between px-5 mt-2 rounded-xl text-14 bg-white_gray_100 dark:bg-[#5c6874]">
         <span>POINT</span>
         <span>{props[`hyper_stat_preset_${presetNo}_remain_point`]}</span>
       </div>
