@@ -19,7 +19,7 @@ const Ability = ({ props }: any) => {
   };
 
   return (
-    <div className="flex flex-col gap-1 bg-[#FEFEFF] rounded-lg p-2">
+    <div className="flex flex-col gap-1 bg-[#FEFEFF] rounded-lg p-2 ">
       <div
         className={`flex items-center p-2 rounded-lg text-white ${
           color[props[`ability_preset_${presetNo}`].ability_preset_grade]

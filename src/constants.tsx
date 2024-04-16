@@ -14,9 +14,10 @@ export const SIDENAV_ITEMS: SideNavItem[] = [
     icon: <Icon icon="lucide:folder" width="24" height="24" />,
     submenu: true,
     subMenuItems: [
-      { title: "All", path: "/projects" },
-      { title: "Web Design", path: "/projects/web-design" },
-      { title: "Graphic Design", path: "/projects/graphic-design" },
+      { title: "종합", path: "/projects" },
+      { title: "길드", path: "/projects/web-design" },
+      { title: "전투력", path: "/projects/graphic-design" },
+      { title: "무릉도장", path: "/projects/graphic-design" },
     ],
   },
   {

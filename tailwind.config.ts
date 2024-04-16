@@ -32,8 +32,8 @@ const config: Config = {
         main: "url('/images/main.jpg')",
       },
       screens: {
-        mobile: { min: "350px", max: "819px" },
-        tablet: { min: "820px", max: "1023px" },
+        mobile: { min: "350px", max: "820px" },
+        tablet: { min: "820px", max: "1080px" },
         desktop: { min: "1080px" },
       },
       fontFamily: {

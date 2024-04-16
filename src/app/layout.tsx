@@ -5,9 +5,12 @@ import Header from "@/components/Header";
 import SideNav from "@/components/Sidenav";
 import HeaderMobile from "@/components/Heardermobile";
 import Providers from "@/components/Providers";
+import "dayjs/locale/ko";
+import dayjs from "dayjs";
 import "./globals.css";
 import ReactqueryProvider from "@/providers/ReactqueryProvider";
 
+dayjs.locale("ko");
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

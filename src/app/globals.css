@@ -12,20 +12,14 @@
   .badge {
     @apply inline-block w-full px-1.5 py-1.5 text-[9px] font-bold text-center whitespace-nowrap rounded-2xl bg-white_gray_100 text-dark dark:text-white;
   }
-  /* .border_white {
-    @apply border border-black rounded-sm dark:border-red-500 bg-white dark:bg-[#788490];
-  } */
-  .border_12white {
-    @apply bg-red-500 border-red-700;
-  }
   .responsive_1 {
     @apply tablet:w-full tablet:order-1 mobile:w-full mobile:order-1;
   }
   .responsive_2 {
-    @apply tablet:w-full tablet:order-2 mobile:w-full mobile:order-2;
+    @apply max-w-[330px] m-auto tablet:w-full tablet:order-2 tablet:max-w-full tablet:mt-4 mobile:order-2 mobile:w-full mobile:max-w-full mobile:mt-4;
   }
   .responsive_3 {
-    @apply tablet:w-full tablet:order-3 mobile:w-full mobile:order-3;
+    @apply max-w-[330px] m-auto tablet:w-full tablet:order-3 tablet:max-w-full tablet:mt-4 mobile:order-3 mobile:w-full mobile:max-w-full mobile:mt-4;
   }
 
   .flexWrap {
