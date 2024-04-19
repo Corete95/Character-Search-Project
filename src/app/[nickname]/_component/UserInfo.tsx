@@ -6,7 +6,7 @@ const UserInfo = ({ props }: any) => {
   return (
     <div className="flex flex-wrap  w-full rounded-lg bg-white">
       <div className="flex flex-col justify-between p-4 w-1/3">
-        <div className="badge dark:bg-badge_1">{props.character_class}</div>
+        <div className="badge dark:bg-badge_1">{props?.character_class}</div>
         <div className="flex flex-col gap-1">
           <div className="badge dark:bg-badge_2 ">1</div>
           <div className="badge dark:bg-badge_2 ">2</div>
