@@ -55,8 +55,6 @@ const NickNamePage = () => {
   // console.log("queryResults", queryResults);
   console.log("step", step);
 
-  // if (queryResults.pending) return <div>asdasdasd</div>;
-
   return (
     <div className="mt-4">
       {/* <Suspense fallback={<Loading />}> */}
