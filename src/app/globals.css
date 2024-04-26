@@ -31,7 +31,7 @@
   }
 }
 
-@font-face {
+/* @font-face {
   font-family: "Pretendard";
   font-weight: 100;
   font-style: normal;
@@ -165,4 +165,4 @@
     url("https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Black.ttf")
       format("truetype");
   font-display: swap;
-}
+} */

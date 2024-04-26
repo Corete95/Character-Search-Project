@@ -1,9 +1,11 @@
 "use client";
+
 import React from "react";
-import Link from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
-import useScroll from "@/hooks/useScroll";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
+import Image from "next/image";
+import useScroll from "@/hooks/useScroll";
 import Themetoggle from "./Themetoggle";
 
 const Header = () => {
@@ -25,10 +27,16 @@ const Header = () => {
         <div className="flex items-center space-x-4">
           <Link
             href="/"
-            className="flex flex-row space-x-3 items-center justify-center md:hidden"
+            className="flex flex-row space-x-2 items-center justify-center md:hidden"
           >
-            <span className="h-7 w-7 bg-zinc-300 rounded-lg" />
-            <span className="font-bold text-xl flex ">Logo</span>
+            <Image
+              className=""
+              src="/images/logo250.png"
+              width={44}
+              height={44}
+              alt=""
+            />
+            <span className="font-bold text-xl flex ">Mesoya</span>
           </Link>
         </div>
 

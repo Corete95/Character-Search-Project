@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 
 const UserInfo = ({ props }: any) => {
-  console.log("????", props);
+
   return (
     <div className="flex flex-wrap  w-full rounded-lg bg-white">
       <div className="flex flex-col justify-between p-4 w-1/3">

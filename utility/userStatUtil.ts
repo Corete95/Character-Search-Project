@@ -53,49 +53,6 @@ export const topUserStat = (stat: UserStatType) => {
 export const middleUserStat = (stat: UserStatType) => {
   const result = dataMix(middleArray, stat);
 
-  console.log(
-    "????",
-    result
-      .map((a, index) => {
-        const { stat_name, stat_value } = a;
-
-        switch (index) {
-          case 0:
-            return {
-              stat_name: "스탯 공격력",
-              stat_value: geKoreanNumber(Number(stat_value)),
-            };
-          case 10:
-          case 11:
-            if (index === 10)
-              return {
-                stat_name: "재사용 대기시간 감소",
-                stat_value: `${result[index].stat_value}초 / ${
-                  result[index + 1].stat_value
-                }%`,
-              };
-            break;
-          case 1:
-          case 2:
-          case 3:
-          case 4:
-          case 5:
-          case 7:
-          case 9:
-          case 10:
-          case 11:
-          case 12:
-          case 13:
-          case 14:
-          case 15:
-          case 16:
-            return { stat_name, stat_value: `${stat_value}%` };
-          default:
-            return a;
-        }
-      })
-      .filter(Boolean)
-  );
   return result
     .map((a, index) => {
       const { stat_name, stat_value } = a;

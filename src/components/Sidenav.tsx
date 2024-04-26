@@ -1,9 +1,11 @@
 "use client";
+
 import React, { useState } from "react";
 import { usePathname } from "next/navigation";
 import { SIDENAV_ITEMS } from "@/constants";
 import { SideNavItem } from "@/types";
 import { Icon } from "@iconify/react";
+import Image from "next/image";
 import Link from "next/link";
 
 const SideNav = () => {
@@ -12,10 +14,16 @@ const SideNav = () => {
       <div className="flex flex-col space-y-6 w-full">
         <Link
           href="/"
-          className="flex flex-row space-x-3 items-center justify-center md:justify-start md:px-6  h-[65px] w-full"
+          className="flex flex-row space-x-2 items-center justify-center md:justify-start md:px-6  h-[65px] w-full"
         >
-          <span className="h-7 w-7 bg-zinc-300 rounded-lg" />
-          <span className="font-bold text-xl hidden md:flex">Logo</span>
+          <Image
+            className=""
+            src="/images/logo250.png"
+            width={44}
+            height={44}
+            alt=""
+          />
+          <span className="font-bold text-2xl hidden md:flex">Mesoya</span>
         </Link>
 
         <div className="flex flex-col space-y-2  md:px-6 ">
@@ -43,7 +51,7 @@ const MenuItem = ({ item }: { item: SideNavItem }) => {
         <>
           <button
             onClick={toggleSubMenu}
-            className={`flex flex-row items-center p-2 rounded-lg w-full justify-between hover:bg-[#E7E7E9] dark:hover:bg-[#2D2D2D] ${
+            className={`flex flex-row items-center p-2 rounded-lg w-full justify-between hover:bg-[#E7E7E9] dark:hover:bg-[#2D2D2D]  ${
               pathname.includes(item.path)
                 ? "bg-[#E7E7E9] dark:bg-[#57585B] "
                 : ""
@@ -51,7 +59,7 @@ const MenuItem = ({ item }: { item: SideNavItem }) => {
           >
             <div className="flex flex-row space-x-4 items-center dark:text-white">
               {item.icon}
-              <span className="font-semibold text-xl flex dark:text-white">
+              <span className="font-semibold text-sm flex dark:text-white">
                 {item.title}
               </span>
             </div>
@@ -76,7 +84,9 @@ const MenuItem = ({ item }: { item: SideNavItem }) => {
                       subItem.path === pathname ? "font-bold" : ""
                     }`}
                   >
-                    <span className="dark:text-white">{subItem.title}</span>
+                    <span className="dark:text-white text-sm">
+                      {subItem.title}
+                    </span>
                   </Link>
                 );
               })}
@@ -85,13 +95,14 @@ const MenuItem = ({ item }: { item: SideNavItem }) => {
         </>
       ) : (
         <Link
-          href={item.path}
+          href={item.disabled ? "" : item.path}
           className={`flex flex-row space-x-4 items-center p-2 rounded-lg hover:bg-[#E7E7E9] dark:hover:bg-[#2D2D2D] dark:text-white ${
             item.path === pathname ? "bg-[#E7E7E9] dark:bg-[#57585B]" : ""
-          }`}
+          } ${item.disabled ? "cursor-not-allowed " : ""}`}
+          aria-disabled={false}
         >
           {item.icon}
-          <span className="font-semibold text-xl flex dark:text-white">
+          <span className="font-semibold text-sm flex dark:text-white">
             {item.title}
           </span>
         </Link>

@@ -3,5 +3,6 @@ export type SideNavItem = {
   path: string;
   icon?: JSX.Element;
   submenu?: boolean;
+  disabled?: boolean;
   subMenuItems?: SideNavItem[];
 };

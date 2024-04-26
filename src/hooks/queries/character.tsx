@@ -6,6 +6,6 @@ export async function getCharacter(get: string, ocid: string, date: string) {
     },
   });
   const users = await res.json();
-  console.log("???", users);
+
   return users;
 }
