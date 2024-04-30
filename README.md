@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<p align="center">
+  <img alt="logo" src="public/images/readme01.png">
+</p>
 
-## Getting Started
+</br>
+  <h3 align="center"><a href="https://mesoya.vercel.app">Mesoya 바로가기</a></h1>
+  <h1 align="center">캐릭터 정보 검색 서비스</h2>
+  <h3 align="center">개발 진행중...ing</h3>
 
-First, run the development server:
+</br>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+## 프로젝트 소개
+
+```
+1) 프로젝트 설명
+Nexon Open API를 활용하여 메이플스토리 캐릭터 정보 검색 사이트 및 게임 내 정보 전달 웹사이트를 구현
+이전 프로젝트들과 달리 이번 프로젝트는 단발성이 아니라 실제 서비스를 목표로 하여 반응형으로 제작
+
+2) 개발 개요 및 배경
+새로운 프로젝트 아이디어가 생겨 개발을 해보려고 하는데, 이를 위해 관심이 있었던 최신 기술 스택을 실제로 사용해보기로 결정하여
+새로운 스택들을 추가해서 사용할 예정(Next14, React-query, tailwind)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 기술스택
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+<div>
+<img src="https://img.shields.io/badge/React-7ddfff?style=flat-square&logo=React&logoColor=white"/>&nbsp 
+<img src="https://img.shields.io/badge/Next-black?style=flat-square&logo=nextdotjs&logoColor=white"/>&nbsp 
+<img src="https://img.shields.io/badge/reactquery-FF4154?style=flat-square&logo=reactquery&logoColor=white"/>&nbsp 
+<img src="https://img.shields.io/badge/Recoil-3578E5?style=flat-square&logo=Recoil&logoColor=white"/>&nbsp
+<img src="https://img.shields.io/badge/tailwindcss-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white"/>&nbsp 
+ </div>
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 서비스 실행
 
-## Learn More
+```
+git clone https://github.com/Corete95/Mesoya.git
 
-To learn more about Next.js, take a look at the following resources:
+cd Mesoya
+npm install
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 폴더구조
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+<details>
+<summary>현재 폴더구조 펼쳐보기</summary>
+<div markdown="1">
 
-## Deploy on Vercel
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+</div>
+</details>
