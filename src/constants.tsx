@@ -24,20 +24,20 @@ export const SIDENAV_ITEMS: SideNavItem[] = [
   },
   {
     title: "주화",
-    path: "/home3",
+    path: "coinage",
     disabled: false,
     icon: <Icon icon="lucide:mail" width="24" height="24" />,
   },
   {
     title: "큐브",
-    path: "/home4",
+    path: "/cube",
     disabled: false,
     icon: <Icon icon="lucide:settings" width="24" height="24" />,
     submenu: true,
   },
   {
     title: "준비중",
-    path: "/home5",
+    path: "/preparing",
     disabled: true,
     icon: <Icon icon="lucide:help-circle" width="24" height="24" />,
   },

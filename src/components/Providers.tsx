@@ -19,7 +19,7 @@ const Providers = ({ children }: Props) => {
 
   return (
     <NextUIProvider>
-      <ThemeProvider attribute="class" defaultTheme="system">
+      <ThemeProvider attribute="class" defaultTheme="dark">
         {children}
       </ThemeProvider>
     </NextUIProvider>

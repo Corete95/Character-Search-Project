@@ -6,17 +6,21 @@ import Ability from "./_component/Ability";
 import { useQueries, useQuery } from "@tanstack/react-query";
 import { getOcid } from "@/hooks/queries/ocid";
 import { getCharacter } from "@/hooks/queries/character";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams, useParams } from "next/navigation";
 import dayjs from "dayjs";
 
 const Stat = () => {
   const params = usePathname();
+  const segment: any = useParams();
   const day = dayjs().subtract(1, "day").format("YYYY-MM-DD");
+  const today = dayjs().format();
   const key = ["basic", "hyper-stat", "stat", "ability"];
-  const { data, isLoading, error } = useQuery({
-    queryKey: ["users"],
-    queryFn: () => getOcid(params),
+  const { data, isLoading, isError } = useQuery({
+    queryKey: [`user${today}`],
+    queryFn: () => getOcid(segment.nickname),
+    gcTime: 0,
   });
+  console.log("segment", today);
 
   const queryResults = useQueries({
     queries: key.map((id) => ({
@@ -26,13 +30,18 @@ const Stat = () => {
       // suspense: true,
     })),
     combine: (results) => {
+      console.log(results);
       return {
         data: results.map((result) => result.data),
         pending: results.some((result) => result.isPending),
+        error: results.some((result) => result.isError),
       };
     },
   });
-  if (queryResults.pending) return <div>asdasdasd</div>;
+  console.log("error", isError);
+  // if (!isError) return <div>에러123</div>;
+  if (queryResults.error) return <div>에러</div>;
+  if (queryResults.pending) return <div>로딩중....</div>;
 
   return (
     <div>

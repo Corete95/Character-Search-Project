@@ -14,7 +14,7 @@ const HyperStat = ({ props }: { props: HyperStatType }) => {
 
   return (
     <div className="bg-white dark:bg-[#86929E] rounded-lg p-3">
-      {props[pick].map((item: HyperStatPreset, index: number) => (
+      {props[pick]?.map((item: HyperStatPreset, index: number) => (
         <div key={index}>
           {item.stat_increase ? (
             <Tooltip

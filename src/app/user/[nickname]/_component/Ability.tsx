@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { FaBookmark } from "react-icons/fa";
-import { abilityColor } from "../../../../utility/utils";
+import { abilityColor } from "../../../../../utility/utils";
 
 const Ability = ({ props }: any) => {
   const [presetNo, setPrestNo] = useState(props.preset_no);

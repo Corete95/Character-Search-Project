@@ -41,6 +41,7 @@ const dataMix = (array: string[], b: UserStatType) => {
     return acc;
   }, []);
 };
+
 export const topUserStat = (stat: UserStatType) => {
   const result = dataMix(topArray, stat);
 
@@ -54,8 +55,8 @@ export const middleUserStat = (stat: UserStatType) => {
   const result = dataMix(middleArray, stat);
 
   return result
-    .map((a, index) => {
-      const { stat_name, stat_value } = a;
+    .map((item, index) => {
+      const { stat_name, stat_value } = item;
 
       switch (index) {
         case 0:
@@ -73,23 +74,8 @@ export const middleUserStat = (stat: UserStatType) => {
               }%`,
             };
           break;
-        case 1:
-        case 2:
-        case 3:
-        case 4:
-        case 5:
-        case 7:
-        case 9:
-        case 10:
-        case 11:
-        case 12:
-        case 13:
-        case 14:
-        case 15:
-        case 16:
-          return { stat_name, stat_value: `${stat_value}%` };
         default:
-          return a;
+          return { stat_name, stat_value: `${stat_value}%` };
       }
     })
     .filter(Boolean);

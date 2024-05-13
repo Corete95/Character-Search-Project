@@ -26,7 +26,7 @@ const Header = () => {
       <div className="flex h-[65px] items-center justify-between px-4 dark:bg-dark">
         <div className="flex items-center space-x-4">
           <Link
-            href="/"
+            href=""
             className="flex flex-row space-x-2 items-center justify-center md:hidden"
           >
             <Image
