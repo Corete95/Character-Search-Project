@@ -21,3 +21,19 @@ export const abilityColor = (ability: string) => {
 
   return color[ability];
 };
+
+export const errorStatus = (code: any) => {
+  const error: { [key: string]: string } = {
+    OPENAPI00001: "서버 오류입니다.",
+    OPENAPI00002: "권한이 없습니다.",
+    OPENAPI00003: "유효하지 않는 식별자입니다.",
+    OPENAPI00004: "등록되지 않은 사용자입니다.",
+    OPENAPI00005: "API키가 유효하지 않습니다.",
+    OPENAPI00007: "API 호출량 초과입니다.",
+    OPENAPI00009: "데이터 준비중입니다.",
+    OPENAPI000010: "게임 점검중입니다.",
+    OPENAPI000011: "API 점검중입니다.",
+  };
+
+  return error[code];
+};

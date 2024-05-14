@@ -12,6 +12,7 @@
     "@iconify/react": "^4.1.1",
     "@nextui-org/react": "^2.3.0",
     "@tanstack/react-query": "^5.17.19",
+    "axios": "^1.6.8",
     "clsx": "^2.1.0",
     "dayjs": "^1.11.10",
     "framer-motion": "^10.18.0",
