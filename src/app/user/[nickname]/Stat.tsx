@@ -19,7 +19,7 @@ const Stat = () => {
   );
 
   if (error) return <div>{error.message}</div>;
-  if (pending) return <div>로딩중....</div>;
+  // if (pending) return <div>로딩중....</div>;
 
   return (
     <div>

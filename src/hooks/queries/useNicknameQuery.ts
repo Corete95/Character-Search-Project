@@ -1,4 +1,4 @@
-import { useQueries, useQuery } from "@tanstack/react-query";
+import { useSuspenseQueries } from "@tanstack/react-query";
 import { errorStatus } from "../../../utility/utils";
 import api from "@/api/axios";
 import axios from "axios";
@@ -18,12 +18,11 @@ const fetchNickname = async (get: string, ocid: string, date: string) => {
 export const useNicknameQuery = (ocid: string, date: string) => {
   const key = ["basic", "hyper-stat", "stat", "ability"];
 
-  const queryResults = useQueries({
+  const queryResults = useSuspenseQueries({
     queries: key.map((id) => ({
       queryKey: [id, ocid],
       queryFn: () => fetchNickname(id, ocid, date),
       enabled: !!ocid,
-      // suspense: true,
     })),
     combine: (results) => {
       return {

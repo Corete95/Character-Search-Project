@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
 import { errorStatus } from "../../../utility/utils";
 import api from "@/api/axios";
 import axios from "axios";
@@ -16,7 +16,7 @@ const fetchOcid = async (name: string) => {
 };
 
 export const useOcidQuery = (name: string) => {
-  const { data, isLoading, isError, error } = useQuery({
+  const { data, isLoading, isError, error } = useSuspenseQuery({
     queryKey: ["user", name],
     queryFn: () => fetchOcid(name),
     retry: 0,
