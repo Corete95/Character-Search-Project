@@ -6,13 +6,11 @@ import ErrorFallback from "./ErrorFallback";
 
 interface PropsType {
   children: React.ReactNode;
-  errorFallback?: any;
   suspenseFallback: ReactNode;
 }
 
 const SuspenseAndErrorBoundary = ({
   children,
-
   suspenseFallback: SuspenseFallback,
 }: PropsType) => {
   const { reset } = useQueryErrorResetBoundary();

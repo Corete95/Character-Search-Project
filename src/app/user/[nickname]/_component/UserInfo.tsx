@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 
 const UserInfo = ({ props }: any) => {
-
   return (
     <div className="flex flex-wrap  w-full rounded-lg bg-white">
       <div className="flex flex-col justify-between p-4 w-1/3">
@@ -24,6 +23,8 @@ const UserInfo = ({ props }: any) => {
           alt="캐릭터 사진"
           width={96}
           height={96}
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
         />
         <div className="badge my-4 px-3 dark:bg-main_gray">
           {props.character_name}

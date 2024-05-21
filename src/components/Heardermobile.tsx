@@ -43,7 +43,9 @@ const HeaderMobile = () => {
       initial={false}
       animate={isOpen ? "open" : "closed"}
       custom={height}
-      className="fixed inset-0 z-50 w-full md:hidden"
+      className={`${
+        isOpen ? "fixed" : "flex-none"
+      }  inset-0 z-50 w-full md:hidden`}
       ref={containerRef}
     >
       <motion.div
@@ -54,7 +56,9 @@ const HeaderMobile = () => {
       />
       <motion.ul
         variants={variants}
-        className="absolute grid w-full gap-3 px-10 py-16"
+        className={`${
+          isOpen ? "grid" : "hidden"
+        } absolute w-full gap-3 px-10 py-16`}
       >
         {SIDENAV_ITEMS.map((item, idx) => {
           const isLastItem = idx === SIDENAV_ITEMS.length - 1;

@@ -6,7 +6,6 @@ import Stat from "./Stat";
 import Equipment from "./Equipment";
 import Skill from "./Skill";
 import SuspenseAndErrorBoundary from "@/components/SuspenseAndErrorBoundary";
-import ErrorFallback from "@/components/ErrorFallback";
 
 const NickNamePage = () => {
   const [step, setStep] = useState<string | number>("stat");
@@ -17,8 +16,6 @@ const NickNamePage = () => {
     { key: "skill", title: "스킬", tsx: <Skill /> },
     { key: "union", title: "유니온", tsx: <Equipment /> },
   ];
-
-  console.log("step", step);
 
   return (
     <div className="my-4">
@@ -35,13 +32,7 @@ const NickNamePage = () => {
           ))}
         </Tabs>
       </div>
-      {/* <Suspense fallback={<div>스켈레톤 컴포넌트 생성 예정</div>}>
-        <div className="mx-3">
-          {tabs.find((item) => item.key === step)?.tsx}
-        </div>
-      </Suspense> */}
       <SuspenseAndErrorBoundary
-        errorFallback={<ErrorFallback />}
         suspenseFallback={<div>스켈레톤 컴포넌트 생성 예정~~</div>}
       >
         <div className="mx-3">

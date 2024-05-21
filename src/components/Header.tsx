@@ -24,18 +24,12 @@ const Header = () => {
       )}
     >
       <div className="flex h-[65px] items-center justify-between px-4 dark:bg-dark">
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-4 z-[51]">
           <Link
-            href=""
+            href="/"
             className="flex flex-row space-x-2 items-center justify-center md:hidden"
           >
-            <Image
-              className=""
-              src="/images/logo250.png"
-              width={44}
-              height={44}
-              alt=""
-            />
+            <Image src="/images/logo250.png" width={44} height={44} alt="" />
             <span className="font-bold text-xl flex ">Mesoya</span>
           </Link>
         </div>
@@ -43,7 +37,6 @@ const Header = () => {
         <div className="hidden md:block">
           <div>
             <Themetoggle />
-            {/* <span className="font-semibold text-sm">HQ</span> */}
           </div>
         </div>
       </div>

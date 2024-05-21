@@ -22,26 +22,29 @@ const Ability = ({ props }: any) => {
     <div className="flex flex-col gap-1 bg-[#FEFEFF] rounded-lg p-2 ">
       <div
         className={`flex items-center p-2 rounded-lg text-white ${
-          color[props[`ability_preset_${presetNo}`].ability_preset_grade]
+          color[props[`ability_preset_${presetNo}`]?.ability_preset_grade ?? ""]
         }`}
       >
         <FaBookmark />
-        <span className="ml-2">{`${
-          props[`ability_preset_${presetNo}`].ability_preset_grade
-        } 어빌리티`}</span>
+        <span className="ml-2">
+          {`${
+            props[`ability_preset_${presetNo}`]?.ability_preset_grade
+          } 어빌리티` ?? ""}
+        </span>
       </div>
-      {props[`ability_preset_${presetNo}`].ability_info.map(
-        (item: any, idx: number) => (
-          <div
-            className={`px-2 ${
-              color[item.ability_grade]
-            } rounded-md text-center text-white text-14`}
-            key={idx}
-          >
-            {item.ability_value}
-          </div>
-        )
-      )}
+      {props[`ability_preset_${presetNo}`]?.ability_info &&
+        props[`ability_preset_${presetNo}`]?.ability_info?.map(
+          (item: any, idx: number) => (
+            <div
+              className={`px-2 ${
+                color[item.ability_grade]
+              } rounded-md text-center text-white text-14`}
+              key={idx}
+            >
+              {item.ability_value}
+            </div>
+          )
+        )}
       <div className="flex justify-between mt-2 bg-white_gray_100 dark:bg-[#bdc4ca] text-14 px-5 rounded-xl">
         <span className="flex items-center">PRESETS</span>
         <div className="flex gap-3 py-1">
