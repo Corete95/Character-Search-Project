@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState, Suspense } from "react";
+import React, { useState } from "react";
 import { Tabs, Tab } from "@nextui-org/react";
 import Stat from "./Stat";
 import Equipment from "./Equipment";
 import Skill from "./Skill";
 import SuspenseAndErrorBoundary from "@/components/SuspenseAndErrorBoundary";
+import Loading from "./loading";
 
 const NickNamePage = () => {
   const [step, setStep] = useState<string | number>("stat");
@@ -32,9 +33,7 @@ const NickNamePage = () => {
           ))}
         </Tabs>
       </div>
-      <SuspenseAndErrorBoundary
-        suspenseFallback={<div>스켈레톤 컴포넌트 생성 예정~~</div>}
-      >
+      <SuspenseAndErrorBoundary suspenseFallback={<Loading />}>
         <div className="mx-3">
           {tabs.find((item) => item.key === step)?.tsx}
         </div>
