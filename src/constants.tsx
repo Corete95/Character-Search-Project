@@ -42,3 +42,5 @@ export const SIDENAV_ITEMS: SideNavItem[] = [
     icon: <Icon icon="lucide:help-circle" width="24" height="24" />,
   },
 ];
+
+
