@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useCallback } from "react";
+import React, { useCallback, useMemo } from "react";
 import { getKeyValue } from "@nextui-org/react";
 import { RankingListType } from "@/types/apis/rank.type";
 import { useSearchParams } from "next/navigation";
 import { useRankingQuery } from "@/hooks/queries/useRankingQuery";
 import { OVERALL_COLUMNS } from "@/app/ranking/overall/_constants/constants";
+import Loading from "@/app/ranking/overall/_component/loading";
 import GenericTable from "@/components/GenericTable";
 import dayjs from "dayjs";
 import Image from "next/image";
@@ -16,13 +17,16 @@ const OverallList = () => {
   const day = dayjs().subtract(1, "day").format("YYYY-MM-DD");
   const searchParams = useSearchParams();
 
-  const params = {
-    date: day,
-    page: parseInt(searchParams.get("page") || "1", 10),
-    class: searchParams.get("class") || undefined,
-    world_name: searchParams.get("world_name") || undefined,
-    world_type: searchParams.get("world_type") || undefined,
-  };
+  const params = useMemo(
+    () => ({
+      date: day,
+      page: parseInt(searchParams.get("page") || "1", 10),
+      class: searchParams.get("class") || undefined,
+      world_name: searchParams.get("world_name") || undefined,
+      world_type: searchParams.get("world_type") || undefined,
+    }),
+    [day, searchParams]
+  );
 
   const { data, isLoading, isError } = useRankingQuery(params);
 
@@ -53,7 +57,7 @@ const OverallList = () => {
     []
   );
 
-  if (isLoading) return <div>로딩</div>;
+  if (isLoading) return <Loading />;
   if (isError) return <div>에러</div>;
 
   return (

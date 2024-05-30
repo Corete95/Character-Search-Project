@@ -8,7 +8,6 @@ const fetchOcid = async (name: string) => {
     const data = await api.get(`id?character_name=${name}`);
     return data.data;
   } catch (error) {
-    console.log("error", error);
     if (axios.isAxiosError(error) && error.response) {
       const code = errorStatus(error.response.data.error.name);
       throw new Error(code);
