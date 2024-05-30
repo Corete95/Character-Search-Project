@@ -34,7 +34,9 @@ const GenericTable = <T extends { key: string | number }>({
             className="hover:bg-[#E7E7E9] dark:hover:bg-[#2D2D2D]"
           >
             {(columnKey) => (
-              <TableCell>{renderCell(item, columnKey)}</TableCell>
+              <TableCell className="mobile:text-xs">
+                {renderCell(item, columnKey)}
+              </TableCell>
             )}
           </TableRow>
         )}

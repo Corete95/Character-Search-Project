@@ -63,7 +63,7 @@ export const JOB_LIST: Record<string, { key: string; label: string }[]> = {
     { key: "궁수-전체 전직", label: "모험가 궁수 전체" },
     { key: "궁수-보우마스터", label: "보우마스터" },
     { key: "궁수-신궁", label: "신궁" },
-    { key: "궁수-아처(패스파인더)", label: "패스파인더" },
+    { key: "궁수-패스파인더", label: "패스파인더" },
     { key: "기사단-윈드브레이커", label: "윈드브레이커" },
     { key: "메르세데스-전체 전직", label: "메르세데스" },
     { key: "레지스탕스-와일드헌터", label: "와일드헌터" },
@@ -93,5 +93,95 @@ export const JOB_LIST: Record<string, { key: string; label: string }[]> = {
     { key: "레지스탕스-블래스터", label: "블래스터" },
     { key: "엔젤릭버스터-전체 전직", label: "엔젤릭버스터" },
     { key: "아크-전체 전직", label: "아크" },
+  ],
+};
+
+export const WORLD_LIST: Record<
+  string,
+  { id: string; name: string; url: string }[]
+> = {
+  common: [
+    {
+      id: "전체월드",
+      name: "전체월드",
+      url: "/images/world/전체.png",
+    },
+    {
+      id: "스카니아",
+      name: "스카니아",
+      url: "/images/world/스카니아.png",
+    },
+    {
+      id: "루나",
+      name: "루나",
+      url: "/images/world/루나.png",
+    },
+    {
+      id: "크로아",
+      name: "크로아",
+      url: "/images/world/크로아.png",
+    },
+    {
+      id: "베라",
+      name: "베라",
+      url: "/images/world/베라.png",
+    },
+    {
+      id: "제니스",
+      name: "제니스",
+      url: "/images/world/제니스.png",
+    },
+    {
+      id: "유니온",
+      name: "유니온",
+      url: "/images/world/유니온.png",
+    },
+    {
+      id: "엘리시움",
+      name: "엘리시움",
+      url: "/images/world/엘리시움.png",
+    },
+    {
+      id: "이노시스",
+      name: "이노시스",
+      url: "/images/world/이노시스.png",
+    },
+    {
+      id: "레드",
+      name: "레드",
+      url: "/images/world/레드.png",
+    },
+    {
+      id: "오로라",
+      name: "오로라",
+      url: "/images/world/오로라.png",
+    },
+    {
+      id: "아케인",
+      name: "아케인",
+      url: "/images/world/아케인.png",
+    },
+    {
+      id: "노바",
+      name: "노바",
+      url: "/images/world/노바.png",
+    },
+  ],
+  reboot: [
+    {
+      id: "리부트 전체",
+      name: "리부트 전체",
+      url: "/images/world/전체.png",
+    },
+    {
+      id: "리부트",
+      name: "리부트",
+      url: "/images/world/리부트.png",
+    },
+    {
+      id: "리부트2",
+      name: "리부트2",
+      url: "/images/world/리부트.png",
+    },
   ],
 };

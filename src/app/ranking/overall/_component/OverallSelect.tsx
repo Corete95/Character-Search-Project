@@ -2,11 +2,18 @@
 
 import React from "react";
 import CommonSelect from "@/components/CommonSelect";
-import { JOB_LIST } from "../_constants/constants";
+import { JOB_LIST, WORLD_LIST } from "../_constants/constants";
 import { useSelectState } from "@/hooks/useSelectState";
+import WorldCommonSelect from "@/components/WorldCommonSelect";
 
 const OverallSelect = () => {
-  const { selectedValue, handleChange, isResetNeeded } = useSelectState();
+  const {
+    selectedJobValue,
+    selectedWorldValue,
+    handleChange,
+    isJobResetNeeded,
+    isWorldResetNeeded,
+  } = useSelectState();
 
   const selectCategories = [
     { key: "warrior", label: "전사" },
@@ -16,18 +23,42 @@ const OverallSelect = () => {
     { key: "pirate", label: "해적" },
   ];
 
+  const selectWorldCategories = [
+    { key: "common", label: "월드" },
+    { key: "reboot", label: "리부트" },
+  ];
+
   return (
-    <div className="flex gap-2 mb-3">
-      {selectCategories.map(({ key, label }) => (
-        <CommonSelect
-          key={label}
-          label={label}
-          placeholder="선택"
-          items={JOB_LIST[key]}
-          selectedKey={isResetNeeded(label) ? null : selectedValue}
-          onChange={(value) => handleChange(value, label)}
-        />
-      ))}
+    <div className="mb-3">
+      <div>
+        <div className="flex gap-2 mb-3">
+          {selectWorldCategories.map(({ key, label }) => (
+            <WorldCommonSelect
+              key={label}
+              label={label}
+              placeholder="서버 선택"
+              items={WORLD_LIST[key]}
+              selectedKey={
+                isWorldResetNeeded(label) ? null : selectedWorldValue
+              }
+              onChange={(value) => handleChange("world", value, label)}
+            />
+          ))}
+        </div>
+
+        <div className="flex gap-2">
+          {selectCategories.map(({ key, label }) => (
+            <CommonSelect
+              key={label}
+              label={label}
+              placeholder="선택"
+              items={JOB_LIST[key]}
+              selectedKey={isJobResetNeeded(label) ? null : selectedJobValue}
+              onChange={(value) => handleChange("job", value, label)}
+            />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

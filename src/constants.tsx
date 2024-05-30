@@ -24,7 +24,7 @@ export const SIDENAV_ITEMS: SideNavItem[] = [
   },
   {
     title: "주화",
-    path: "coinage",
+    path: "/coinage",
     disabled: false,
     icon: <Icon icon="lucide:mail" width="24" height="24" />,
   },
@@ -42,5 +42,3 @@ export const SIDENAV_ITEMS: SideNavItem[] = [
     icon: <Icon icon="lucide:help-circle" width="24" height="24" />,
   },
 ];
-
-

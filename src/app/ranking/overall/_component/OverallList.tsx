@@ -16,26 +16,31 @@ const OverallList = () => {
   const day = dayjs().subtract(1, "day").format("YYYY-MM-DD");
   const searchParams = useSearchParams();
 
-  const pageParam = parseInt(searchParams.get("page") || "1", 10);
-  const classParam = searchParams.get("class") || undefined;
-  const { data, isLoading, isError } = useRankingQuery(
-    day,
-    pageParam,
-    classParam
-  );
+  const params = {
+    date: day,
+    page: parseInt(searchParams.get("page") || "1", 10),
+    class: searchParams.get("class") || undefined,
+    world_name: searchParams.get("world_name") || undefined,
+    world_type: searchParams.get("world_type") || undefined,
+  };
+
+  const { data, isLoading, isError } = useRankingQuery(params);
 
   const renderCell = useCallback(
     (user: RankingListType, columnKey: string | number) => {
       switch (columnKey) {
         case "character_name":
           return (
-            <Link href={`/user/${user.character_name}`} className="flex gap-1">
+            <Link
+              href={`/user/${user.character_name}`}
+              className="flex items-center gap-1 mobile:text-xs"
+            >
               <Image
-                src="/images/main.jpg"
-                alt=""
-                className="rounded-lg"
-                width={14}
-                height={14}
+                src={`/images/world/${user?.world_name}.png`}
+                alt={`${user?.world_name} 이미지`}
+                className="rounded-lg mobile:w-3 mobile:h-3"
+                width={18}
+                height={18}
               />
               {user.character_name}
             </Link>
@@ -58,7 +63,7 @@ const OverallList = () => {
         data={data}
         renderCell={renderCell}
       />
-      <Pagination currentPage={pageParam} />
+      <Pagination currentPage={params.page} />
     </div>
   );
 };
