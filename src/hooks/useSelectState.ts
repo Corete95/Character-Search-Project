@@ -18,27 +18,36 @@ export const useSelectState = () => {
     const searchParams = new URLSearchParams({
       page: pageParam.toString(),
       ...(newState.selectedJobValue && { class: newState.selectedJobValue }),
-      ...(newState.selectedWorldValue && { world_name: newState.selectedWorldValue }),
+      ...(newState.selectedWorldValue && {
+        world_name: newState.selectedWorldValue,
+      }),
       ...(newState.selectedWorldValue === "전체월드" && { world_type: "0" }),
-      ...(newState.worldCategory === "리부트" && newState.selectedWorldValue === "리부트 전체" && { world_type: "1" }),
+      ...(newState.worldCategory === "리부트" &&
+        newState.selectedWorldValue === "리부트 전체" && { world_type: "1" }),
     });
 
     router.push(`${pathname}?${searchParams.toString()}`);
   };
 
-  const handleChange = (type: 'job' | 'world', value: string, category: string) => {
+  const handleChange = (
+    type: "job" | "world",
+    value: string,
+    category: string
+  ) => {
     setState((prevState) => {
       const newState = {
         ...prevState,
-        ...(type === 'job' ? { selectedJobValue: value, jobCategory: category } : { selectedWorldValue: value, worldCategory: category }),
+        ...(type === "job"
+          ? { selectedJobValue: value, jobCategory: category }
+          : { selectedWorldValue: value, worldCategory: category }),
       };
       updateURL(newState);
       return newState;
     });
   };
 
-  const isResetNeeded = (type: 'job' | 'world', currentCategory: string) => {
-    return type === 'job'
+  const isResetNeeded = (type: "job" | "world", currentCategory: string) => {
+    return type === "job"
       ? state.jobCategory !== null && state.jobCategory !== currentCategory
       : state.worldCategory !== null && state.worldCategory !== currentCategory;
   };
@@ -47,7 +56,9 @@ export const useSelectState = () => {
     selectedJobValue: state.selectedJobValue,
     selectedWorldValue: state.selectedWorldValue,
     handleChange,
-    isJobResetNeeded: (currentCategory: string) => isResetNeeded('job', currentCategory),
-    isWorldResetNeeded: (currentCategory: string) => isResetNeeded('world', currentCategory),
+    isJobResetNeeded: (currentCategory: string) =>
+      isResetNeeded("job", currentCategory),
+    isWorldResetNeeded: (currentCategory: string) =>
+      isResetNeeded("world", currentCategory),
   };
 };
