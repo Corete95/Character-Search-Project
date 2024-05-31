@@ -1,11 +1,11 @@
 import React from "react";
-import { geKoreanNumber } from "../../../../../utility/utils";
+import { geKoreanNumber } from "../../../../utility/utils";
 import { FinalStat, UserStatType } from "@/types/apis/stat";
 import {
   bottomUserStat,
   middleUserStat,
   topUserStat,
-} from "../../../../../utility/userStatUtil";
+} from "../../../../utility/userStatUtil";
 
 type Props = {
   props: UserStatType;

@@ -13,8 +13,16 @@ const Providers = ({ children }: Props) => {
     setMounted(true);
   }, []);
 
+  // if (!mounted) {
+  //   return null;
+  // }
+
   if (!mounted) {
-    return null;
+    return (
+      <ThemeProvider attribute="class" defaultTheme="dark">
+        {children}
+      </ThemeProvider>
+    );
   }
 
   return (

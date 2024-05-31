@@ -4,7 +4,7 @@ import { SideNavItem } from "./types";
 
 export const SIDENAV_ITEMS: SideNavItem[] = [
   {
-    title: "메인",
+    title: "검색",
     path: "/",
     disabled: false,
     icon: <Icon icon="lucide:home" width="24" height="24" />,
@@ -18,8 +18,6 @@ export const SIDENAV_ITEMS: SideNavItem[] = [
     subMenuItems: [
       { title: "종합", path: "/ranking/overall" },
       { title: "길드", path: "/ranking/guild" },
-      { title: "전투력", path: "/ranking/combat-power" },
-      { title: "무릉도장", path: "/ranking/dojang" },
     ],
   },
   {

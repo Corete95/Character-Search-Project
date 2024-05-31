@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import api from "../../api/axios";
-import { RankingListType } from "@/types/apis/rank.type";
+
 import { errorStatus } from "../../utility/utils";
 
-const fetchRanking = async (params: Record<string, string | number>) => {
+const fetchGuild = async (params: Record<string, string | number>) => {
   try {
     const searchParams = new URLSearchParams();
 
@@ -14,9 +14,7 @@ const fetchRanking = async (params: Record<string, string | number>) => {
       }
     });
 
-    const response = await api.get(
-      `ranking/overall?${searchParams.toString()}`
-    );
+    const response = await api.get(`ranking/guild?${searchParams.toString()}`);
     return response.data;
   } catch (error) {
     if (axios.isAxiosError(error) && error.response) {
@@ -27,20 +25,18 @@ const fetchRanking = async (params: Record<string, string | number>) => {
   }
 };
 
-const conversion = (data: RankingListType[]) => {
-  return data.map((item) => ({
+const conversion = (data: any) => {
+  return data.map((item: any) => ({
     ...item,
     key: item.ranking,
-    sub_class_name:
-      item.sub_class_name === "" ? item.class_name : item.sub_class_name,
   }));
 };
 
-export const useRankingQuery = (params: Record<string, string | number>) => {
+export const useGuildQuery = (params: Record<string, string | number>) => {
   const { data, isLoading, isError } = useQuery({
-    queryKey: ["rank", params],
-    queryFn: () => fetchRanking(params),
-    select: (rank) => conversion(rank.ranking),
+    queryKey: ["guild", params],
+    queryFn: () => fetchGuild(params),
+    select: (guild) => conversion(guild.ranking),
     retry: false,
   });
 

@@ -11,6 +11,10 @@ export const geKoreanNumber = (number: number) => {
   return answer;
 };
 
+export const formatNumber = (number: number) => {
+  return new Intl.NumberFormat("en-US").format(number);
+};
+
 export const abilityColor = (ability: string) => {
   const color: { [key: string]: string } = {
     레전드리: "bg-legendary",

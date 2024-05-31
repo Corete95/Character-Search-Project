@@ -9,6 +9,7 @@ import dayjs from "dayjs";
 import localFont from "next/font/local";
 import "dayjs/locale/ko";
 import "./globals.css";
+import dynamic from "next/dynamic";
 
 dayjs.locale("ko");
 const inter = Inter({ subsets: ["latin"] });
@@ -28,6 +29,10 @@ const pretendard = localFont({
 });
 
 // ${inter.className}
+
+// const Providers = dynamic(() => import("@/components/Providers"), {
+//   ssr: false,
+// });
 
 export default function RootLayout({
   children,

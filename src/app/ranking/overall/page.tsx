@@ -10,13 +10,11 @@ export const metadata: Metadata = {
 
 const page = () => {
   return (
-    <div className="">
-      <div className=" bg-white_bg dark:bg-dark_gray p-4">
-        <div className="flex flex-wrap">
-          <div className="w-full">
-            <OverallSelect />
-            <OverallList />
-          </div>
+    <div className="p-4">
+      <div className="flex flex-wrap">
+        <div className="w-full">
+          <OverallSelect />
+          <OverallList />
         </div>
       </div>
     </div>
