@@ -6,9 +6,6 @@ import OverallSelect from "./_component/OverallSelect";
 export const metadata: Metadata = {
   title: "메소야 랭킹 | Mesoya",
   description: "메소야 통합 랭킹 페이지",
-  icons: {
-    icon: "/favicon.ico",
-  },
 };
 
 const page = () => {

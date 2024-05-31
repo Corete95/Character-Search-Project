@@ -1,4 +1,4 @@
-import { useSuspenseQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import api from "../../api/axios";
 import { RankingListType } from "@/types/apis/rank.type";
@@ -37,11 +37,11 @@ const conversion = (data: RankingListType[]) => {
 };
 
 export const useRankingQuery = (params: Record<string, string | number>) => {
-  const { data, isLoading, isError } = useSuspenseQuery({
+  const { data, isLoading, isError } = useQuery({
     queryKey: ["rank", params],
     queryFn: () => fetchRanking(params),
-    retry: 0,
     select: (rank) => conversion(rank.ranking),
+    retry: false,
   });
 
   return { data, isLoading, isError };
