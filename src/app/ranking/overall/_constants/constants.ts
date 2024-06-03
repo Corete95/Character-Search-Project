@@ -3,31 +3,37 @@ export const OVERALL_COLUMNS = [
     key: "ranking",
     label: "순위",
     columns: "30px",
+    hidden: false,
   },
   {
     key: "character_name",
     label: "캐릭터",
     columns: "100px",
+    hidden: false,
   },
   {
     key: "character_level",
     label: "레벨",
     columns: "150px",
+    hidden: false,
   },
   {
     key: "sub_class_name",
     label: "직업",
     columns: "200px",
+    hidden: false,
   },
   {
     key: "character_popularity",
     label: "인기도",
     columns: "50px",
+    hidden: true,
   },
   {
     key: "character_guildname",
     label: "길드",
     columns: "100px",
+    hidden: false,
   },
 ];
 

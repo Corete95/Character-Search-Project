@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="h-full">
-      <div className="relative h-[900px]">
+      <div className="relative h-full">
         <Image className="" src="/images/main.jpg" fill alt="" />
         <div className="absolute w-full h-full top-0 left-0 dark:bg-[#00000080]"></div>
         <div className="absolute w-full h-full flex justify-center items-center z-1">

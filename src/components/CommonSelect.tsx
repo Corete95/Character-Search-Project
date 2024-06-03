@@ -23,7 +23,7 @@ const CommonSelect: React.FC<CommonSelectProps> = ({
       items={items}
       selectedKeys={selectedKey ? [selectedKey] : []}
       onChange={(e) => onChange(e.target.value)}
-      className="max-w-48"
+      className={`max-w-48 mobile:w-[122px]`}
     >
       {(item) => <SelectItem key={item.key}>{item.label}</SelectItem>}
     </Select>

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 const page = () => {
   return (
-    <div className="p-4">
+    <div className="p-4 mobile:p-0">
       <div className="flex flex-wrap">
         <div className="w-full">
           <OverallSelect />

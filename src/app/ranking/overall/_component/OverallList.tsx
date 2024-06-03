@@ -49,7 +49,10 @@ const OverallList = () => {
               {user.character_name}
             </Link>
           );
-
+        case "character_popularity":
+          return (
+            <div className="mobile:hidden">{user.character_popularity}</div>
+          );
         default:
           return getKeyValue(user, columnKey);
       }

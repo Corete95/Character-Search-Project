@@ -12,7 +12,7 @@ export const GUILD_COLUMNS = [
   {
     key: "guild_level",
     label: "길드레벨",
-    columns: "50px",
+    columns: "30px",
   },
   {
     key: "guild_master_name",
@@ -106,12 +106,12 @@ export const GUILDLIST: Record<
     {
       id: "1",
       name: "플래그 레이스",
-      url: "/images/world/리부트.png",
+      url: "/images/world/전체.png",
     },
     {
       id: "2",
       name: "지하 수로",
-      url: "/images/world/리부트.png",
+      url: "/images/world/전체.png",
     },
   ],
 };

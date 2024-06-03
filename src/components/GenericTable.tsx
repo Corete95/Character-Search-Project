@@ -17,11 +17,12 @@ const GenericTable = <T extends { key: string | number }>({
   return (
     <Table>
       <TableHeader columns={columns}>
-        {(column: any) => (
+        {(column) => (
           <TableColumn
             key={column.key}
             align="center"
             style={{ width: column.columns }}
+            className={`${column.hidden ? "mobile:hidden" : ""}`}
           >
             {column.label}
           </TableColumn>
@@ -34,7 +35,11 @@ const GenericTable = <T extends { key: string | number }>({
             className="hover:bg-[#E7E7E9] dark:hover:bg-[#2D2D2D]"
           >
             {(columnKey) => (
-              <TableCell className="mobile:text-xs">
+              <TableCell
+                className={`mobile:text-xs ${
+                  columnKey === "character_popularity" ? "mobile:hidden" : ""
+                }`}
+              >
                 {renderCell(item, columnKey)}
               </TableCell>
             )}

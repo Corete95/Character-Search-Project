@@ -18,6 +18,7 @@ export interface Column {
   key: string;
   label: string;
   columns: string;
+  hidden?: boolean;
 }
 
 export interface GenericTableProps<T> {
