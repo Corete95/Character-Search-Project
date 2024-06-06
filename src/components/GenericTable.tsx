@@ -13,9 +13,11 @@ const GenericTable = <T extends { key: string | number }>({
   columns,
   data,
   renderCell,
+  cellStyle,
+  tableStyle,
 }: GenericTableProps<T>) => {
   return (
-    <Table>
+    <Table isHeaderSticky className={tableStyle}>
       <TableHeader columns={columns}>
         {(column) => (
           <TableColumn
@@ -32,11 +34,11 @@ const GenericTable = <T extends { key: string | number }>({
         {(item) => (
           <TableRow
             key={item.key}
-            className="hover:bg-[#E7E7E9] dark:hover:bg-[#2D2D2D]"
+            className="hover:bg-[#E7E7E9] dark:hover:bg-[#2D2D2D] "
           >
             {(columnKey) => (
               <TableCell
-                className={`mobile:text-xs ${
+                className={`mobile:text-xs ${cellStyle} ${
                   columnKey === "character_popularity" ? "mobile:hidden" : ""
                 }`}
               >

@@ -35,7 +35,7 @@ export const useCoinageQuery = () => {
   const { data, isError, isLoading } = useQuery({
     queryKey: ["coin"],
     queryFn: fetchCoinage,
-    select: conversion,
+    // select: conversion,
   });
 
   return { data, isLoading, isError };

@@ -1,26 +1,33 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
+import { useTheme } from "next-themes";
+import { getChartOptions } from "@/app/coinage/_constants/chartOptions";
+import { conversion } from "@/app/coinage/_constants/conversion";
+import { CoinDataType } from "@/types/apis/coninage.type";
 import dynamic from "next/dynamic";
 import ApexCharts from "apexcharts";
-import { useTheme } from "next-themes";
-import { useCoinageQuery } from "@/hooks/queries/useCoinageQuery";
-import { getChartOptions } from "@/app/coinage/_constants/chartOptions";
+
 const ChartApexchart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
 });
 
-const Chart = () => {
+interface ChartComponentProps {
+  data: CoinDataType[];
+}
+
+const ChartComponent: React.FC<ChartComponentProps> = ({ data }) => {
   const chartRef = useRef<ApexCharts | any>(null);
+  const chartContainerRef = useRef<HTMLDivElement>(null);
   const { theme } = useTheme();
-  const { data, isLoading, isError } = useCoinageQuery();
 
   const validatedTheme =
     theme === "light" || theme === "dark" ? theme : "light";
   const options = getChartOptions(validatedTheme, data, chartRef);
-  const series = [{ name: "Candlestick", data: data }];
+  const series = [{ name: "Candlestick", data: conversion(data) }];
 
   const handleWheel = (event: WheelEvent) => {
+    event.preventDefault();
     if (chartRef.current) {
       const { maxX, minX } = chartRef.current.w.globals;
       const zoomFactor = 0.025;
@@ -39,17 +46,19 @@ const Chart = () => {
   };
 
   useEffect(() => {
-    window.addEventListener("wheel", handleWheel);
+    const chartContainer = chartContainerRef.current;
+    if (chartContainer) {
+      chartContainer.addEventListener("wheel", handleWheel);
+    }
     return () => {
-      window.removeEventListener("wheel", handleWheel);
+      if (chartContainer) {
+        chartContainer.removeEventListener("wheel", handleWheel);
+      }
     };
   }, []);
 
-  if (isLoading) return <div>로딩...</div>;
-  if (isError) return <div>에러</div>;
-
   return (
-    <div>
+    <div ref={chartContainerRef}>
       {data && data.length > 0 && (
         <ChartApexchart
           options={options}
@@ -63,4 +72,4 @@ const Chart = () => {
   );
 };
 
-export default Chart;
+export default ChartComponent;

@@ -25,4 +25,6 @@ export interface GenericTableProps<T> {
   columns: Column[];
   data: T[];
   renderCell: (item: T, columnKey: string | number) => ReactNode;
+  tableStyle?: string;
+  cellStyle?: string;
 }
