@@ -6,7 +6,7 @@ import { RankingListType } from "@/types/apis/rank.type";
 import { useSearchParams } from "next/navigation";
 import { useRankingQuery } from "@/hooks/queries/useRankingQuery";
 import { OVERALL_COLUMNS } from "@/app/ranking/overall/_constants/constants";
-import Loading from "@/app/ranking/overall/_component/loading";
+import Loading from "@/app/ranking/overall/_component/Loading";
 import GenericTable from "@/components/GenericTable";
 import dayjs from "dayjs";
 import Image from "next/image";

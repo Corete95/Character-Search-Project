@@ -3,12 +3,13 @@
 import React from "react";
 import TableComponent from "./TableComponent";
 import ChartComponent from "./ChartComponent";
+import Loading from "./Loading";
 import { useCoinageQuery } from "@/hooks/queries/useCoinageQuery";
 
 const CoinageOverview = () => {
   const { data, isLoading, isError } = useCoinageQuery();
 
-  if (isLoading) return <div>로딩...</div>;
+  if (isLoading) return <Loading />;
   if (isError) return <div>에러</div>;
   return (
     <div>

@@ -30,7 +30,7 @@ const ChartComponent: React.FC<ChartComponentProps> = ({ data }) => {
     event.preventDefault();
     if (chartRef.current) {
       const { maxX, minX } = chartRef.current.w.globals;
-      const zoomFactor = 0.025;
+      const zoomFactor = 0.05;
       const deltaY = event.deltaY;
 
       if (deltaY < 0) {
