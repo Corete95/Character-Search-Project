@@ -12,7 +12,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Pagination from "@/components/Pagination";
 import GenericTable from "@/components/GenericTable";
-import Loading from "../../overall/_component/loading";
+import Loading from "../../overall/_component/Loading";
 
 const GuildList = () => {
   const day = dayjs().format("YYYY-MM-DD");
