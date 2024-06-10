@@ -5,8 +5,10 @@ import axios from "axios";
 
 const fetchNickname = async (get: string, ocid: string, date: string) => {
   try {
-    const data = await api.get(`character/${get}?ocid=${ocid}&date=${date}`);
-    return data.data;
+    const { data } = await api.get(
+      `character/${get}?ocid=${ocid}&date=${date}`
+    );
+    return data;
   } catch (error) {
     if (axios.isAxiosError(error) && error.response) {
       const code = errorStatus(error.response.data.error.name);

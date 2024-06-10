@@ -1,11 +1,18 @@
 import React from "react";
 import Image from "next/image";
 
-const UserInfo = ({ props }: any) => {
+interface Props {
+  character_class: string;
+  character_image: string;
+  character_name: string;
+  character_exp_rate: number;
+}
+
+const UserInfo = ({ info }: { info: Props }) => {
   return (
     <div className="flex flex-wrap  w-full rounded-lg bg-white">
       <div className="flex flex-col justify-between p-4 w-1/3">
-        <div className="badge dark:bg-badge_1">{props?.character_class}</div>
+        <div className="badge dark:bg-badge_1">{info?.character_class}</div>
         <div className="flex flex-col gap-1">
           <div className="badge dark:bg-badge_2 ">1</div>
           <div className="badge dark:bg-badge_2 ">2</div>
@@ -19,7 +26,7 @@ const UserInfo = ({ props }: any) => {
           </div>
         </div>
         <Image
-          src={props?.character_image}
+          src={info?.character_image}
           alt="캐릭터 사진"
           width={96}
           height={96}
@@ -27,7 +34,7 @@ const UserInfo = ({ props }: any) => {
           blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
         />
         <div className="badge my-4 px-3 dark:bg-main_gray">
-          {props.character_name}
+          {info.character_name}
         </div>
       </div>
       <div className="w-1/3 p-4 flex flex-col justify-end">
@@ -38,10 +45,10 @@ const UserInfo = ({ props }: any) => {
         <div className="relative h-4 rounded-full bg-white_gray_100 dark:bg-[#414240]">
           <div
             className="h-4 rounded-full bg-[#AFCD00]"
-            style={{ width: `${props.character_exp_rate}%` }}
+            style={{ width: `${info.character_exp_rate}%` }}
           ></div>
           <span className="absolute inset-0 flex items-center justify-center text-[9px] font-medium text-gray-900">
-            {props.character_exp_rate}%
+            {info.character_exp_rate}%
           </span>
         </div>
       </div>

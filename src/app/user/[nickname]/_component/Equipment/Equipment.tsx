@@ -1,7 +1,7 @@
 import React from "react";
 
 const Equipment = () => {
-  return <div>equipment</div>;
+  return <div>준비중</div>;
 };
 
 export default Equipment;
