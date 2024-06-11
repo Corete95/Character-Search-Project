@@ -7,7 +7,7 @@ import HyperStat from "./HyperStat";
 import UserStat from "./UserStat";
 import Ability from "./Ability";
 import dayjs from "dayjs";
-import InfoCard from "@/app/user/[nickname]/_component/common/InfoCard";
+import InfoCard from "../common/InfoCard";
 
 const Stat = () => {
   const params: { nickname: string } = useParams();

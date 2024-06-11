@@ -1,8 +1,8 @@
 import React from "react";
-import { geKoreanNumber } from "../../../../../utility/utils";
 import { UserStatType } from "@/types/apis/stat";
-import StatBlock from "@/app/user/[nickname]/_component/common/StatBlock";
-import StatList from "@/app/user/[nickname]/_component/common/StatList";
+import { geKoreanNumber } from "@/utility/utils";
+import StatBlock from "../common/StatBlock";
+import StatList from "../common/StatList";
 import {
   bottomUserStat,
   middleUserStat,

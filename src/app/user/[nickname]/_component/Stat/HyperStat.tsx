@@ -2,8 +2,8 @@
 
 import { HyperStatPreset, HyperStatType } from "@/types/apis/hyper";
 import React, { useState } from "react";
-import TooltipWrapper from "@/app/user/[nickname]/_component/common/TooltipWrapper";
-import PresetButtons from "@/app/user/[nickname]/_component/common/PresetButtons";
+import TooltipWrapper from "../common/TooltipWrapper";
+import PresetButtons from "../common/PresetButtons";
 
 interface Props {
   hyper: HyperStatType;

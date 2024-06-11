@@ -1,28 +1,26 @@
 import React from "react";
+import { InfoType } from "@/types/apis/stat";
 import Image from "next/image";
-
+import Badge from "../common/Badge";
 interface Props {
-  character_class: string;
-  character_image: string;
-  character_name: string;
-  character_exp_rate: number;
+  info: InfoType;
 }
 
-const UserInfo = ({ info }: { info: Props }) => {
+const UserInfo = ({ info }: Props) => {
   return (
     <div className="flex flex-wrap  w-full rounded-lg bg-white">
       <div className="flex flex-col justify-between p-4 w-1/3">
         <div className="badge dark:bg-badge_1">{info?.character_class}</div>
         <div className="flex flex-col gap-1">
-          <div className="badge dark:bg-badge_2 ">1</div>
-          <div className="badge dark:bg-badge_2 ">2</div>
-          <div className="badge dark:bg-badge_2 ">3</div>
+          <Badge label="유니온" value={info.union_level} />
+          <Badge label="무릉도장" value={`${info.dojang_best_floor} 층`} />
+          <Badge label="인기도" value={info.popularity} />
         </div>
       </div>
       <div className="w-1/3 px-3 text-center">
         <div className="mb-4 leading-none">
           <div className="badge w-auto px-4 rounded-t-none  rounded-md dark:bg-badge_1">
-            Lv.280
+            Lv. {info.character_level}
           </div>
         </div>
         <Image
@@ -37,9 +35,9 @@ const UserInfo = ({ info }: { info: Props }) => {
           {info.character_name}
         </div>
       </div>
-      <div className="w-1/3 p-4 flex flex-col justify-end">
-        <div className="badge mb-1 dark:bg-badge_2">길드</div>
-        <div className="badge dark:bg-badge_2">2</div>
+      <div className="w-1/3 p-4 flex flex-col justify-end gap-1">
+        <Badge label="월드" value={info.world_name} />
+        <Badge label="길드" value={info.character_guild_name} />
       </div>
       <div className="px-4 w-full mb-2">
         <div className="relative h-4 rounded-full bg-white_gray_100 dark:bg-[#414240]">
