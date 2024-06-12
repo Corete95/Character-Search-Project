@@ -7,9 +7,9 @@ import ReactqueryProvider from "@/providers/ReactqueryProvider";
 import Providers from "@/components/Providers";
 import dayjs from "dayjs";
 import localFont from "next/font/local";
+import GoogleAnalytics from "@/lib/GoogleAnalytics";
 import "dayjs/locale/ko";
 import "./globals.css";
-import GoogleAnalytics from "@/lib/GoogleAnalytics";
 
 dayjs.locale("ko");
 const inter = Inter({ subsets: ["latin"] });
