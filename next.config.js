@@ -3,7 +3,7 @@
  */
 const nextConfig = {
   images: {
-    domains: ["open.api.nexon.com"],
+    domains: ["open.api.nexon.com", "mesoya.vercel.app"],
   },
   reactStrictMode: false,
 };

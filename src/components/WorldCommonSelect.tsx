@@ -42,6 +42,7 @@ const WorldCommonSelect: React.FC<WorldCommonSelectProps> = ({
               src={item.data.url}
               width={20}
               height={20}
+              priority
             />
             <div className="flex flex-col">
               <span>{item.data.name}</span>

@@ -28,7 +28,13 @@ const Header = () => {
             href="/"
             className="flex flex-row space-x-2 items-center justify-center md:hidden"
           >
-            <Image src="/images/logo250.png" width={44} height={44} alt="" />
+            <Image
+              src="/images/logo250.png"
+              width={44}
+              height={44}
+              alt=""
+              priority
+            />
             <span className="font-bold text-xl flex ">Mesoya</span>
           </Link>
         </div>

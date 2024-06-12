@@ -28,6 +28,7 @@ const UserInfo = ({ info }: Props) => {
           alt="캐릭터 사진"
           width={96}
           height={96}
+          priority
           placeholder="blur"
           blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
         />

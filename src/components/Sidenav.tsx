@@ -22,6 +22,7 @@ const SideNav = () => {
             width={44}
             height={44}
             alt=""
+            priority
           />
           <span className="font-bold text-2xl hidden md:flex">Mesoya</span>
         </Link>

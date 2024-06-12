@@ -42,7 +42,13 @@ const TableComponent: React.FC<ChartComponentProps> = ({ data }) => {
   return (
     <div className="max-w-[600px] mx-auto mb-8">
       <div className="flex justify-center gap-3 mb-4">
-        <Image src="/images/gold.png" alt="골드 주화" width={35} height={35} />
+        <Image
+          src="/images/gold.png"
+          alt="골드 주화"
+          width={35}
+          height={35}
+          priority
+        />
         <div className="text-sm">
           <p>골드 첫날 대비</p>
           <p

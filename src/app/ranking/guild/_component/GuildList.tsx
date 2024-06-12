@@ -45,6 +45,7 @@ const GuildList = () => {
                 className="rounded-lg mobile:w-3 mobile:h-3"
                 width={18}
                 height={18}
+                priority
               />
               {user.guild_name}
             </Link>

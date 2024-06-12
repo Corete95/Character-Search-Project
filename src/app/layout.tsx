@@ -15,7 +15,10 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "메소야 | Mesoya",
-  description: "캐릭터 정보 검색 사이트",
+  description:
+    "메이플스토리,캐릭터 검색,전적 검색,메소야,큐브,장비,전투력,길드,랭킹,주화,무릉,유니온",
+  keywords:
+    "메이플스토리,캐릭터 검색,전적 검색,메소야,큐브,장비,전투력,길드,랭킹,주화,무릉,유니온",
   icons: {
     icon: "/favicon.ico",
   },
@@ -36,6 +39,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
+      <head>
+        <meta
+          name="google-site-verification"
+          content={process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION}
+        />
+      </head>
       <link rel="icon" href="/favicon.ico" sizes="any" />
       <body className={pretendard.className}>
         <ReactqueryProvider>

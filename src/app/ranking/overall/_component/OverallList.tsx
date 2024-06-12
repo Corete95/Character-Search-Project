@@ -45,6 +45,7 @@ const OverallList = () => {
                 className="rounded-lg mobile:w-3 mobile:h-3"
                 width={18}
                 height={18}
+                priority
               />
               {user.character_name}
             </Link>
