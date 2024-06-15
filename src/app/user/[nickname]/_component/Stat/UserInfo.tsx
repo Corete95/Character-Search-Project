@@ -29,8 +29,6 @@ const UserInfo = ({ info }: Props) => {
           width={96}
           height={96}
           priority
-          placeholder="blur"
-          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
         />
         <div className="badge my-4 px-3 dark:bg-main_gray">
           {info.character_name}

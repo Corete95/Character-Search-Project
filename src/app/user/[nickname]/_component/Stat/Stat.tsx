@@ -1,7 +1,5 @@
 import React from "react";
-import { useOcidQuery } from "@/hooks/queries/useOcidQuery";
 import { useNicknameQuery } from "@/hooks/queries/useNicknameQuery";
-import { useParams } from "next/navigation";
 import UserInfo from "./UserInfo";
 import HyperStat from "./HyperStat";
 import UserStat from "./UserStat";
@@ -9,15 +7,9 @@ import Ability from "./Ability";
 import dayjs from "dayjs";
 import InfoCard from "../common/InfoCard";
 
-const Stat = () => {
-  const params: { nickname: string } = useParams();
+const Stat = ({ ocid, error }: { ocid: string; error: any }) => {
   const day = dayjs().subtract(1, "day").format("YYYY-MM-DD");
-
-  const { data, isLoading, isError, error } = useOcidQuery(params.nickname);
-  const { info, hyper, user, ability, pending } = useNicknameQuery(
-    data?.ocid,
-    day
-  );
+  const { info, hyper, user, ability, pending } = useNicknameQuery(ocid, day);
 
   const statContent = [
     {

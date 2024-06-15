@@ -8,15 +8,19 @@ import Skill from "./Skill/Skill";
 import SuspenseAndErrorBoundary from "@/components/SuspenseAndErrorBoundary";
 import Loading from "../loading";
 import Union from "./Union/Union";
+import { useParams } from "next/navigation";
+import { useOcidQuery } from "@/hooks/queries/useOcidQuery";
 
 const TabsComponent = () => {
   const [step, setStep] = useState<string | number>("stat");
+  const params: { nickname: string } = useParams();
+  const { data, isLoading, isError, error } = useOcidQuery(params.nickname);
 
   const tabs = [
-    { key: "stat", title: "스탯", tsx: <Stat /> },
-    { key: "equipment", title: "장비", tsx: <Equipment /> },
-    { key: "skill", title: "스킬", tsx: <Skill /> },
-    { key: "union", title: "유니온", tsx: <Union /> },
+    { key: "stat", title: "스탯", tsx: <Stat ocid={data.ocid} error={error}/> },
+    { key: "equipment", title: "장비", tsx: <Equipment ocid={data.ocid} /> },
+    { key: "skill", title: "스킬", tsx: <Skill ocid={data.ocid} /> },
+    { key: "union", title: "유니온", tsx: <Union ocid={data.ocid} /> },
   ];
 
   return (
