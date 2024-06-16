@@ -2,12 +2,12 @@ export const GUILD_COLUMNS = [
   {
     key: "ranking",
     label: "순위",
-    columns: "30px",
+    columns: "20px",
   },
   {
     key: "guild_name",
     label: "길드명",
-    columns: "100px",
+    columns: "150px",
   },
   {
     key: "guild_level",
@@ -22,7 +22,7 @@ export const GUILD_COLUMNS = [
   {
     key: "guild_point",
     label: "점수",
-    columns: "70px",
+    columns: "150px",
   },
 ];
 

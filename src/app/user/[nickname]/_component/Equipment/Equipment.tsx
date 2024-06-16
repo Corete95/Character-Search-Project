@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import Image from "next/image";
 import dayjs from "dayjs";
 import { useItemQuery } from "@/hooks/queries/useItemQuery";
-import { order } from "../../_constants/equipmentItem";
+import {
+  order,
+  gradeColors,
+  textColors,
+  keConversion,
+} from "../../_constants/equipmentItem";
 import { ItemEquipmenType, ItemEquipment } from "@/types/apis/item.type";
 
 const Equipment = ({ ocid }: { ocid: string }) => {
@@ -17,27 +22,22 @@ const Equipment = ({ ocid }: { ocid: string }) => {
     )
   );
 
-  const getItemColorClass = (grade: string) => {
-    const gradeColors: { [key: string]: string } = {
-      레전드리: "border-[#6ff300] bg-[#6fb46429]",
-      유니크: "border-yellow-500 bg-[#faf08929]",
-      에픽: "border-purple-500 bg-[#b77dc729]",
-      레어: "border-blue-500 bg-[#5393ca29]",
-      default: "border-gray-500 bg-gray-100",
-    };
-    return gradeColors[grade] || gradeColors["default"];
+  const getItemColorClass = (grade: string) =>
+    gradeColors[grade] || gradeColors["default"];
+
+  const handleItemClick = (item: ItemEquipment) => {
+    if (selectedItem === item) {
+      setSelectedItem(null);
+    } else {
+      setSelectedItem(item);
+      setHoveredItem(item);
+    }
   };
 
   const handleMouseEnter = (item: ItemEquipment) => {
-    if (!selectedItem) setHoveredItem(item);
-  };
-
-  const handleMouseLeave = () => {
-    if (!selectedItem) setHoveredItem(null);
-  };
-
-  const handleClick = (item: ItemEquipment) => {
-    setSelectedItem(selectedItem === item ? null : item);
+    if (item) {
+      setHoveredItem(item);
+    }
   };
 
   const renderStars = (starforce: number) => {
@@ -83,7 +83,122 @@ const Equipment = ({ ocid }: { ocid: string }) => {
     );
   };
 
-  const renderItemDetails = (item: ItemEquipment) => (
+  const renderStat = (stat, value, base, additional, etc, starforce) => {
+    const shouldShowPercent = [
+      "boss_damage",
+      "ignore_monster_armor",
+      "all_stat",
+      "damage",
+    ].includes(stat.value);
+    const displayValue = `${value}${shouldShowPercent ? "%" : ""}`;
+    const displayBase = `${base || 0}${shouldShowPercent ? "%" : ""}`;
+
+    return (
+      value > 0 && (
+        <p>
+          <span
+            className={`${
+              value !== base ? "text-[#65ffff]" : "text-[#FFFFFF]"
+            }`}
+          >
+            {stat.key}: {value !== base ? `+${displayValue}` : displayValue}
+          </span>
+          {value !== base && (
+            <>
+              ({displayBase}
+              {additional > 0 && (
+                <span className="text-[#ccff02]">
+                  +{additional}
+                  {shouldShowPercent ? "%" : ""}
+                </span>
+              )}
+              {etc > 0 && (
+                <span className="text-[#AAAAFF]">
+                  +{etc}
+                  {shouldShowPercent ? "%" : ""}
+                </span>
+              )}
+              {starforce > 0 && (
+                <span className="text-[#FFCC00]">
+                  +{starforce}
+                  {shouldShowPercent ? "%" : ""}
+                </span>
+              )}
+              )
+            </>
+          )}
+        </p>
+      )
+    );
+  };
+
+  const stats = [
+    {
+      key: "STR",
+      value: "str",
+    },
+    {
+      key: "DEX",
+      value: "dex",
+    },
+    {
+      key: "INT",
+      value: "int",
+    },
+    {
+      key: "LUK",
+      value: "luk",
+    },
+    {
+      key: "최대 HP",
+      value: "max_hp",
+    },
+    {
+      key: "최대 MP",
+      value: "max_mp",
+    },
+    {
+      key: "공격력",
+      value: "attack_power",
+    },
+    {
+      key: "마력",
+      value: "magic_power",
+    },
+    {
+      key: "방어력",
+      value: "armor",
+    },
+    {
+      key: "이동속도",
+      value: "speed",
+    },
+    {
+      key: "점프력",
+      value: "jump",
+    },
+    {
+      key: "보스 공격 시 데미지 증가",
+      value: "boss_damage",
+    },
+    {
+      key: "몬스터 방어율 무시",
+      value: "ignore_monster_armor",
+    },
+    {
+      key: "올스탯",
+      value: "all_stat",
+    },
+    {
+      key: "데미지",
+      value: "damage",
+    },
+    {
+      key: "착용 레벨 감소",
+      value: "equipment_level_decrease",
+    },
+  ];
+  const renderItemDetails = (item) => (
     <div>
       {Number(item.starforce) > 0 && renderStars(Number(item.starforce))}
       <div className="flex items-center justify-center flex-col">
@@ -107,21 +222,98 @@ const Equipment = ({ ocid }: { ocid: string }) => {
             alt={item.item_name}
             width={45}
             height={45}
-            className=""
           />
         </div>
         <p className="pl-2 text-xs">
-          REQ LEVEL : {item.item_base_option.base_equipment_level}
+          REQ LEVEL : {item.item_base_option?.base_equipment_level}
         </p>
       </div>
+      <hr className="border-[#ffffff1f] border-dashed mb-2" />
+      <div className="px-3 text-xs">
+        <p>장비 분류 : {item.item_equipment_part}</p>
+        {stats.map((option) =>
+          renderStat(
+            option,
+            item.item_total_option[option.value],
+            item.item_base_option[option.value],
+            item.item_add_option[option.value],
+            item.item_etc_option[option.value],
+            item.item_starforce_option[option.value]
+          )
+        )}
+        {item.scroll_upgrade > 0 && item.scroll_upgradeable_count == 0 && (
+          <p>
+            업그레이드 가능 횟수 : {item.scroll_upgradeable_count}{" "}
+            <span className="text-[#FFCC00]">
+              (복구 가능 횟수 : {item.scroll_resilience_count})
+            </span>
+          </p>
+        )}
+        {item.golden_hammer_flag === "적용" && <p> 황금망치 제련 적용</p>}
+        {item.cuttable_count !== "255" && (
+          <p className="text-[#FFCC00]">
+            가위 사용 가능 횟수 : {item.cuttable_count}회
+          </p>
+        )}
+      </div>
       <hr className="border-[#ffffff1f] border-dashed mt-2" />
+      {item.potential_option_grade && (
+        <div className="px-3 py-1 text-xs">
+          <p className={`flex ${textColors[item.potential_option_grade]}`}>
+            <Image
+              src={`/images/item/${keConversion[item.potential_option_grade]}`}
+              alt={item.potential_option_grade}
+              width={13}
+              height={13}
+              className="mr-1 object-contain"
+            />
+            잠재옵션
+          </p>
+          <p>{item.potential_option_1}</p>
+          <p>{item.potential_option_2}</p>
+          <p>{item.potential_option_3}</p>
+        </div>
+      )}
+
+      {item.additional_potential_option_grade && (
+        <>
+          <hr className="border-[#ffffff1f] border-dashed " />
+          <div className="px-3 py-1 text-xs">
+            <p
+              className={`flex ${
+                textColors[item.additional_potential_option_grade]
+              }`}
+            >
+              <Image
+                src={`/images/item/${
+                  keConversion[item.additional_potential_option_grade]
+                }`}
+                alt={item.additional_potential_option_grade}
+                width={13}
+                height={13}
+                className="mr-1 object-contain"
+              />
+              잠재옵션
+            </p>
+            <p>{item.additional_potential_option_1}</p>
+            <p>{item.additional_potential_option_2}</p>
+            <p>{item.additional_potential_option_3}</p>
+          </div>
+        </>
+      )}
+      {item.item_description && (
+        <div className="px-3 py-1 text-xs">
+          <p>{item.item_description}</p>
+        </div>
+      )}
     </div>
   );
 
-  console.log(orderedItems);
+  if (isLoading) return <div>로딩...</div>;
+  console.log(selectedItem);
   return (
     <div className="flex flex-wrap p-4 mobile:justify-center">
-      <div className="grid grid-cols-5 gap-1 mb-4">
+      <div className="grid grid-cols-5 gap-1 mb-4 h-[355px]">
         {orderedItems.map((item, index) => (
           <div
             key={index}
@@ -130,9 +322,8 @@ const Equipment = ({ ocid }: { ocid: string }) => {
             } rounded-md flex justify-center items-center ${getItemColorClass(
               item?.potential_option_grade || ""
             )}`}
-            onMouseEnter={() => handleMouseEnter(item!)}
-            onMouseLeave={handleMouseLeave}
-            onClick={() => handleClick(item!)}
+            onMouseEnter={() => handleMouseEnter(item)}
+            onClick={() => handleItemClick(item)}
           >
             {item && (
               <Image
@@ -145,11 +336,13 @@ const Equipment = ({ ocid }: { ocid: string }) => {
           </div>
         ))}
       </div>
-      <div className="ml-7 py-3 w-[260px] h-auto rounded text-white bg-[#15181D]  mobile:ml-0">
+      <div className="ml-7 py-3 w-[260px] h-auto rounded-lg text-white bg-[#15181D]  mobile:ml-0">
         {selectedItem || hoveredItem ? (
           renderItemDetails(selectedItem || hoveredItem)
         ) : (
-          <p>장비를 선택해주세요.</p>
+          <p className="flex justify-center items-center text-sm">
+            장비를 선택해주세요.
+          </p>
         )}
       </div>
     </div>
