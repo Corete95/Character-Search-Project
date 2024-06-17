@@ -1,7 +1,7 @@
 import React from "react";
 import { Select, SelectItem } from "@nextui-org/react";
 
-interface CommonSelectProps {
+interface Props {
   label: string;
   placeholder: string;
   items: { key: string; label: string }[];
@@ -9,13 +9,13 @@ interface CommonSelectProps {
   onChange: (value: string) => void;
 }
 
-const CommonSelect: React.FC<CommonSelectProps> = ({
+const CommonSelect = ({
   label,
   placeholder,
   items,
   selectedKey,
   onChange,
-}) => {
+}: Props) => {
   return (
     <Select
       label={label}

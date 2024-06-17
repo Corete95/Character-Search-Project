@@ -2,7 +2,7 @@ import React from "react";
 import { Select, SelectItem } from "@nextui-org/react";
 import Image from "next/image";
 
-interface WorldCommonSelectProps {
+interface Props {
   label: string;
   placeholder: string;
   items: {
@@ -14,13 +14,13 @@ interface WorldCommonSelectProps {
   onChange: (value: string) => void;
 }
 
-const WorldCommonSelect: React.FC<WorldCommonSelectProps> = ({
+const WorldCommonSelect = ({
   label,
   placeholder,
   items,
   selectedKey,
   onChange,
-}) => {
+}: Props) => {
   return (
     <Select
       items={items}
