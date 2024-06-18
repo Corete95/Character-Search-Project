@@ -39,6 +39,7 @@ const ItemDetails = ({ item }: any) => (
           alt={item.item_name}
           width={45}
           height={45}
+          priority
         />
       </div>
       <p className={`text-xs pl-2`}>

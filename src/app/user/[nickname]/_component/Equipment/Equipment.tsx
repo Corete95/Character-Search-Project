@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import Image from "next/image";
 import dayjs from "dayjs";
 import { useItemQuery } from "@/hooks/queries/useItemQuery";
@@ -12,32 +12,40 @@ const Equipment = ({ ocid }: { ocid: string }) => {
   const [selectedItem, setSelectedItem] = useState(null);
   const { data, isLoading, isError } = useItemQuery(ocid, day);
 
-  const orderedItems = order.map((slot) =>
-    data?.item_equipment_preset_2.find(
-      (item: ItemEquipment) => item.item_equipment_slot === slot
-    )
-  );
+  const orderedItems = useMemo(() => {
+    return order.map((slot) =>
+      data?.item_equipment_preset_2.find(
+        (item: ItemEquipment) => item.item_equipment_slot === slot
+      )
+    );
+  }, [data]);
 
   const getItemColorClass = (grade: string) =>
     gradeColors[grade] || gradeColors["default"];
 
-  const handleItemClick = (item: ItemEquipment) => {
-    if (selectedItem === item) {
-      setSelectedItem(null);
-    } else {
-      setSelectedItem(item);
-      setHoveredItem(item);
-    }
-  };
+  const handleItemClick = useCallback(
+    (item: ItemEquipment) => {
+      if (selectedItem === item) {
+        setSelectedItem(null);
+      } else {
+        setSelectedItem(item);
+        setHoveredItem(item);
+      }
+    },
+    [selectedItem, setHoveredItem, setSelectedItem]
+  );
 
-  const handleMouseEnter = (item: ItemEquipment) => {
-    if (item) {
-      setHoveredItem(item);
-    }
-  };
+  const handleMouseEnter = useCallback(
+    (item: ItemEquipment) => {
+      if (item) {
+        setHoveredItem(item);
+      }
+    },
+    [setHoveredItem]
+  );
 
   if (isLoading) return <div>로딩...</div>;
-  console.log(selectedItem);
+
   return (
     <div className="flex flex-wrap p-4 mobile:justify-center">
       <div className="grid grid-cols-5 gap-1 mb-4 h-[355px]">
@@ -58,6 +66,7 @@ const Equipment = ({ ocid }: { ocid: string }) => {
                 alt={item.item_equipment_slot}
                 width={28}
                 height={28}
+                priority
               />
             )}
           </div>
