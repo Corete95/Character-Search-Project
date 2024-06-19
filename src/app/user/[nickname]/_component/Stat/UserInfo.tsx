@@ -29,6 +29,7 @@ const UserInfo = ({ info }: Props) => {
           width={96}
           height={96}
           priority
+          unoptimized
         />
         <div className="badge my-4 px-3 dark:bg-main_gray">
           {info.character_name}

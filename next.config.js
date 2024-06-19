@@ -3,6 +3,7 @@
  */
 const nextConfig = {
   images: {
+    // unoptimized: true,
     formats: ["image/avif", "image/webp"],
     domains: ["open.api.nexon.com", "mesoya.vercel.app"],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],

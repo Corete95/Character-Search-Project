@@ -41,7 +41,7 @@ const Ability = ({ ability }: { ability: Props }) => {
           key={idx}
           className={`px-2 ${
             color[item.ability_grade]
-          } rounded-md text-center text-white text-14`}
+          } rounded-md text-center text-white text-14px`}
         >
           {item.ability_value}
         </div>

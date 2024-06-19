@@ -60,7 +60,7 @@ export default function RootLayout({
             <div className="flex">
               <SideNav />
               <main className="flex-1">
-                <div className="flex flex-col md:ml-60 sm:border-r sm:border-zinc-700 h-full min-h-screen ">
+                <div className="flex flex-col desktop:ml-60 sm:border-r sm:border-zinc-700 h-full min-h-screen ">
                   <Header />
                   <HeaderMobile />
                   <div className="bg-white_bg dark:bg-dark_gray h-full">

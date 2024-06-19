@@ -146,5 +146,11 @@ export interface ItemEquipmenType {
   item_equipment_preset_3: ItemEquipment[];
   mechanic_equipment: ItemEquipment[];
   preset_no: number;
-  title: { [key: string]: string };
+  title: {
+    title_icon: string;
+    title_name: string;
+    title_description: string;
+    date_option_expire: string;
+    date_expire: string;
+  };
 }

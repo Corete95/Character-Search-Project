@@ -28,7 +28,7 @@ const HyperStat = ({ hyper }: Props) => {
         presetNo={presetNo}
         handleChangePreset={handleChangePreset}
       />
-      <div className="flex justify-between px-5 mt-2 rounded-xl text-14 bg-white_gray_100 dark:bg-[#5c6874]">
+      <div className="flex justify-between px-5 mt-2 rounded-xl text-14px bg-white_gray_100 dark:bg-[#5c6874]">
         <span>POINT</span>
         <span>{hyper[`hyper_stat_preset_${presetNo}_remain_point`]}</span>
       </div>

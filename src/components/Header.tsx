@@ -26,7 +26,7 @@ const Header = () => {
         <div className="flex items-center space-x-4 z-[51]">
           <Link
             href="/"
-            className="flex flex-row space-x-2 items-center justify-center md:hidden"
+            className="flex flex-row space-x-2 items-center justify-center desktop:hidden"
           >
             <Image
               src="/images/logo250.png"
@@ -39,7 +39,7 @@ const Header = () => {
           </Link>
         </div>
 
-        <div className="hidden md:block">
+        <div className="hidden desktop:block">
           <div>
             <Themetoggle />
           </div>

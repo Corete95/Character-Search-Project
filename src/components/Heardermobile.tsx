@@ -45,7 +45,7 @@ const HeaderMobile = () => {
       custom={height}
       className={`${
         isOpen ? "fixed" : "flex-none"
-      }  inset-0 z-50 w-full md:hidden`}
+      }  inset-0 z-50 w-full desktop:hidden`}
       ref={containerRef}
     >
       <motion.div

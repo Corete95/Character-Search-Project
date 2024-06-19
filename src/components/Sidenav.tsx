@@ -10,7 +10,8 @@ import Link from "next/link";
 
 const SideNav = () => {
   return (
-    <div className="md:w-60 bg-white h-screen flex-1 fixed  hidden md:flex dark:bg-dark">
+    // <div className="md:w-60 bg-white h-screen flex-1 fixed  hidden md:flex dark:bg-dark">
+    <div className="desktop:w-60 desktop:flex bg-white h-screen flex-1 fixed  hidden  dark:bg-dark">
       <div className="flex flex-col space-y-6 w-full">
         <Link
           href="/"

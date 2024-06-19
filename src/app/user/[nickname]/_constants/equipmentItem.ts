@@ -125,6 +125,6 @@ export const starforceStandard: any = {
   107: 8,
   117: 10,
   127: 15,
-  137: 20,
+  128: 20,
   138: 25,
 };
