@@ -7,14 +7,16 @@ interface Props {
 }
 
 const StarsDisplay = ({ starforce, level, flag }: Props) => {
-  console.log(starforce, level, flag);
   const keys = Object.keys(starforceStandard)
     .map(Number)
     .sort((a, b) => b - a);
 
   const relevantKey = keys.find((key) => key <= level);
-  const totalStars = starforceStandard[relevantKey];
-  console.log(totalStars);
+  const totalStars =
+    starforceStandard[relevantKey] !== undefined
+      ? starforceStandard[relevantKey]
+      : starforce;
+
   const maxStars = flag ? 15 : Math.min(25, totalStars);
   const starColor = flag ? "#0ddaf9" : "#e4ce00";
 

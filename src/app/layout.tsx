@@ -20,6 +20,8 @@ export const metadata: Metadata = {
     "메이플스토리,캐릭터 검색,전적 검색,메소야,큐브,장비,전투력,길드,랭킹,주화,무릉,유니온",
   keywords:
     "메이플스토리,캐릭터 검색,전적 검색,메소야,큐브,장비,전투력,길드,랭킹,주화,무릉,유니온",
+  robots: "index,follow",
+ viewport:'',
   icons: {
     icon: "/favicon.ico",
   },

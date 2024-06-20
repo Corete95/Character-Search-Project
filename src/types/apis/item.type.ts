@@ -154,3 +154,15 @@ export interface ItemEquipmenType {
     date_expire: string;
   };
 }
+
+export interface SetEffectInfo {
+  set_count: number;
+  set_option: string;
+}
+
+export interface EquipmentSet {
+  set_name: string;
+  total_set_count: number;
+  set_effect_info: SetEffectInfo[];
+  set_option_full: SetEffectInfo[];
+}

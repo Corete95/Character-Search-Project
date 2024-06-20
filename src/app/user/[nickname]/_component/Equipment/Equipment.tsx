@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import dayjs from "dayjs";
 import { useItemQuery } from "@/hooks/queries/useItemQuery";
@@ -6,39 +6,42 @@ import { order, gradeColors } from "../../_constants/equipmentItem";
 import { ItemEquipment } from "@/types/apis/item.type";
 import ItemDetails from "./ItemDetails";
 import EquipmentPresetButton from "./EquipmentPresetButton";
+import SetEffects from "./SetEffects";
 
 const Equipment = ({ ocid }: { ocid: string }) => {
   const day = dayjs().subtract(1, "day").format("YYYY-MM-DD");
   const [hoveredItem, setHoveredItem] = useState(null);
   const [selectedItem, setSelectedItem] = useState(null);
-  const { data, isLoading, isError } = useItemQuery(ocid, day);
-  const [presetNo, setPresetNo] = useState(data?.preset_no || 1);
+  const { item, symbol, set, pending, error } = useItemQuery(ocid, day);
+  const [presetNo, setPresetNo] = useState(item?.preset_no);
+
+  useEffect(() => {
+    if (item && item.preset_no) {
+      setPresetNo(item.preset_no);
+    }
+  }, [item]);
 
   const orderedItems: Record<string, any> = useMemo(
     () =>
       order.map((slot) =>
-        data?.[`item_equipment_preset_${presetNo}`]?.find(
-          (item: ItemEquipment) => item.item_equipment_slot === slot
+        item?.[`item_equipment_preset_${presetNo}`]?.find(
+          (item: ItemEquipment) => item?.item_equipment_slot === slot
         )
       ),
-    [data, presetNo]
+    [item, presetNo]
   );
 
   const getItemColorClass = useCallback(
     (grade: string) => gradeColors[grade] || gradeColors["default"],
     []
   );
-  const handleItemClick = useCallback(
-    (item: ItemEquipment) => {
-      if (selectedItem === item) {
-        setSelectedItem(null);
-      } else {
-        setSelectedItem(item);
-        setHoveredItem(item);
-      }
-    },
-    [selectedItem, setHoveredItem, setSelectedItem]
-  );
+
+  const handleItemClick = useCallback((item: ItemEquipment) => {
+    setSelectedItem((prev: ItemEquipment | null) =>
+      prev === item ? null : item
+    );
+    setHoveredItem(item);
+  }, []);
 
   const handleMouseEnter = useCallback(
     (item: ItemEquipment) => {
@@ -49,8 +52,19 @@ const Equipment = ({ ocid }: { ocid: string }) => {
     [setHoveredItem]
   );
 
-  console.log("data", data);
-  if (isLoading) return <div>로딩...</div>;
+  const filteredSets = useMemo(
+    () =>
+      set?.set_effect.filter((set: any) =>
+        set.set_option_full.some(
+          (option: any) => set.total_set_count >= option.set_count
+        )
+      ),
+    [set]
+  );
+  // console.log("filtered", filteredSets);
+  // console.log("item", item);
+  console.log(selectedItem, hoveredItem);
+  if (pending) return <div>로딩...</div>;
 
   return (
     <div className="flex flex-wrap p-4 mobile:justify-center">
@@ -65,9 +79,9 @@ const Equipment = ({ ocid }: { ocid: string }) => {
               onMouseEnter={() => handleMouseEnter(item)}
               onClick={() => handleItemClick(item)}
             >
-              {item && (
+              {item?.item_icon && (
                 <Image
-                  src={item.item_icon}
+                  src={item.item_icon || ""}
                   alt={item.item_equipment_slot}
                   width={25}
                   height={25}
@@ -99,6 +113,7 @@ const Equipment = ({ ocid }: { ocid: string }) => {
           </p>
         )}
       </div>
+      <SetEffects set={filteredSets} />
     </div>
   );
 };

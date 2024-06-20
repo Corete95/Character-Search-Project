@@ -1,14 +1,18 @@
-import { useQuery } from "@tanstack/react-query";
+import {
+  useQueries,
+  useQuery,
+  useSuspenseQueries,
+} from "@tanstack/react-query";
 import axios from "axios";
 import api from "../../api/axios";
 
 import { errorStatus } from "../../utility/utils";
 import { ItemEquipment, ItemEquipmenType } from "@/types/apis/item.type";
 
-const fetchItem = async (ocid: string, day: string) => {
+const fetchItem = async (endpoint: string, ocid: string, day: string) => {
   try {
     const { data } = await api.get(
-      `character/item-equipment?ocid=${ocid}&date=${day}`
+      `character/${endpoint}?ocid=${ocid}&date=${day}`
     );
     return data;
   } catch (error) {
@@ -20,7 +24,7 @@ const fetchItem = async (ocid: string, day: string) => {
   }
 };
 
-const conversion = (item: ItemEquipmenType | any) => {
+const conversion = (item: ItemEquipmenType | any, android: any) => {
   const titleData = {
     item_equipment_slot: "칭호",
     item_icon: item.title.title_icon,
@@ -28,8 +32,18 @@ const conversion = (item: ItemEquipmenType | any) => {
     item_description: item.title.title_description,
     date_option_expire: item.title.date_option_expire,
   };
+  const androidData = {
+    item_equipment_slot: "안드로이드",
+    item_icon: android.android_icon,
+    item_name: android.android_name,
+    item_description: android.android_description,
+  };
 
-  const appendTitleData = (preset: ItemEquipment[]) => [...preset, titleData];
+  const appendTitleData = (preset: ItemEquipment[]) => [
+    ...preset,
+    titleData,
+    android.android_icon && androidData,
+  ];
 
   return {
     ...item,
@@ -40,12 +54,42 @@ const conversion = (item: ItemEquipmenType | any) => {
 };
 
 export const useItemQuery = (ocid: string, day: string) => {
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ["item", ocid],
-    queryFn: () => fetchItem(ocid, day),
-    select: (item) => conversion(item),
-    retry: false,
+  const keys = [
+    "item-equipment",
+    "android-equipment",
+    "symbol-equipment",
+    "set-effect",
+  ];
+
+  const queryResults: any = useQueries({
+    queries: keys.map((key) => ({
+      queryKey: [key, ocid],
+      queryFn: () => fetchItem(key, ocid, day),
+      enabled: !!ocid,
+    })),
+    combine: (results) => {
+      const isPending = results.some((result) => result.isPending);
+      const isError = results.some((result) => result.isError);
+      const data = results.map((result) => result.data);
+
+      const updatedFirstItem = data[0] ? conversion(data[0], data[1]) : null;
+
+      const combinedData = [updatedFirstItem, ...data.slice(1)];
+
+      return {
+        data: combinedData,
+        pending: isPending,
+        error: isError,
+      };
+    },
   });
 
-  return { data, isLoading, isError };
+  const { data, pending, error } = queryResults;
+  return {
+    item: data[0],
+    symbol: data[2],
+    set: data[3],
+    pending,
+    error,
+  };
 };
