@@ -26,14 +26,14 @@ const fetchItem = async (endpoint: string, ocid: string, day: string) => {
 
 const conversion = (item: ItemEquipmenType | any, android: any) => {
   const titleData = {
-    item_equipment_slot: "칭호",
+    item_equipment_part: "칭호",
     item_icon: item.title.title_icon,
     item_name: item.title.title_name,
     item_description: item.title.title_description,
     date_option_expire: item.title.date_option_expire,
   };
   const androidData = {
-    item_equipment_slot: "안드로이드",
+    item_equipment_part: "안드로이드",
     item_icon: android.android_icon,
     item_name: android.android_name,
     item_description: android.android_description,

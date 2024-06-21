@@ -1,3 +1,5 @@
+import { SymbolType } from "@/types/apis/item.type";
+
 export const order = [
   "반지1",
   null,
@@ -36,7 +38,7 @@ export const gradeColors: { [key: string]: string } = {
   유니크: "border-[#fec763] bg-[#faf08929]",
   에픽: "border-[#b76cfd] bg-[#b77dc729]",
   레어: "border-rare bg-[#5393ca29]",
-  default: "border-[#aaaaaa78] bg-[#5a5a5a0a] ",
+  default: "border-[#aaaaaa78] bg-[#5a5a5a14] dark:bg-[#5a5a5a5c]",
 };
 
 export const textColors: { [key: string]: string } = {
@@ -127,4 +129,29 @@ export const starforceStandard: any = {
   127: 15,
   128: 20,
   138: 25,
+};
+
+export const calculateStats = (symbols: SymbolType[]) => {
+  const forceSum = symbols.reduce(
+    (total, symbol) => total + parseInt(symbol.symbol_force, 10),
+    0
+  );
+  const statsFields = ["str", "dex", "int", "luk", "hp"];
+  const statsSum = symbols.reduce(
+    (total, symbol) =>
+      total +
+      statsFields.reduce((sum, field) => {
+        const value = parseInt(symbol[`symbol_${field}`], 10);
+        return sum + (value > 0 ? value : 0);
+      }, 0),
+    0
+  );
+  const statLabels = statsFields
+    .filter((field) =>
+      symbols.some((symbol) => parseInt(symbol[`symbol_${field}`], 10) > 0)
+    )
+    .map((field) => field.toUpperCase())
+    .join(", ");
+
+  return { forceSum, statsSum, statLabels };
 };

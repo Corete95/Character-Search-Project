@@ -77,7 +77,7 @@ const ItemDetails = ({ item, lock }: Props) => {
       </div>
       <hr className="border-[#ffffff1f] border-dashed my-2" />
       <div className="px-3 text-xs">
-        <p>장비 분류 : {item.item_equipment_slot}</p>
+        <p>장비 분류 : {item.item_equipment_part}</p>
         {isMatch ||
           stats.map((option, index) => (
             <StatDisplay

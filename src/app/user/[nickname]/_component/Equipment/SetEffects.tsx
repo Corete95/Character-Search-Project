@@ -7,8 +7,12 @@ interface Props {
 }
 
 const SetEffects = ({ set }: Props) => {
+  const [openTooltipIndex, setOpenTooltipIndex] = useState<number | boolean>(
+    false
+  );
+
   return (
-    <div className="min-w-[260px] h-full flex flex-col items-center desktop:ml-3 p-4 bg-[#f5f5f6] dark:bg-[#15181D] mobile:mt-3">
+    <div className="min-w-[260px] h-full flex flex-col items-center p-4 bg-white dark:bg-[#15181D] mobile:mt-3">
       <p>세트 효과</p>
       <div>
         {set.map((item, index: number) => (
@@ -17,6 +21,14 @@ const SetEffects = ({ set }: Props) => {
             showArrow={true}
             placement="right"
             closeDelay={0}
+            isOpen={openTooltipIndex === index}
+            onOpenChange={(open) => {
+              if (open) {
+                setOpenTooltipIndex(index);
+              } else {
+                setOpenTooltipIndex(false);
+              }
+            }}
             content={
               <div className="px-2 pt-3  max-h-[400px] overflow-scroll">
                 {item.set_option_full.map((set: any, index: number) => (
@@ -39,7 +51,11 @@ const SetEffects = ({ set }: Props) => {
               </div>
             }
           >
-            <div className="h-10 px-2 flex items-center rounded hover:bg-[#ffffff29]">
+            <div
+              onMouseEnter={() => setOpenTooltipIndex(index)}
+              onMouseLeave={() => setOpenTooltipIndex(false)}
+              className="h-10 px-2 flex items-center rounded hover:bg-[#ffffff29]"
+            >
               <p className="text-lg">
                 {item.total_set_count}
                 <span className="ml-2 text-sm">
