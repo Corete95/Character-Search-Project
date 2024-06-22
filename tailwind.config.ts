@@ -1,9 +1,6 @@
 import type { Config } from "tailwindcss";
 const { nextui } = require("@nextui-org/react");
 
-// const px0_10: any = { ...Array.from(Array(11)).map((_, i) => `${i}px`) };
-// const px0_100: any = { ...Array.from(Array(101)).map((_, i) => `${i}px`) };
-// const px0_200: any = { ...Array.from(Array(201)).map((_, i) => `${i}px`) };
 const px0_200 = Object.fromEntries(
   Array.from({ length: 200 }, (_, i) => [`${i + 1}px`, `${i + 1}px`])
 );
@@ -52,9 +49,6 @@ const config: Config = {
       lineHeight: {
         "lh-1": "1",
       },
-      // fontSize: {
-      //   14: "14px",
-      // },
     },
   },
   plugins: [nextui()],

@@ -10,14 +10,13 @@ interface Props {
 
 const SymbolDisplay = ({ symbols }: Props) => {
   const [selectedType, setSelectedType] = useState("아케인");
+  const [filteredSymbols, setFilteredSymbols] = useState<SymbolType[]>([]);
   const [stats, setStats] = useState({
     forceSum: 0,
     statsSum: 0,
     statLabels: "",
   });
 
-  const [filteredSymbols, setFilteredSymbols] = useState<SymbolType[]>([]);
-  console.log(symbols);
   useEffect(() => {
     updateFilteredSymbols();
   }, [symbols, selectedType]);
@@ -34,7 +33,7 @@ const SymbolDisplay = ({ symbols }: Props) => {
   const getSymbolTypeLabel = () => (selectedType === "아케인" ? "ARC" : "AUT");
 
   return (
-    <div className="mt-3 py-3 px-6 bg-white dark:bg-[#15181D]">
+    <div className="w-full desktop:mt-3 py-3 px-6 bg-white dark:bg-[#15181D]">
       <ButtonGroup className="w-full">
         {["아케인", "어센틱"].map((type) => (
           <Button
@@ -45,17 +44,27 @@ const SymbolDisplay = ({ symbols }: Props) => {
                 : "hover:font-bold"
             }`}
             onClick={() => setSelectedType(type)}
+            startContent={
+              <Image
+                src={`/images/item/${
+                  type === "아케인" ? "arcane" : "authentic"
+                }.png`}
+                alt="Symbol Image"
+                width={20}
+                height={20}
+              />
+            }
           >
             {type}
           </Button>
         ))}
       </ButtonGroup>
-      <div className="mt-3 text-xs text-center">
+      <div className="mt-3 text-13px text-center">
         <p>
-          {getSymbolTypeLabel()}: {stats.forceSum}
+          {getSymbolTypeLabel()}: +{stats.forceSum}
         </p>
         <p>
-          {stats.statLabels}: {stats.statsSum}
+          {stats.statLabels}: +{stats.statsSum}
         </p>
       </div>
       <div className="flex flex-wrap justify-center">
@@ -83,7 +92,7 @@ const SymbolDetails = ({
     어센틱: 11,
   };
   return (
-    <div className="mt-2 w-[30%] min-h-88px flex flex-col items-center bg-[#2b2f31e8] ml-1 text-xs py-2 px-3">
+    <div className="mt-2 w-[30%] min-h-95px flex flex-col items-center ml-1 text-xs py-2 px-3 bg-[#f5f5f6] dark:bg-[#2b2f31e8] ">
       <Image
         src={symbol.symbol_icon}
         alt="Symbol Image"
@@ -94,11 +103,11 @@ const SymbolDetails = ({
       {symbol.symbol_level === typeValue[selectedType] ? (
         <div>MAX</div>
       ) : (
-        <div className="w-full mt-1 ">
+        <div className="w-full">
           <Progress
             color="default"
             aria-label=""
-            className="h-7px"
+            className="h-5px"
             value={
               (symbol.symbol_growth_count /
                 symbol.symbol_require_growth_count) *

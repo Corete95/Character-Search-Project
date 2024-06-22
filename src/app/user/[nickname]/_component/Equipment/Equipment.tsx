@@ -62,17 +62,15 @@ const Equipment = ({ ocid }: { ocid: string }) => {
       ),
     [set]
   );
-  // console.log("filtered", filteredSets);
-  console.log("item", item);
 
   if (pending) return <div>로딩...</div>;
 
   return (
     <div className="flex flex-wrap gap-5 p-4 mobile:p-0">
-      <div className="flex flex-wrap rounded p-5 min-h-[680px] h-full shadow-md bg-white_gray_100 dark:bg-dark_bg_100 mobile:justify-center">
-        <div className="">
-          <div className="mobile:flex mobile:flex-col">
-            <div className="grid grid-cols-5 gap-1 mb-4 max-w-[275px] min-h-[300px] mobile:order-1">
+      <div className="flex flex-wrap desktop:flex-1 gap-3 rounded p-5 w-full min-h-[665px] h-full shadow-md bg-white_gray_100 dark:bg-dark_bg_100 mobile:justify-center">
+        <div className="flex-1 mobile:flex mobile:flex-col mobile:items-center">
+          <div className="max-w-[275px] min-w-[275px] min-h-[300px] mobile:flex mobile:flex-col">
+            <div className="grid grid-cols-5 gap-1 mb-4 mobile:order-2">
               {orderedItems.map((item: ItemEquipment, index: number) => (
                 <div
                   key={index}
@@ -95,18 +93,19 @@ const Equipment = ({ ocid }: { ocid: string }) => {
                 </div>
               ))}
             </div>
-            <div className="flex justify-end  mobile:mb-2">
+            <div className="text-right">
               <EquipmentPresetButton
                 data={[1, 2, 3]}
                 selected={presetNo}
-                style="text-xs w-65px min-w-0"
+                style="text-xs w-65px min-w-0 mobile:mb-3"
                 onClick={(newPreset: number) => setPresetNo(newPreset)}
               />
             </div>
           </div>
         </div>
-        <div className="">
-          <div className="ml-7 py-3 w-[265px] h-full min-h-[260px] rounded-lg text-white bg-[#15181D]  mobile:ml-0">
+
+        <div className="flex flex-1 mobile:justify-center h-full">
+          <div className=" py-3 w-[265px] h-full min-h-[260px] rounded-lg text-white bg-[#15181D]">
             {selectedItem || hoveredItem ? (
               <ItemDetails
                 item={selectedItem || hoveredItem}
@@ -120,14 +119,12 @@ const Equipment = ({ ocid }: { ocid: string }) => {
           </div>
         </div>
       </div>
-      <div className="flex desktop:flex-col tablet:gap-3 h-full p-5 shadow-md bg-white_gray_100 dark:bg-dark_bg_100">
+      <div className="flex flex-wrap desktop:flex-col desktop:flex-1 gap-3 w-full h-full p-5 shadow-md bg-white_gray_100 dark:bg-dark_bg_100">
         <SetEffects set={filteredSets} />
         <SymbolDisplay symbols={symbol.symbol} />
       </div>
     </div>
   );
 };
-// const symbolFilter =
-// symbol && symbol.filter((item) => item.symbol_name.includes(select));
 
 export default Equipment;

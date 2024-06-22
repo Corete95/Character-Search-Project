@@ -29,7 +29,7 @@ const StarsDisplay = ({ starforce, level, flag }: Props) => {
       fill={index < starforce ? starColor : "#555555"}
       viewBox="0 0 24 24"
       style={{
-        marginRight: (index + 1) % 5 === 0 ? "5px" : "0",
+        marginRight: (index + 1) % 5 === 0 ? "7px" : "0",
       }}
     >
       <path d="m4.178 20.801 6.758-4.91 6.756 4.91-2.58-7.946 6.758-4.91h-8.352L10.936 0 8.354 7.945H0l6.758 4.91-2.58 7.946z" />
@@ -39,7 +39,7 @@ const StarsDisplay = ({ starforce, level, flag }: Props) => {
   return (
     <div className="flex flex-wrap place-content-center gap-1 pb-1">
       <div className="flex">{stars.slice(0, 15)}</div>
-      {maxStars > 15 && <div className="flex">{stars.slice(15)}</div>}
+      {maxStars > 15 && <div className="flex">{stars.slice(15, 25)}</div>}
     </div>
   );
 };

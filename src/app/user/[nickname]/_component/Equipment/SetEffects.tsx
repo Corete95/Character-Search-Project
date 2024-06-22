@@ -12,7 +12,7 @@ const SetEffects = ({ set }: Props) => {
   );
 
   return (
-    <div className="min-w-[260px] h-full flex flex-col items-center p-4 bg-white dark:bg-[#15181D] mobile:mt-3">
+    <div className="min-w-[260px] w-full h-full flex flex-col items-center p-4 bg-white dark:bg-[#15181D]">
       <p>세트 효과</p>
       <div>
         {set.map((item, index: number) => (
@@ -31,7 +31,7 @@ const SetEffects = ({ set }: Props) => {
             }}
             content={
               <div className="px-2 pt-3  max-h-[400px] overflow-scroll">
-                {item.set_option_full.map((set: any, index: number) => (
+                {item.set_option_full.map((set, index) => (
                   <div
                     key={index}
                     className="text-12px whitespace-pre-line leading-4 mb-2"
