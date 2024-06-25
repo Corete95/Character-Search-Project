@@ -34,7 +34,7 @@ const GenericTable = <T extends { key: string | number }>({
         {(item) => (
           <TableRow
             key={item.key}
-            className="hover:bg-[#E7E7E9] dark:hover:bg-[#2D2D2D] "
+            className="px-4 py-0 hover:bg-[#E7E7E9] dark:hover:bg-[#2D2D2D] "
           >
             {(columnKey) => (
               <TableCell

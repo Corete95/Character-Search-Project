@@ -67,7 +67,7 @@ const TableComponent: React.FC<ChartComponentProps> = ({ data }) => {
         data={tableData}
         renderCell={renderCell}
         cellStyle="p-1"
-        tableStyle="h-[500px]"
+        tableStyle="h-[500px] [&>div]:p-0"
       />
     </div>
   );

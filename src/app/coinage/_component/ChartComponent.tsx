@@ -59,7 +59,7 @@ const ChartComponent: React.FC<ChartComponentProps> = ({ data }) => {
 
   return (
     <div ref={chartContainerRef}>
-      {data && data.length > 0 && (
+      {data && data.length > 0 ? (
         <ChartApexchart
           options={options}
           series={series}
@@ -67,6 +67,8 @@ const ChartComponent: React.FC<ChartComponentProps> = ({ data }) => {
           width={"100%"}
           height={350}
         />
+      ) : (
+        <div>123</div>
       )}
     </div>
   );

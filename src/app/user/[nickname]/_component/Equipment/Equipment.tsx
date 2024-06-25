@@ -8,6 +8,7 @@ import ItemDetails from "./ItemDetails";
 import EquipmentPresetButton from "./EquipmentPresetButton";
 import SetEffects from "./SetEffects";
 import SymbolDisplay from "./SymbolDisplay";
+import Loading from "./Loading";
 
 const Equipment = ({ ocid }: { ocid: string }) => {
   const day = dayjs().subtract(1, "day").format("YYYY-MM-DD");
@@ -63,7 +64,7 @@ const Equipment = ({ ocid }: { ocid: string }) => {
     [set]
   );
 
-  if (pending) return <div>로딩...</div>;
+  if (pending) return <Loading />;
 
   return (
     <div className="flex flex-wrap gap-5 p-4 mobile:p-0">
@@ -105,7 +106,7 @@ const Equipment = ({ ocid }: { ocid: string }) => {
         </div>
 
         <div className="flex flex-1 mobile:justify-center h-full">
-          <div className=" py-3 w-[265px] h-full min-h-[260px] rounded-lg text-white bg-[#15181D]">
+          <div className=" py-3 w-[265px] h-full min-h-[260px] rounded-lg text-white bg-[#111111ba]">
             {selectedItem || hoveredItem ? (
               <ItemDetails
                 item={selectedItem || hoveredItem}

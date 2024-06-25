@@ -3,7 +3,11 @@ import { errorStatus } from "../../utility/utils";
 import api from "@/api/axios";
 import axios from "axios";
 
-const fetchData = async (endpoint: string, ocid: string, date: string) => {
+export const fetchData = async (
+  endpoint: string,
+  ocid: string,
+  date: string
+) => {
   try {
     const { data } = await api.get(`${endpoint}?ocid=${ocid}&date=${date}`);
     return data;

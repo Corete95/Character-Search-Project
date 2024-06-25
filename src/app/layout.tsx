@@ -21,8 +21,27 @@ export const metadata: Metadata = {
   keywords:
     "메이플스토리,캐릭터 검색,전적 검색,메소야,큐브,장비,전투력,길드,랭킹,주화,무릉,유니온",
   robots: "index,follow",
+
+  applicationName: "Mesoya",
+  creator: "Mesoya",
+  metadataBase: new URL("https://mesoya.vercel.app"),
   icons: {
     icon: "/favicon.ico",
+  },
+  openGraph: {
+    siteName: "메소야",
+    type: "website",
+    title: "메소야 | Mesoya",
+    description:
+      '"메이플스토리,캐릭터 검색,전적 검색,메소야,큐브,장비,전투력,길드,랭킹,주화,무릉,유니온",',
+    url: "https://mesoya.vercel.app",
+    images: [
+      {
+        url: "/images/main.jpg",
+        width: 1200,
+        height: 630,
+      },
+    ],
   },
 };
 
@@ -56,6 +75,7 @@ export default function RootLayout({
         {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ? (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
         ) : null}
+
         <ReactqueryProvider>
           <Providers>
             <div className="flex">
