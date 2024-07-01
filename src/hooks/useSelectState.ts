@@ -8,9 +8,10 @@ export const useSelectState = () => {
   const pageParam = parseInt(searchParams.get("page") || "1", 10);
 
   const [state, setState] = useState({
-    selectedJobValue: null as string | null,
+    selectedJobValue: (searchParams.get("class") as string | null) || undefined,
     jobCategory: null as string | null,
-    selectedWorldValue: null as string | null,
+    selectedWorldValue:
+      (searchParams.get("world_name") as string | null) || undefined,
     worldCategory: null as string | null,
   });
 

@@ -14,7 +14,8 @@ const Pagination = ({ currentPage }: { currentPage: number }) => {
   };
 
   const handlePageChange = (direction: string) => {
-    const newPage = direction === "next" ? currentPage + 1 : currentPage - 1;
+    const newPage =
+      direction === "next" ? Number(currentPage) + 1 : currentPage - 1;
     updatePage(newPage);
   };
 

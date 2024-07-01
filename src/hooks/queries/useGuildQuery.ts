@@ -4,7 +4,7 @@ import api from "../../api/axios";
 
 import { errorStatus } from "../../utility/utils";
 
-const fetchGuild = async (params: Record<string, string | number>) => {
+export const fetchGuild = async (params: Record<string, string | number>) => {
   try {
     const searchParams = new URLSearchParams();
 

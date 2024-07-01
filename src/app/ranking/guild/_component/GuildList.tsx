@@ -6,7 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { GUILD_COLUMNS } from "../_constants/constants";
 import { useGuildQuery } from "@/hooks/queries/useGuildQuery";
 import { formatNumber } from "@/utility/utils";
-import { GuildListType } from "@/types/apis/guild.type";
+import { GuildListType, InitialParams } from "@/types/apis/guild.type";
 import dayjs from "dayjs";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,19 +14,10 @@ import Pagination from "@/components/Pagination";
 import GenericTable from "@/components/GenericTable";
 import Loading from "../../overall/_component/Loading";
 
-const GuildList = () => {
+const GuildList = ({ initialParams }: { initialParams: InitialParams }) => {
   const day = dayjs().format("YYYY-MM-DD");
   const searchParams = useSearchParams();
-
-  const params = useMemo(
-    () => ({
-      date: day,
-      page: parseInt(searchParams.get("page") || "1", 10),
-      world_name: searchParams.get("world_name") || undefined,
-      ranking_type: searchParams.get("ranking_type") || "0",
-    }),
-    [day, searchParams]
-  );
+  const params = useMemo(() => initialParams, [day, searchParams]);
 
   const { data, isLoading, isError } = useGuildQuery(params);
 

@@ -8,6 +8,7 @@ import { generateMeta } from "./_constants/generateMeta";
 import ErrorPage from "@/components/ErrorPage";
 
 const day = dayjs().subtract(1, "day").format("YYYY-MM-DD");
+
 export const generateMetadata = async ({
   params,
 }: {

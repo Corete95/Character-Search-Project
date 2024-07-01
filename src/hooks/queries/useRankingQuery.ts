@@ -4,7 +4,7 @@ import api from "../../api/axios";
 import { RankingListType } from "@/types/apis/rank.type";
 import { errorStatus } from "../../utility/utils";
 
-const fetchRanking = async (params: Record<string, string | number>) => {
+export const fetchRanking = async (params: Record<string, string | number>) => {
   try {
     const searchParams = new URLSearchParams();
 

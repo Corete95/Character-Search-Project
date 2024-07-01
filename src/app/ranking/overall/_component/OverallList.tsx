@@ -12,21 +12,12 @@ import dayjs from "dayjs";
 import Image from "next/image";
 import Link from "next/link";
 import Pagination from "@/components/Pagination";
+import { InitialParams } from "@/types/apis/guild.type";
 
-const OverallList = () => {
+const OverallList = ({ initialParams }: { initialParams: InitialParams }) => {
   const day = dayjs().subtract(1, "day").format("YYYY-MM-DD");
   const searchParams = useSearchParams();
-
-  const params = useMemo(
-    () => ({
-      date: day,
-      page: parseInt(searchParams.get("page") || "1", 10),
-      class: searchParams.get("class") || undefined,
-      world_name: searchParams.get("world_name") || undefined,
-      world_type: searchParams.get("world_type") || undefined,
-    }),
-    [day, searchParams]
-  );
+  const params = useMemo(() => initialParams, [day, searchParams]);
 
   const { data, isLoading, isError } = useRankingQuery(params);
 

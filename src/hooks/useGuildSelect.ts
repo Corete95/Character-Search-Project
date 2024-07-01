@@ -5,11 +5,12 @@ export const useGuildSelectState = () => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const pageParam = parseInt(searchParams.get("page") || "1", 10);
+  const pageParam = parseInt(searchParams.get("page") || "1");
 
   const [state, setState] = useState({
-    selectedWorldValue: null as string | null,
-    selectedRankingType: "0" as string,
+    selectedWorldValue:
+      (searchParams.get("world_name") as string | null) || null,
+    selectedRankingType: (searchParams.get("ranking_type") as string) || "0",
   });
 
   const updateURL = (newState: typeof state) => {
