@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 
 const page = () => {
   return (
-    <div className="p-4 mobile:p-0">
-      <div className="flex flex-wrap">
+    <div className="max-w-1200 w-full mx-auto ">
+      <div className="flex flex-wrap p-3 ">
         <div className="w-full">
           <GuildSelect />
           <GuildList />

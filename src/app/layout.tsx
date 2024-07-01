@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Header from "@/components/Header";
-import SideNav from "@/components/Sidenav";
-import HeaderMobile from "@/components/Heardermobile";
+import Footer from "@/components/Footer";
 import ReactqueryProvider from "@/providers/ReactqueryProvider";
 import Providers from "@/components/Providers";
 import dayjs from "dayjs";
@@ -21,7 +20,6 @@ export const metadata: Metadata = {
   keywords:
     "메이플스토리,캐릭터 검색,전적 검색,메소야,큐브,장비,전투력,길드,랭킹,주화,무릉,유니온",
   robots: "index,follow",
-
   applicationName: "Mesoya",
   creator: "Mesoya",
   metadataBase: new URL("https://mesoya.vercel.app"),
@@ -78,18 +76,11 @@ export default function RootLayout({
 
         <ReactqueryProvider>
           <Providers>
-            <div className="flex">
-              <SideNav />
-              <main className="flex-1">
-                <div className="flex flex-col desktop:ml-60 sm:border-r sm:border-zinc-700 h-full min-h-screen ">
-                  <Header />
-                  <HeaderMobile />
-                  <div className="bg-white_bg dark:bg-dark_gray h-full">
-                    {children}
-                  </div>
-                </div>
-              </main>
-            </div>
+            <main className="min-h-screen h-fulll flex flex-col bg-modeWhite dark:bg-dark_gray">
+              <Header />
+              {children}
+              <Footer />
+            </main>
           </Providers>
         </ReactqueryProvider>
       </body>

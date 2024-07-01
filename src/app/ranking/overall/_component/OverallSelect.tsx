@@ -30,7 +30,7 @@ const OverallSelect = () => {
 
   return (
     <div className="mb-3">
-      <div>
+      <div className="bg-white dark:bg-rankingDark rounded-xl p-3">
         <div className="flex gap-2 mb-3">
           {selectWorldCategories.map(({ key, label }) => (
             <WorldCommonSelect

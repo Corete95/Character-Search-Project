@@ -15,8 +15,8 @@ const GuildSelect = () => {
 
   return (
     <div className="mb-3">
-      <div>
-        <div className="flex gap-2 mb-3">
+      <div className="bg-white dark:bg-rankingDark rounded-xl p-3">
+        <div className="flex gap-2 ">
           {selectCategories.map(({ key, label }) => (
             <WorldCommonSelect
               key={label}

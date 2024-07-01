@@ -23,7 +23,7 @@ const CommonSelect = ({
       items={items}
       selectedKeys={selectedKey ? [selectedKey] : []}
       onChange={(e) => onChange(e.target.value)}
-      className={`max-w-48 mobile:w-[122px]`}
+      className={`max-w-167px`}
     >
       {(item) => <SelectItem key={item.key}>{item.label}</SelectItem>}
     </Select>

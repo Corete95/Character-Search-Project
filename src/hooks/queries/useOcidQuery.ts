@@ -3,7 +3,7 @@ import { errorStatus } from "../../utility/utils";
 import api from "@/api/axios";
 import axios from "axios";
 
-export const fetchOcid = async (name: string) => {
+export const fetchOcid: any = async (name: string) => {
   try {
     const data = await api.get(`id?character_name=${name}`);
     return data.data;

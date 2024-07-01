@@ -20,7 +20,7 @@ const SetEffects = ({ set }: Props) => {
   }, []);
 
   return (
-    <div className="min-w-[260px] w-full h-full flex flex-col items-center p-4 bg-white dark:bg-[#15181D]">
+    <div className="min-w-[260px] w-full h-full flex flex-col items-center py-3 shadow-md bg-white dark:bg-[#15181D] border border-userBorder dark:border-0">
       <p>세트 효과</p>
       <div>
         {set.map((item, index: number) => (

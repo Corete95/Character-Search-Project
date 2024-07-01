@@ -1,51 +1,37 @@
-"use client";
-
 import React from "react";
-import { useSelectedLayoutSegment } from "next/navigation";
-import { cn } from "@/lib/utils";
 import Link from "next/link";
 import Image from "next/image";
-import useScroll from "@/hooks/useScroll";
 import Themetoggle from "./Themetoggle";
+import SearchBox from "./SearchBox";
+import MenuHeader from "./MenuHeader";
 
 const Header = () => {
-  const scrolled = useScroll(5);
-  const selectedLayout = useSelectedLayoutSegment();
-
   return (
-    <div
-      className={cn(
-        `sticky inset-x-0 top-0 z-30 w-full transition-all border-gray-200`,
-        {
-          " bg-white/75 backdrop-blur-lg": scrolled,
-          "border-gray-200 bg-white": selectedLayout,
-        }
-      )}
-    >
-      <div className="flex h-[65px] items-center justify-between px-4 dark:bg-dark">
-        <div className="flex items-center space-x-4 z-[51]">
-          <Link
-            href="/"
-            className="flex flex-row space-x-2 items-center justify-center desktop:hidden"
-          >
-            <Image
-              src="/images/logo250.png"
-              width={44}
-              height={44}
-              alt=""
-              priority
-            />
-            <span className="font-bold text-xl flex ">Mesoya</span>
-          </Link>
-        </div>
-
-        <div className="hidden desktop:block">
-          <div>
-            <Themetoggle />
+    <header className="bg-white dark:bg-dark">
+      <div className="w-full max-w-1200 min-h-64px mx-auto pt-2 mobile:px-2.5">
+        <nav className="flex items-center gap-5">
+          <h1 className="hidden">메소야 Mesoya 검색</h1>
+          <div className="mr-5">
+            <Link href="/" className="flex items-center gap-1">
+              <Image
+                src="/images/logo250.png"
+                width={44}
+                height={44}
+                alt="로고 이미지"
+                priority
+                className="mobile:w-6 mobile:h-6"
+              />
+              <span className="font-bold text-xl flex mobile:text-15px">
+                Mesoya
+              </span>
+            </Link>
           </div>
-        </div>
+          <SearchBox />
+          <Themetoggle />
+        </nav>
+        <MenuHeader />
       </div>
-    </div>
+    </header>
   );
 };
 

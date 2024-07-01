@@ -26,7 +26,7 @@ const StarsDisplay = ({ starforce, level, flag }: Props) => {
       xmlns="http://www.w3.org/2000/svg"
       width="12"
       height="12"
-      fill={index < starforce ? starColor : "#555555"}
+      fill={index < starforce ? starColor : "#9e9e9e"}
       viewBox="0 0 24 24"
       style={{
         marginRight: (index + 1) % 5 === 0 ? "7px" : "0",

@@ -6,25 +6,33 @@ import Stat from "./Stat/Stat";
 import Equipment from "./Equipment/Equipment";
 import Skill from "./Skill/Skill";
 import SuspenseAndErrorBoundary from "@/components/SuspenseAndErrorBoundary";
-import Loading from "../loading";
+import Loading from "../_constants/loading";
 import Union from "./Union/Union";
-import { useParams } from "next/navigation";
 import { useOcidQuery } from "@/hooks/queries/useOcidQuery";
 
-const TabsComponent = () => {
+const TabsComponent = ({
+  params,
+  day,
+}: {
+  params: { nickname: string };
+  day: string;
+}) => {
   const [step, setStep] = useState<string | number>("stat");
-  const params: { nickname: string } = useParams();
   const { data, isLoading, isError, error } = useOcidQuery(params.nickname);
 
   const tabs = [
-    { key: "stat", title: "스탯", tsx: <Stat ocid={data.ocid} error={error}/> },
+    {
+      key: "stat",
+      title: "스탯",
+      tsx: <Stat ocid={data.ocid} error={error} />,
+    },
     { key: "equipment", title: "장비", tsx: <Equipment ocid={data.ocid} /> },
     { key: "skill", title: "스킬", tsx: <Skill ocid={data.ocid} /> },
     { key: "union", title: "유니온", tsx: <Union ocid={data.ocid} /> },
   ];
 
   return (
-    <div className="my-4">
+    <div className="max-w-1200 w-full mx-auto my-4">
       <div className="mb-4">
         <Tabs
           key="underlined"
@@ -39,9 +47,8 @@ const TabsComponent = () => {
         </Tabs>
       </div>
       <SuspenseAndErrorBoundary suspenseFallback={<Loading />}>
-        <div className="mx-3">
-          {tabs.find((item) => item.key === step)?.tsx}
-        </div>
+        {day}
+        {tabs.find((item) => item.key === step)?.tsx}
       </SuspenseAndErrorBoundary>
     </div>
   );

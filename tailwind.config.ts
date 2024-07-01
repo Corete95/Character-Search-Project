@@ -21,6 +21,9 @@ const config: Config = {
       colors: {
         white_bg: "#FAFAFA",
         white_gray_100: "#F5F5F6",
+        modeWhite: "#f5f5f5",
+        rankingDark: "#18181b",
+        userBorder: "#dcdcdc",
         dark: "#202020",
         dark_gray: "#272727",
         main_gray: "#212529",
@@ -48,6 +51,9 @@ const config: Config = {
       },
       lineHeight: {
         "lh-1": "1",
+      },
+      maxWidth: {
+        "1200": "1200px",
       },
     },
   },

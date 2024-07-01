@@ -17,7 +17,8 @@ export const useSearch = () => {
     e.preventDefault();
     if (searchTerm === "") return;
     const urlSearchQuery = encodeURI(searchTerm);
-    router.push(`${routingPage}/${urlSearchQuery}`);
+    setSearchTerm("");
+    router.push(`/${routingPage}/${urlSearchQuery}`);
   };
 
   return {

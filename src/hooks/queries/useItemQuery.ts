@@ -1,15 +1,14 @@
-import {
-  useQueries,
-  useQuery,
-  useSuspenseQueries,
-} from "@tanstack/react-query";
+import { useQueries } from "@tanstack/react-query";
+import { errorStatus } from "../../utility/utils";
+import { ItemEquipment, ItemEquipmenType } from "@/types/apis/item.type";
 import axios from "axios";
 import api from "../../api/axios";
 
-import { errorStatus } from "../../utility/utils";
-import { ItemEquipment, ItemEquipmenType } from "@/types/apis/item.type";
-
-const fetchItem = async (endpoint: string, ocid: string, day: string) => {
+export const fetchItem = async (
+  endpoint: string,
+  ocid: string,
+  day: string
+): Promise<any> => {
   try {
     const { data } = await api.get(
       `character/${endpoint}?ocid=${ocid}&date=${day}`
@@ -18,14 +17,14 @@ const fetchItem = async (endpoint: string, ocid: string, day: string) => {
   } catch (error) {
     if (axios.isAxiosError(error) && error.response) {
       const code = errorStatus(error.response.data.error.name);
-      throw new Error(code);
+      return { error: true, message: code };
     }
-    throw error;
+    return { error: true, message: "오류가 발생했습니다." };
   }
 };
 
 const conversion = (item: ItemEquipmenType | any, android: any) => {
-  const titleData = {
+  const titleData = item.title && {
     item_equipment_slot: "칭호",
     item_equipment_part: "칭호",
     item_icon: item.title.title_icon,
@@ -87,6 +86,7 @@ export const useItemQuery = (ocid: string, day: string) => {
   });
 
   const { data, pending, error } = queryResults;
+
   return {
     item: data[0],
     symbol: data[2],

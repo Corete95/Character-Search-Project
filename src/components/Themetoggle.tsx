@@ -8,7 +8,7 @@ const Themetoggle = () => {
 
   return (
     <div
-      className="relative w-16 h-8 flex items-center dark:bg-gray-900 bg-teal-500 cursor-pointer rounded-full p-1"
+      className="relative w-16 mobile:w-20 h-8 flex items-center dark:bg-gray-900 bg-teal-500 cursor-pointer rounded-full p-1"
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
     >
       <FaMoon className="text-white" size={18} />

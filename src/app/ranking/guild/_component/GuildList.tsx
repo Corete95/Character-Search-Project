@@ -74,6 +74,7 @@ const GuildList = () => {
         columns={GUILD_COLUMNS}
         data={data}
         renderCell={renderCell}
+        tableStyle="[&>div]:p-0"
       />
       <Pagination currentPage={params.page} />
     </div>

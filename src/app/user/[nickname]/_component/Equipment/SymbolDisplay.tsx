@@ -33,7 +33,7 @@ const SymbolDisplay = ({ symbols }: Props) => {
   const getSymbolTypeLabel = () => (selectedType === "아케인" ? "ARC" : "AUT");
 
   return (
-    <div className="w-full desktop:mt-3 py-3 px-6 bg-white dark:bg-[#15181D]">
+    <div className="w-full desktop:mt-3 py-3 px-6 shadow-md bg-white dark:bg-[#15181D] border border-userBorder dark:border-0">
       <ButtonGroup className="w-full">
         {["아케인", "어센틱"].map((type) => (
           <Button
@@ -63,9 +63,11 @@ const SymbolDisplay = ({ symbols }: Props) => {
         <p>
           {getSymbolTypeLabel()}: +{stats.forceSum}
         </p>
-        <p>
-          {stats.statLabels}: +{stats.statsSum}
-        </p>
+        {filteredSymbols.length > 0 && (
+          <p>
+            {stats.statLabels}: +{stats.statsSum}
+          </p>
+        )}
       </div>
       <div className="flex flex-wrap justify-center">
         {filteredSymbols.map((symbol, index) => (
@@ -98,6 +100,7 @@ const SymbolDetails = ({
         alt="Symbol Image"
         width={38}
         height={38}
+        unoptimized
       />
       <div>Lv.{symbol.symbol_level}</div>
       {symbol.symbol_level === typeValue[selectedType] ? (

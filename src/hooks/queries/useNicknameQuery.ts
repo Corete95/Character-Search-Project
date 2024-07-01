@@ -7,16 +7,16 @@ export const fetchData = async (
   endpoint: string,
   ocid: string,
   date: string
-) => {
+): Promise<any> => {
   try {
     const { data } = await api.get(`${endpoint}?ocid=${ocid}&date=${date}`);
     return data;
   } catch (error) {
     if (axios.isAxiosError(error) && error.response) {
       const code = errorStatus(error.response.data.error.name);
-      throw new Error(code);
+      return { error: true, message: code }; 
     }
-    throw error;
+    return { error: true, message: "오류가 발생했습니다." };
   }
 };
 

@@ -22,23 +22,16 @@
     @apply max-w-[330px] m-auto tablet:w-full tablet:order-3 tablet:max-w-full tablet:mt-4 mobile:order-3 mobile:w-full mobile:max-w-full mobile:mt-4;
   }
 
+  .flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .flexWrap {
     display: flex;
     flex-wrap: wrap;
     margin-top: calc(-1 * var(--bs-gutter-y));
     margin-right: calc(-0.5 * var(--bs-gutter-x));
     margin-left: calc(-0.5 * var(--bs-gutter-x));
-  }
-  .apexcharts-tooltip-candlestick {
-    padding: 15px;
-    border-radius: 15px;
-  }
-  .apexcharts-yaxis-tooltip {
-    background: red !important; /* 배경색을 빨간색으로 설정 */
-    color: white !important; /* 텍스트 색상을 흰색으로 설정 */
-    padding: 5px !important; /* 패딩 설정 */
-    border-radius: 3px !important; /* 모서리 둥글게 설정 */
-    font-size: 12px !important; /* 폰트 크기 설정 */
-    font-family: Arial, sans-serif !important; /* 폰트 패밀리 설정 */
   }
 }

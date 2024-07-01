@@ -63,12 +63,12 @@ const Equipment = ({ ocid }: { ocid: string }) => {
       ),
     [set]
   );
-
+  console.log("item", orderedItems);
   if (pending) return <Loading />;
 
   return (
-    <div className="flex flex-wrap gap-5 p-4 mobile:p-0">
-      <div className="flex flex-wrap desktop:flex-1 gap-3 rounded p-5 w-full min-h-[665px] h-full shadow-md bg-white_gray_100 dark:bg-dark_bg_100 mobile:justify-center">
+    <div className="flex flex-wrap gap-4 py-2 px-2">
+      <div className="flex flex-wrap desktop:basis-[65%] basis-full gap-3 rounded p-5 w-full min-h-[665px] h-full border dark:border-0 border-userBorder shadow-md bg-white dark:bg-dark_bg_100 mobile:justify-center">
         <div className="flex-1 mobile:flex mobile:flex-col mobile:items-center">
           <div className="max-w-[275px] min-w-[275px] min-h-[300px] mobile:flex mobile:flex-col">
             <div className="grid grid-cols-5 gap-1 mb-4 mobile:order-2">
@@ -120,9 +120,11 @@ const Equipment = ({ ocid }: { ocid: string }) => {
           </div>
         </div>
       </div>
-      <div className="flex flex-wrap desktop:flex-col desktop:flex-1 gap-3 w-full h-full p-5 shadow-md bg-white_gray_100 dark:bg-dark_bg_100">
-        <SetEffects set={filteredSets} />
-        <SymbolDisplay symbols={symbol.symbol} />
+      <div className="flex flex-wrap desktop:flex-col desktop:basis-[30%] basis-full gap-3 w-full h-full   ">
+        <SetEffects set={filteredSets ?? []} />
+        {symbol.symbol.length > 0 && (
+          <SymbolDisplay symbols={symbol?.symbol || []} />
+        )}
       </div>
     </div>
   );
