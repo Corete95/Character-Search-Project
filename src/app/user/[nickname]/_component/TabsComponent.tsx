@@ -47,7 +47,6 @@ const TabsComponent = ({
         </Tabs>
       </div>
       <SuspenseAndErrorBoundary suspenseFallback={<Loading />}>
-        {day}
         {tabs.find((item) => item.key === step)?.tsx}
       </SuspenseAndErrorBoundary>
     </div>

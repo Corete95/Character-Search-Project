@@ -65,7 +65,7 @@ const GuildList = ({ initialParams }: { initialParams: InitialParams }) => {
         columns={GUILD_COLUMNS}
         data={data}
         renderCell={renderCell}
-        tableStyle="[&>div]:p-0"
+        tableStyle="[&>div]:p-0 [&>div]:mt-6 bg-modeWhite dark:bg-dark_gray px-3 rounded-lg"
       />
       <Pagination currentPage={params.page} />
     </div>

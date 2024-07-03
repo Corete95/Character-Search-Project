@@ -37,6 +37,33 @@ export const OVERALL_COLUMNS = [
   },
 ];
 
+export const MAIN_OVERALL_COLUMNS = [
+  {
+    key: "ranking",
+    label: "순위",
+    columns: "20px",
+    hidden: false,
+  },
+  {
+    key: "character_name",
+    label: "캐릭터",
+    columns: "150px",
+    hidden: false,
+  },
+  {
+    key: "character_level",
+    label: "레벨",
+    columns: "80px",
+    hidden: false,
+  },
+  {
+    key: "sub_class_name",
+    label: "직업",
+    columns: "100px",
+    hidden: false,
+  },
+];
+
 export const JOB_LIST: Record<string, { key: string; label: string }[]> = {
   warrior: [
     { key: "전사-전체 전직", label: "모험가 전사 전체" },
