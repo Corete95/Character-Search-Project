@@ -24,7 +24,7 @@ const TabsComponent = ({
     {
       key: "stat",
       title: "스탯",
-      tsx: <Stat ocid={data.ocid} error={error} />,
+      tsx: <Stat ocid={data.ocid} error={error} params={params.nickname} />,
     },
     { key: "equipment", title: "장비", tsx: <Equipment ocid={data.ocid} /> },
     { key: "skill", title: "스킬", tsx: <Skill ocid={data.ocid} /> },

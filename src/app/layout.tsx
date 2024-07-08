@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ReactqueryProvider from "@/providers/ReactqueryProvider";
+import RecoilWrapperProvider from "@/providers/RecoilWrapperProvider";
 import Providers from "@/components/Providers";
 import dayjs from "dayjs";
 import localFont from "next/font/local";
@@ -19,10 +20,17 @@ export const metadata: Metadata = {
     "메이플스토리,캐릭터 검색,전적 검색,메소야,큐브,장비,전투력,길드,랭킹,주화,무릉,유니온",
   keywords:
     "메이플스토리,캐릭터 검색,전적 검색,메소야,큐브,장비,전투력,길드,랭킹,주화,무릉,유니온",
-  robots: "index,follow",
   applicationName: "Mesoya",
   creator: "Mesoya",
   metadataBase: new URL("https://mesoya.vercel.app"),
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
   icons: {
     icon: "/favicon.ico",
   },
@@ -75,13 +83,15 @@ export default function RootLayout({
         ) : null}
 
         <ReactqueryProvider>
-          <Providers>
-            <main className="min-h-screen h-fulll flex flex-col bg-modeWhite dark:bg-dark_gray">
-              <Header />
-              {children}
-              <Footer />
-            </main>
-          </Providers>
+          <RecoilWrapperProvider>
+            <Providers>
+              <main className="min-h-screen h-fulll flex flex-col bg-modeWhite dark:bg-dark_gray">
+                <Header />
+                {children}
+                <Footer />
+              </main>
+            </Providers>
+          </RecoilWrapperProvider>
         </ReactqueryProvider>
       </body>
     </html>

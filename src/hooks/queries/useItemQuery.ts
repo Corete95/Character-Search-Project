@@ -10,9 +10,7 @@ export const fetchItem = async (
   day: string
 ): Promise<any> => {
   try {
-    const { data } = await api.get(
-      `character/${endpoint}?ocid=${ocid}&date=${day}`
-    );
+    const { data } = await api.get(`character/${endpoint}?ocid=${ocid}`);
     return data;
   } catch (error) {
     if (axios.isAxiosError(error) && error.response) {

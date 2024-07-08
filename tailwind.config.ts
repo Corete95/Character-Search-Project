@@ -42,7 +42,7 @@ const config: Config = {
         main: "url('/images/main.jpg')",
       },
       screens: {
-        mobile: { min: "350px", max: "820px" },
+        mobile: { min: "320px", max: "820px" },
         tablet: { min: "820px", max: "1080px" },
         desktop: { min: "1080px" },
       },

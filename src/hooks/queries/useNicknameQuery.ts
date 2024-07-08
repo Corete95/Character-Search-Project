@@ -9,12 +9,12 @@ export const fetchData = async (
   date: string
 ): Promise<any> => {
   try {
-    const { data } = await api.get(`${endpoint}?ocid=${ocid}&date=${date}`);
+    const { data } = await api.get(`${endpoint}?ocid=${ocid}`);
     return data;
   } catch (error) {
     if (axios.isAxiosError(error) && error.response) {
       const code = errorStatus(error.response.data.error.name);
-      return { error: true, message: code }; 
+      return { error: true, message: code };
     }
     return { error: true, message: "오류가 발생했습니다." };
   }

@@ -1,11 +1,12 @@
 "use client";
+
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export const useSearch = () => {
   const router = useRouter();
-  const [searchTerm, setSearchTerm] = useState<string>("");
-
+  const [searchTerm, setSearchTerm] = useState<string>("")
+  
   const changeSearchTerm = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
   };
@@ -16,6 +17,7 @@ export const useSearch = () => {
   ) => {
     e.preventDefault();
     if (searchTerm === "") return;
+
     const urlSearchQuery = encodeURI(searchTerm);
     setSearchTerm("");
     router.push(`/${routingPage}/${urlSearchQuery}`);

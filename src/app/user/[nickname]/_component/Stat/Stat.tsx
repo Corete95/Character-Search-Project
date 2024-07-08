@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNicknameQuery } from "@/hooks/queries/useNicknameQuery";
 import UserInfo from "./UserInfo";
 import HyperStat from "./HyperStat";
@@ -6,10 +6,54 @@ import UserStat from "./UserStat";
 import Ability from "./Ability";
 import dayjs from "dayjs";
 import InfoCard from "../common/InfoCard";
+import { useRecoilState } from "recoil";
+import { recentSearchState } from "@/recoil/atoms/searchAtoms";
+import { SearchProps } from "@/types";
 
-const Stat = ({ ocid, error }: { ocid: string; error?: any }) => {
+const Stat = ({
+  ocid,
+  error,
+  params,
+}: {
+  ocid: string;
+  error?: any;
+  params: string;
+}) => {
   const day = dayjs().subtract(1, "day").format("YYYY-MM-DD");
   const { info, hyper, user, ability, pending } = useNicknameQuery(ocid, day);
+  const [recentSearch, setRecentSearch] =
+    useRecoilState<SearchProps[]>(recentSearchState);
+
+  useEffect(() => {
+    const search = JSON.parse(localStorage.getItem("search") || "[]");
+    const name = decodeURIComponent(params);
+
+    const {
+      character_image,
+      character_level,
+      character_class,
+      world_name,
+      character_name,
+    } = info;
+
+    const newData = {
+      character_image,
+      character_level,
+      character_class,
+      world_name,
+      character_name,
+      name,
+    };
+
+    const filteredSearch = search.filter(
+      (item: SearchProps) => item.name !== name
+    );
+    filteredSearch.unshift(newData);
+    const limitedSearchArray = filteredSearch.slice(0, 10);
+
+    setRecentSearch(limitedSearchArray);
+    localStorage.setItem("search", JSON.stringify(limitedSearchArray));
+  }, [params, info, setRecentSearch]);
 
   const statContent = [
     {

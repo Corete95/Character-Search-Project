@@ -53,7 +53,7 @@ const home = async () => {
         </div>
       </div>
       <HydrationBoundary state={dehydratedState}>
-        <div className="relative max-w-1200 w-full mx-auto z-10">
+        <div className="relative max-w-1200 w-full mx-auto ">
           <MainRanking day={day} />
         </div>
       </HydrationBoundary>

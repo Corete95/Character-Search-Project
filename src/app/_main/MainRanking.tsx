@@ -71,7 +71,7 @@ const MainRanking = ({ day }: { day: string }) => {
                 랭킹
               </p>
               <div
-                className="border border-[#e9eaed] dark:border-[#e9eaed29] px-4 py-1 rounded-3xl text-xs cursor-pointer"
+                className="border border-[#e9eaed] dark:border-[#e9eaed29] px-4 py-1 rounded-3xl text-xs cursor-pointer hover:bg-[#e9eaed29]"
                 onClick={() => onClickViewMoreRankings(item.title)}
               >
                 더 보기
