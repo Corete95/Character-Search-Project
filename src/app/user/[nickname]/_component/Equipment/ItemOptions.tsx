@@ -12,9 +12,9 @@ const ItemOptions = ({ options, title, iconSrc, potential }: Props) => {
   const allNull = options.every((element) => element === null);
   return (
     <>
-      <hr className="border-[#ffffff1f] border-dashed my-1" />
+      <hr className="my-1 border-dashed border-[#ffffff1f]" />
       <div className="px-3 py-1 text-xs">
-        <p className={`flex mb-0.5 ${textColors[potential]}`}>
+        <p className={`mb-0.5 flex ${textColors[potential]}`}>
           <Image
             src={`/images/item/${iconSrc}`}
             alt={title}

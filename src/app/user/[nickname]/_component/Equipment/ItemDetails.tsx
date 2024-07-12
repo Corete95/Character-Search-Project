@@ -38,7 +38,7 @@ const ItemDetails = ({ item, lock }: Props) => {
           flag={item.starforce_scroll_flag === "사용"}
         />
       )}
-      <div className="flex items-center justify-center flex-col">
+      <div className="flex flex-col items-center justify-center">
         <p className="text-14px font-bold">
           {item.item_name}{" "}
           {Number(item.scroll_upgrade) > 0 && `(+${item.scroll_upgrade})`}
@@ -53,10 +53,10 @@ const ItemDetails = ({ item, lock }: Props) => {
           </p>
         )}
       </div>
-      <hr className="border-[#ffffff1f] border-dashed my-2" />
+      <hr className="my-2 border-dashed border-[#ffffff1f]" />
       <div className="flex items-center p-2">
         <div
-          className={`border-1.5 w-16 h-16 rounded-md flex items-center justify-center ${
+          className={`flex h-16 w-16 items-center justify-center rounded-md border-1.5 ${
             gradeColors[item.potential_option_grade || "default"]
           }`}
         >
@@ -70,12 +70,12 @@ const ItemDetails = ({ item, lock }: Props) => {
           />
         </div>
         {!isMatch && (
-          <p className={`text-xs pl-2`}>
+          <p className={`pl-2 text-xs`}>
             REQ LEVEL : {item.item_base_option?.base_equipment_level}
           </p>
         )}
       </div>
-      <hr className="border-[#ffffff1f] border-dashed my-2" />
+      <hr className="my-2 border-dashed border-[#ffffff1f]" />
       <div className="px-3 text-xs">
         <p>장비 분류 : {item.item_equipment_part}</p>
         {isMatch ||
@@ -132,7 +132,7 @@ const ItemDetails = ({ item, lock }: Props) => {
       )}
       {item.soul_name && (
         <div>
-          <hr className="border-[#ffffff1f] border-dashed my-1" />
+          <hr className="my-1 border-dashed border-[#ffffff1f]" />
           <div className="px-3 py-1 text-xs">
             <p className="text-[#fbff44]">{item.soul_name}</p>
             <p>{item.soul_option}</p>
@@ -141,7 +141,7 @@ const ItemDetails = ({ item, lock }: Props) => {
       )}
       {item.item_description && (
         <>
-          <hr className="border-[#ffffff1f] border-dashed my-2" />
+          <hr className="my-2 border-dashed border-[#ffffff1f]" />
           <div className="px-3 py-1 text-xs">
             <p>{item.item_description}</p>
           </div>

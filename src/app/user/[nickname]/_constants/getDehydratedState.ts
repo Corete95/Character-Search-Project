@@ -1,6 +1,7 @@
 import { fetchItem } from "@/hooks/queries/useItemQuery";
 import { fetchData } from "@/hooks/queries/useNicknameQuery";
 import { fetchOcid } from "@/hooks/queries/useOcidQuery";
+import { fetchSkill } from "@/hooks/queries/useSkillQuery";
 import { QueryClient, DehydratedState, dehydrate } from "@tanstack/react-query";
 
 const USER_KEYS = [
@@ -17,6 +18,19 @@ const ITEM_KEYS = [
   "android-equipment",
   "symbol-equipment",
   "set-effect",
+];
+
+const SKILL_KEYS = [
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "hyperpassive",
+  "hyperactive",
+  "5",
+  "6",
+  "link-skill",
 ];
 const ENDPOINTS = USER_KEYS.map((key) =>
   key === "union" ? "user/union" : `character/${key}`
@@ -65,9 +79,16 @@ export const getDehydratedState = async (
     })
   );
 
-  await Promise.all([...userQueries, ...itemQueries]);
+  const skillQueries = SKILL_KEYS.map((key) =>
+    queryClient.prefetchQuery({
+      queryKey: [key, ocidData.ocid],
+      queryFn: () => fetchSkill(ocidData.ocid, key),
+    })
+  );
 
-  const results = [...USER_KEYS, ...ITEM_KEYS].map((key) =>
+  await Promise.all([...userQueries, ...itemQueries, ...skillQueries]);
+
+  const results = [...USER_KEYS, ...ITEM_KEYS, ...SKILL_KEYS].map((key) =>
     queryClient.getQueryData([key, ocidData.ocid])
   );
 

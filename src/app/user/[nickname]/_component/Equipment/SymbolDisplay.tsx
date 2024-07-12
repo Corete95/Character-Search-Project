@@ -23,7 +23,7 @@ const SymbolDisplay = ({ symbols }: Props) => {
 
   const updateFilteredSymbols = () => {
     const currentFilteredSymbols = symbols.filter((symbol) =>
-      symbol.symbol_name.includes(selectedType)
+      symbol.symbol_name.includes(selectedType),
     );
     setFilteredSymbols(currentFilteredSymbols);
     const updatedStats = calculateStats(currentFilteredSymbols);
@@ -33,14 +33,14 @@ const SymbolDisplay = ({ symbols }: Props) => {
   const getSymbolTypeLabel = () => (selectedType === "아케인" ? "ARC" : "AUT");
 
   return (
-    <div className="w-full desktop:mt-3 py-3 px-6 shadow-md bg-white dark:bg-[#15181D] border border-userBorder dark:border-0">
+    <div className="w-full border border-userBorder bg-white px-6 py-3 shadow-md dark:border-0 dark:bg-dark_bg_100 desktop:mt-3">
       <ButtonGroup className="w-full">
         {["아케인", "어센틱"].map((type) => (
           <Button
             key={type}
             className={`w-full rounded-none text-xs ${
               selectedType === type
-                ? "text-black bg-[#bdbbbc]"
+                ? "bg-[#bdbbbc] text-black"
                 : "hover:font-bold"
             }`}
             onClick={() => setSelectedType(type)}
@@ -59,7 +59,7 @@ const SymbolDisplay = ({ symbols }: Props) => {
           </Button>
         ))}
       </ButtonGroup>
-      <div className="mt-3 text-13px text-center">
+      <div className="mt-3 text-center text-13px">
         <p>
           {getSymbolTypeLabel()}: +{stats.forceSum}
         </p>
@@ -94,7 +94,7 @@ const SymbolDetails = ({
     어센틱: 11,
   };
   return (
-    <div className="mt-2 w-[30%] min-h-95px flex flex-col items-center ml-1 text-xs py-2 px-3 bg-[#f5f5f6] dark:bg-[#2b2f31e8] ">
+    <div className="ml-1 mt-2 flex min-h-95px w-[30%] flex-col items-center bg-[#f5f5f6] px-3 py-2 text-xs dark:bg-[#2b2f31e8]">
       <Image
         src={symbol.symbol_icon}
         alt="Symbol Image"
@@ -117,7 +117,7 @@ const SymbolDetails = ({
               100
             }
           />
-          <p className="text-9px text-center mt-1">
+          <p className="mt-1 text-center text-9px">
             (
             {`${symbol.symbol_growth_count} / ${symbol.symbol_require_growth_count}`}
             )

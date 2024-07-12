@@ -8,7 +8,7 @@ interface Props {
 
 const SetEffects = ({ set }: Props) => {
   const [openTooltipIndex, setOpenTooltipIndex] = useState<number | boolean>(
-    false
+    false,
   );
 
   const handleMouseEnter = useCallback((index: number) => {
@@ -20,7 +20,7 @@ const SetEffects = ({ set }: Props) => {
   }, []);
 
   return (
-    <div className="min-w-[260px] w-full h-full flex flex-col items-center py-3 shadow-md bg-white dark:bg-[#15181D] border border-userBorder dark:border-0">
+    <div className="flex h-full w-full min-w-[260px] flex-col items-center border border-userBorder bg-white py-3 shadow-md dark:border-0 dark:bg-dark_bg_100">
       <p>세트 효과</p>
       <div>
         {set.map((item, index: number) => (
@@ -39,14 +39,14 @@ const SetEffects = ({ set }: Props) => {
             }}
             content={
               <div
-                className="px-2 pt-3 max-h-[400px] overflow-scroll"
+                className="max-h-[400px] overflow-x-auto px-2 pt-3"
                 onMouseEnter={() => handleMouseEnter(index)}
                 onMouseLeave={handleMouseLeave}
               >
                 {item.set_option_full.map((set, index) => (
                   <div
                     key={index}
-                    className="text-12px whitespace-pre-line leading-4 mb-2"
+                    className="mb-2 whitespace-pre-line text-12px leading-4"
                   >
                     <p className="text-[#ccff00]">{set.set_count}세트효과</p>
                     <p
@@ -66,7 +66,7 @@ const SetEffects = ({ set }: Props) => {
             <div
               onMouseEnter={() => handleMouseEnter(index)}
               onMouseLeave={handleMouseLeave}
-              className="h-10 px-2 flex items-center rounded hover:bg-[#ffffff29]"
+              className="flex h-10 items-center rounded px-2 hover:bg-[#ffffff29]"
             >
               <p className="text-lg">
                 {item.total_set_count}

@@ -15,7 +15,7 @@ const EquipmentPresetButton = ({ data, selected, style, onClick }: Props) => {
         <Button
           key={number}
           className={`${
-            selected === number ? "text-black bg-[#bdbbbc]" : "hover:font-bold"
+            selected === number ? "bg-[#bdbbbc] text-black" : "hover:font-bold"
           } ${style}`}
           onClick={() => onClick(number)}
         >

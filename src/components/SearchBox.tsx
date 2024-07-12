@@ -66,7 +66,7 @@ const SearchBox = () => {
 
       {isFocused && recentSearch.length > 0 && searchTerm === "" && (
         <div className="absolute w-full z-30 bg-modeWhite dark:bg-dark_gray">
-          <div className="p-2 max-h-[245px] overflow-scroll">
+          <div className="p-2 max-h-[245px] overflow-x-auto">
             <div className="pl-1 text-xs text-zinc-500">최근 검색어</div>
             {recentSearch.map((search, index) => (
               <div
@@ -79,12 +79,14 @@ const SearchBox = () => {
                     className="flex items-center"
                     onClick={() => setIsFocused(false)}
                   >
-                    <span className="w-35px h-35px  mr-2">
+                    <span className="w-35px h-35px mr-2">
                       <Image
                         src={search.character_image}
                         alt={search.character_name}
-                        width={100}
-                        height={100}
+                        width={35}
+                        height={35}
+                        priority
+                        unoptimized
                       />
                     </span>
                     <div className="flex flex-col leading-4">

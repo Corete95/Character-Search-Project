@@ -27,20 +27,20 @@ const Equipment = ({ ocid }: { ocid: string }) => {
     () =>
       order.map((slot) =>
         item?.[`item_equipment_preset_${presetNo}`]?.find(
-          (item: ItemEquipment) => item?.item_equipment_slot === slot
-        )
+          (item: ItemEquipment) => item?.item_equipment_slot === slot,
+        ),
       ),
-    [item, presetNo]
+    [item, presetNo],
   );
 
   const getItemColorClass = useCallback(
     (grade: string) => gradeColors[grade] || gradeColors["default"],
-    []
+    [],
   );
 
   const handleItemClick = useCallback((item: ItemEquipment) => {
     setSelectedItem((prev: ItemEquipment | null) =>
-      prev === item ? null : item
+      prev === item ? null : item,
     );
     setHoveredItem(item);
   }, []);
@@ -51,32 +51,32 @@ const Equipment = ({ ocid }: { ocid: string }) => {
         setHoveredItem(item);
       }
     },
-    [setHoveredItem]
+    [setHoveredItem],
   );
 
   const filteredSets = useMemo(
     () =>
       set?.set_effect.filter((set: any) =>
         set.set_option_full.some(
-          (option: any) => set.total_set_count >= option.set_count
-        )
+          (option: any) => set.total_set_count >= option.set_count,
+        ),
       ),
-    [set]
+    [set],
   );
   console.log("item", orderedItems);
   if (pending) return <Loading />;
 
   return (
-    <div className="flex flex-wrap gap-4 py-2 px-2">
-      <div className="flex flex-wrap desktop:basis-[65%] basis-full gap-3 rounded p-5 w-full min-h-[665px] h-full border dark:border-0 border-userBorder shadow-md bg-white dark:bg-dark_bg_100 mobile:justify-center">
+    <div className="flex flex-wrap gap-4 px-2 py-2">
+      <div className="flex h-full min-h-[665px] w-full basis-full flex-wrap gap-3 rounded border border-userBorder bg-white p-5 shadow-md dark:border-0 dark:bg-dark_bg_100 mobile:justify-center desktop:basis-[60%]">
         <div className="flex-1 mobile:flex mobile:flex-col mobile:items-center">
-          <div className="max-w-[275px] min-w-[275px] min-h-[300px] mobile:flex mobile:flex-col">
-            <div className="grid grid-cols-5 gap-1 mb-4 mobile:order-2">
+          <div className="min-h-[300px] min-w-[275px] max-w-[275px] mobile:flex mobile:flex-col">
+            <div className="mb-4 grid grid-cols-5 gap-1 mobile:order-2">
               {orderedItems.map((item: ItemEquipment, index: number) => (
                 <div
                   key={index}
-                  className={`w-50px h-50px rounded-md flex justify-center items-center ${getItemColorClass(
-                    item?.potential_option_grade || ""
+                  className={`flex h-50px w-50px items-center justify-center rounded-md ${getItemColorClass(
+                    item?.potential_option_grade || "",
                   )} ${item ? "border-1" : ""} `}
                   onMouseEnter={() => handleMouseEnter(item)}
                   onClick={() => handleItemClick(item)}
@@ -105,22 +105,22 @@ const Equipment = ({ ocid }: { ocid: string }) => {
           </div>
         </div>
 
-        <div className="flex flex-1 mobile:justify-center h-full">
-          <div className=" py-3 w-[265px] h-full min-h-[260px] rounded-lg text-white bg-[#111111ba]">
+        <div className="flex h-full flex-1 mobile:justify-center">
+          <div className="h-full min-h-[260px] w-[265px] rounded-lg bg-[#111111ba] py-3 text-white">
             {selectedItem || hoveredItem ? (
               <ItemDetails
                 item={selectedItem || hoveredItem}
                 lock={selectedItem !== null}
               />
             ) : (
-              <p className="flex justify-center items-center text-sm">
+              <p className="flex items-center justify-center text-sm">
                 장비를 선택해주세요.
               </p>
             )}
           </div>
         </div>
       </div>
-      <div className="flex flex-wrap desktop:flex-col desktop:basis-[30%] basis-full gap-3 w-full h-full   ">
+      <div className="flex h-full w-full basis-full flex-wrap gap-3 desktop:basis-[30%] desktop:flex-col">
         <SetEffects set={filteredSets ?? []} />
         {symbol.symbol.length > 0 && (
           <SymbolDisplay symbols={symbol?.symbol || []} />

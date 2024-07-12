@@ -9,6 +9,7 @@ import dayjs from "dayjs";
 import localFont from "next/font/local";
 import GoogleAnalytics from "@/lib/GoogleAnalytics";
 import "dayjs/locale/ko";
+import "react-tooltip/dist/react-tooltip.css";
 import "./globals.css";
 
 dayjs.locale("ko");
