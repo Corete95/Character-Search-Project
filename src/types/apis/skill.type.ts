@@ -13,3 +13,20 @@ export interface CharacterSkillType {
   skill_icon: string;
   skill_effect_next: string | null;
 }
+
+export interface TabItem {
+  title: string;
+  match?: string;
+}
+export interface TabsDataType {
+  link: TabItem[];
+  skill: TabItem[];
+  hyper: TabItem[];
+  [key: string]: any;
+}
+
+export interface SkillTabType {
+  title: string;
+  data: SkillType[];
+  tabData: TabItem[];
+}

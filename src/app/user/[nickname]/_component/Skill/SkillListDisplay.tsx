@@ -3,24 +3,31 @@ import Image from "next/image";
 import { CharacterSkillType } from "@/types/apis/skill.type";
 import { Tooltip } from "react-tooltip";
 
-const SkillListDisplay = ({ data, tab, type, children }: any) => {
+const SkillListDisplay = ({
+  data,
+  tab,
+  type,
+}: {
+  data: any;
+  tab: string;
+  type: string;
+}) => {
   const spaceArray = new Array(13)
     .fill(null)
-    .map((_, index) => data[index] || null);
+    .map((_, index) => (data && data.length > 0 ? data[index] : null));
 
   return (
     <div>
-      <div className="rounded bg-[#1177AA] p-2 text-center">{tab}</div>
+      <div className="mx-1 rounded bg-[#1177AA] p-2 text-center">{tab}</div>
       <div className="mt-0.5 flex flex-wrap">
-        {(type === "skill" ? data.character_skill : spaceArray)?.map(
+        {(type === "LINK" ? spaceArray : data?.character_skill)?.map(
           (skill: CharacterSkillType, skillIndex: number) => (
             <div
               key={skillIndex}
               className={`${
-                type === "link" && skillIndex === 0 ? "w-full" : "w-1/2"
+                type === "LINK" && skillIndex === 0 ? "w-full" : "w-1/2"
               } mt-1`}
               data-tooltip-id={`skill-${skillIndex}-${type}`}
-              // data-tooltip-delay-hide={100000}
             >
               <div className="flex items-center gap-1 px-1">
                 {skill && (
@@ -81,7 +88,6 @@ const SkillListDisplay = ({ data, tab, type, children }: any) => {
           ),
         )}
       </div>
-      {children}
     </div>
   );
 };

@@ -63,7 +63,7 @@ const Equipment = ({ ocid }: { ocid: string }) => {
       ),
     [set],
   );
-  console.log("item", orderedItems);
+
   if (pending) return <Loading />;
 
   return (

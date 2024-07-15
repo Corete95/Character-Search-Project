@@ -26,7 +26,7 @@ const MainRanking = ({ day }: { day: string }) => {
     type === "일반"
       ? router.push(`/ranking/overall?page=1&world_name=전체월드&world_type=0`)
       : router.push(
-          `ranking/overall?page=1&world_name=리부트+전체&world_type=1`
+          `ranking/overall?page=1&world_name=리부트+전체&world_type=1`,
         );
   };
 
@@ -42,7 +42,7 @@ const MainRanking = ({ day }: { day: string }) => {
               <Image
                 src={`/images/world/${user?.world_name}.png`}
                 alt={`${user?.world_name} 이미지`}
-                className="rounded-lg mobile:w-3 mobile:h-3 object-scale-down"
+                className="rounded-lg object-scale-down mobile:h-3 mobile:w-3"
                 width={18}
                 height={18}
                 priority
@@ -55,23 +55,24 @@ const MainRanking = ({ day }: { day: string }) => {
           return getKeyValue(user, columnKey);
       }
     },
-    []
+    [],
   );
 
   if (pending) return <div>로딩</div>;
+  if (error) return <div>에러</div>;
 
   return (
-    <div className="px-3 rounded-lg pt-4 bg-modeWhite dark:bg-dark_gray">
-      <section className="flex justify-center flex-wrap gap-5 ">
+    <div className="rounded-lg bg-modeWhite px-3 pt-4 dark:bg-dark_gray">
+      <section className="flex flex-wrap justify-center gap-5">
         {rankingData.map((item) => (
-          <article className="desktop:flex-1 w-full" key={item.title}>
-            <div className="flex justify-between items-center px-5 py-3 shadow-small text-sm rounded-t-md bg-white dark:bg-rankingDark">
+          <article className="w-full desktop:flex-1" key={item.title}>
+            <div className="flex items-center justify-between rounded-t-md bg-white px-5 py-3 text-sm shadow-small dark:bg-rankingDark">
               <p>
                 {today} <span className="font-bold">{item.title} 월드</span>{" "}
                 랭킹
               </p>
               <div
-                className="border border-[#e9eaed] dark:border-[#e9eaed29] px-4 py-1 rounded-3xl text-xs cursor-pointer hover:bg-[#e9eaed29]"
+                className="cursor-pointer rounded-3xl border border-[#e9eaed] px-4 py-1 text-xs hover:bg-[#e9eaed29] dark:border-[#e9eaed29]"
                 onClick={() => onClickViewMoreRankings(item.title)}
               >
                 더 보기

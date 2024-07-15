@@ -8,7 +8,7 @@ export const fetchSkill = async (ocid: string, skill: string): Promise<any> => {
     const { data } = await api.get(
       skill === "link-skill"
         ? `character/${skill}?ocid=${ocid}`
-        : `character/skill?ocid=${ocid}&character_skill_grade=${skill}`
+        : `character/skill?ocid=${ocid}&character_skill_grade=${skill}`,
     );
     return data;
   } catch (error) {
@@ -62,7 +62,7 @@ export const useSkillQuery = (ocid: string) => {
       const isError = results.some((result) => result.isError);
 
       const processedData = data.map((item, index) =>
-        index === 9 ? conversion(item) : item
+        index === 9 ? conversion(item) : item,
       );
 
       return {
@@ -72,7 +72,7 @@ export const useSkillQuery = (ocid: string) => {
       };
     },
   });
-  console.log("ddddd", queryResults.data);
+
   const { data, pending, error } = queryResults;
   return { skill: data.slice(0, 9), link: data[9], pending, error };
 };

@@ -1,4 +1,6 @@
-export const tabsData = {
+import { TabsDataType } from "@/types/apis/skill.type";
+
+export const tabsData: TabsDataType = {
   link: [
     { title: "적용중", match: "character_link_skill" },
     { title: "1", match: "character_link_skill_preset_1" },
@@ -13,5 +15,9 @@ export const tabsData = {
     { title: "4" },
     { title: "5" },
     { title: "6" },
+  ],
+  hyper: [
+    { title: "하이퍼-패시브", match: "hyperpassive" },
+    { title: "하이퍼-액티브", match: "hyperactive" },
   ],
 };

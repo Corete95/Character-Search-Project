@@ -11,6 +11,7 @@ import GoogleAnalytics from "@/lib/GoogleAnalytics";
 import "dayjs/locale/ko";
 import "react-tooltip/dist/react-tooltip.css";
 import "./globals.css";
+import NavigationSchemaScript from "@/components/NavigationSchemaScript";
 
 dayjs.locale("ko");
 const inter = Inter({ subsets: ["latin"] });
@@ -86,7 +87,7 @@ export default function RootLayout({
         <ReactqueryProvider>
           <RecoilWrapperProvider>
             <Providers>
-              <main className="min-h-screen h-fulll flex flex-col bg-modeWhite dark:bg-dark_gray">
+              <main className="h-fulll flex min-h-screen flex-col bg-modeWhite dark:bg-dark_gray">
                 <Header />
                 {children}
                 <Footer />
@@ -94,6 +95,7 @@ export default function RootLayout({
             </Providers>
           </RecoilWrapperProvider>
         </ReactqueryProvider>
+        <NavigationSchemaScript />
       </body>
     </html>
   );
