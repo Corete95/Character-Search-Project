@@ -77,6 +77,10 @@ export default function RootLayout({
           name="naver-site-verification"
           content={process.env.NEXT_PUBLIC_NAVER_SITE_VERIFICATION}
         />
+        <meta
+          name="viewport"
+          content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"
+        />
       </head>
       <link rel="icon" href="/favicon.ico" sizes="any" />
       <body className={pretendard.className}>

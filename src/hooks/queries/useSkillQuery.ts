@@ -21,7 +21,7 @@ export const fetchSkill = async (ocid: string, skill: string): Promise<any> => {
 };
 
 const conversion = (item: any) => {
-  const ownedLinkData = item.character_owned_link_skill;
+  const ownedLinkData = item?.character_owned_link_skill;
 
   const newItem = { ...item };
   [

@@ -17,6 +17,7 @@ const SkillTabs = ({ title, data, tabData }: SkillTabType) => {
           character?.character_skill_grade === item.match,
       ),
   };
+
   return (
     <div className="h-full min-h-[418px] w-full rounded border border-userBorder bg-white_gray_100 p-1 shadow-md dark:border-0 dark:bg-dark_bg_100 desktop:min-w-[350px] desktop:max-w-[350px]">
       <div className="p-2 text-center">
