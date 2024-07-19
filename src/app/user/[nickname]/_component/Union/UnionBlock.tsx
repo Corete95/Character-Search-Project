@@ -3,7 +3,7 @@ import Image from "next/image";
 import EquipmentPresetButton from "../Equipment/EquipmentPresetButton";
 import { UnionType } from "@/types/apis/union.type";
 
-const UnionBlock = ({ data }: any) => {
+const UnionBlock = ({ union, common }: any) => {
   const [preset, setPreset] = useState(1);
   const [unionData, setUnionData] = useState<UnionType>({
     union_block: [],
@@ -13,11 +13,11 @@ const UnionBlock = ({ data }: any) => {
   });
 
   useEffect(() => {
-    if (data) {
-      const presetData = data[`union_raider_preset_${preset}`];
+    if (union) {
+      const presetData = union[`union_raider_preset_${preset}`];
       setUnionData(presetData);
     }
-  }, [data, preset]);
+  }, [union, preset]);
 
   const getTextAlignClass = (index: number) => {
     return [1, 4, 6, 7].includes(index) ? "text-left" : "text-right";
@@ -46,7 +46,9 @@ const UnionBlock = ({ data }: any) => {
     const numericLevel = parseInt(level);
     if (numericLevel >= 250) return "SSS";
     if (numericLevel >= 200) return "SS";
-    return "S";
+    if (numericLevel >= 140) return "S";
+    if (numericLevel >= 100) return "A";
+    return "B";
   };
 
   return (
@@ -54,8 +56,22 @@ const UnionBlock = ({ data }: any) => {
       <div className="rounded bg-[#94a3b84d] p-1 text-center font-bold">
         유니온
       </div>
+      <div className="flexCenter gap-3 rounded bg-[#94a3b84d] py-2">
+        <div>
+          <Image
+            src={`/images/union/${common.union_grade}.png`}
+            alt={common.union_grade}
+            width={70}
+            height={70}
+          />
+        </div>
+        <div className="flexCenter flex-col font-bold">
+          <p>{common.union_grade}</p>
+          <p>Lv. {common.union_level}</p>
+        </div>
+      </div>
       <div className="flexCenter flex-col bg-[#94a3b84d] py-2">
-        <div className="relative h-[318px] w-[350px]">
+        <div className="relative h-[318px] w-[349.5px]">
           <Image
             src="/images/union_raider_map.svg"
             alt="Union Raider Map"
@@ -108,10 +124,10 @@ const UnionBlock = ({ data }: any) => {
         </div>
       </div>
       <div className="rounded bg-[#94a3b84d]">
-        <p className="mb-2 text-center text-sm font-bold">
+        <p className="mb-2 pt-2 text-center text-sm font-bold">
           공격대원({unionData.union_block.length})
         </p>
-        <div className="flex flex-wrap">
+        <div className="flex max-h-[460px] flex-wrap overflow-x-auto">
           {unionData.union_block
             .sort((a, b) => parseInt(b.block_level) - parseInt(a.block_level))
             .map((block, index) => (
@@ -149,7 +165,9 @@ const UnionBlock = ({ data }: any) => {
           { title: "공격대 점령 효과", location: "union_occupied_stat" },
         ].map((attack) => (
           <div key={attack.title} className="w-1/2 rounded bg-[#94a3b84d]">
-            <p className="mb-1 text-center text-sm font-bold">{attack.title}</p>
+            <p className="mb-1 py-1 text-center text-sm font-bold">
+              {attack.title}
+            </p>
             <div className="flex max-h-[250px] flex-wrap overflow-x-auto">
               <ul className="pl-5">
                 {unionData[attack.location]

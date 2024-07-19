@@ -33,12 +33,12 @@ const OverallList = ({ initialParams }: { initialParams: InitialParams }) => {
               <Image
                 src={`/images/world/${user?.world_name}.png`}
                 alt={`${user?.world_name} 이미지`}
-                className="rounded-lg mobile:w-3 mobile:h-3"
+                className="rounded-lg mobile:h-3 mobile:w-3"
                 width={18}
                 height={18}
                 priority
               />
-              {user.character_name}
+              <span className="line-clamp-1">{user.character_name}</span>
             </Link>
           );
         case "character_popularity":
@@ -49,7 +49,7 @@ const OverallList = ({ initialParams }: { initialParams: InitialParams }) => {
           return getKeyValue(user, columnKey);
       }
     },
-    []
+    [],
   );
 
   if (isLoading) return <Loading />;

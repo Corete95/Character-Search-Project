@@ -2,7 +2,7 @@ import type { Config } from "tailwindcss";
 const { nextui } = require("@nextui-org/react");
 
 const px0_200 = Object.fromEntries(
-  Array.from({ length: 200 }, (_, i) => [`${i + 1}px`, `${i + 1}px`])
+  Array.from({ length: 200 }, (_, i) => [`${i + 1}px`, `${i + 1}px`]),
 );
 const config: Config = {
   content: [
@@ -37,6 +37,10 @@ const config: Config = {
         unique: "#EB9A0D",
         epic: "#8065D8",
         rare: "#3DC3D9",
+        artifact_purple: "#edecfb",
+        artifact_bt_purple: "#ddd3fe",
+        artifact_blue: "#ecf5fc",
+        artifact_bt_blue: "#d2e6f7",
       },
       backgroundImage: {
         main: "url('/images/main.jpg')",

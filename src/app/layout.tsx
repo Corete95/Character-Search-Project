@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Head from "next/head";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ReactqueryProvider from "@/providers/ReactqueryProvider";
@@ -51,6 +52,11 @@ export const metadata: Metadata = {
       },
     ],
   },
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+  },
 };
 
 const pretendard = localFont({
@@ -76,10 +82,6 @@ export default function RootLayout({
         <meta
           name="naver-site-verification"
           content={process.env.NEXT_PUBLIC_NAVER_SITE_VERIFICATION}
-        />
-        <meta
-          name="viewport"
-          content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"
         />
       </head>
       <link rel="icon" href="/favicon.ico" sizes="any" />

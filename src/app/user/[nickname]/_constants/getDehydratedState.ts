@@ -2,6 +2,7 @@ import { fetchItem } from "@/hooks/queries/useItemQuery";
 import { fetchData } from "@/hooks/queries/useNicknameQuery";
 import { fetchOcid } from "@/hooks/queries/useOcidQuery";
 import { fetchSkill } from "@/hooks/queries/useSkillQuery";
+import { fetchUnion } from "@/hooks/queries/useUnionQuery";
 import { QueryClient, DehydratedState, dehydrate } from "@tanstack/react-query";
 
 const USER_KEYS = [
@@ -32,19 +33,22 @@ const SKILL_KEYS = [
   "6",
   "link-skill",
 ];
+
+const UNION_KETS = ["union-raider", "union-artifact", "union"];
+
 const ENDPOINTS = USER_KEYS.map((key) =>
-  key === "union" ? "user/union" : `character/${key}`
+  key === "union" ? "user/union" : `character/${key}`,
 );
 
 const isErrorResult = (
-  result: any
+  result: any,
 ): result is { error: boolean; message: string } => {
   return result && result.error === true && typeof result.message === "string";
 };
 
 export const getDehydratedState = async (
   nickname: string,
-  date: string
+  date: string,
 ): Promise<DehydratedState | { error: boolean; message: string }> => {
   const queryClient = new QueryClient();
 
@@ -69,28 +73,42 @@ export const getDehydratedState = async (
     queryClient.prefetchQuery({
       queryKey: [key, ocidData.ocid],
       queryFn: () => fetchData(ENDPOINTS[index], ocidData.ocid, date),
-    })
+    }),
   );
 
   const itemQueries = ITEM_KEYS.map((key) =>
     queryClient.prefetchQuery({
       queryKey: [key, ocidData.ocid],
       queryFn: () => fetchItem(key, ocidData.ocid, date),
-    })
+    }),
   );
 
   const skillQueries = SKILL_KEYS.map((key) =>
     queryClient.prefetchQuery({
       queryKey: [key, ocidData.ocid],
       queryFn: () => fetchSkill(ocidData.ocid, key),
-    })
+    }),
+  );
+  const unionQueries = UNION_KETS.map((key) =>
+    queryClient.prefetchQuery({
+      queryKey: [key, ocidData.ocid],
+      queryFn: () => fetchUnion(key, ocidData.ocid),
+    }),
   );
 
-  await Promise.all([...userQueries, ...itemQueries, ...skillQueries]);
+  await Promise.all([
+    ...userQueries,
+    ...itemQueries,
+    ...skillQueries,
+    ...unionQueries,
+  ]);
 
-  const results = [...USER_KEYS, ...ITEM_KEYS, ...SKILL_KEYS].map((key) =>
-    queryClient.getQueryData([key, ocidData.ocid])
-  );
+  const results = [
+    ...USER_KEYS,
+    ...ITEM_KEYS,
+    ...SKILL_KEYS,
+    ...UNION_KETS,
+  ].map((key) => queryClient.getQueryData([key, ocidData.ocid]));
 
   const errorResult = results.find(isErrorResult);
 
