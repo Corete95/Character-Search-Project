@@ -44,6 +44,12 @@ const config: Config = {
       },
       backgroundImage: {
         main: "url('/images/main.jpg')",
+        arcana: "url('/images/map/arcana.png')",
+        pirate: "url('/images/map/pirate.png')",
+        palace: "url('/images/map/palace.png')",
+        beach: "url('/images/map/beach.png')",
+        mapleTree: "url('/images/map/mapleTree.png')",
+        orbisPet: "url('/images/map/orbisPet.png')",
       },
       screens: {
         mobile: { min: "320px", max: "820px" },

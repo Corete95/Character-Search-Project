@@ -63,6 +63,7 @@ const UnionBlock = ({ union, common }: any) => {
             alt={common.union_grade}
             width={70}
             height={70}
+            unoptimized
           />
         </div>
         <div className="flexCenter flex-col font-bold">

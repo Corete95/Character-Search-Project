@@ -38,21 +38,21 @@ const SearchBox = () => {
   const deleteRecentSearch = (name: string) => {
     const searchData = JSON.parse(localStorage.getItem("search") || "[]");
     const filterData = searchData.filter(
-      (item: SearchProps) => item.name !== name
+      (item: SearchProps) => item.name !== name,
     );
     setRecentSearch(filterData);
     localStorage.setItem("search", JSON.stringify(filterData));
   };
 
   return (
-    <div className="w-full relative" ref={containerRef}>
+    <div className="relative w-full" ref={containerRef}>
       <form
-        className=" flex items-center px-3 py-1 rounded border border-[#0000002e] bg-modeWhite dark:bg-dark_gray"
+        className="flex items-center rounded border border-[#0000002e] bg-modeWhite px-3 py-1 dark:bg-dark_gray"
         onSubmit={handleSubmit}
       >
         <input
           ref={inputRef}
-          className="w-full h-[35px] p-1 border-white outline-none text-17px mobile:text-sm bg-modeWhite dark:bg-dark_gray"
+          className="h-[35px] w-full border-white bg-modeWhite p-1 text-17px outline-none dark:bg-dark_gray mobile:text-sm"
           placeholder="캐릭터 닉네임을 입력하세요."
           value={searchTerm}
           onChange={changeSearchTerm}
@@ -65,21 +65,21 @@ const SearchBox = () => {
       </form>
 
       {isFocused && recentSearch.length > 0 && searchTerm === "" && (
-        <div className="absolute w-full z-30 bg-modeWhite dark:bg-dark_gray">
-          <div className="p-2 max-h-[245px] overflow-x-auto">
+        <div className="absolute z-30 w-full bg-modeWhite dark:bg-dark_gray">
+          <div className="max-h-[245px] overflow-x-auto p-2">
             <div className="pl-1 text-xs text-zinc-500">최근 검색어</div>
             {recentSearch.map((search, index) => (
               <div
                 key={index}
-                className="p-1 rounded hover:bg-zinc-200 dark:hover:bg-zinc-700"
+                className="rounded p-1 hover:bg-zinc-200 dark:hover:bg-zinc-700"
               >
-                <div className="flex justify-between items-center">
+                <div className="flex items-center justify-between">
                   <Link
                     href={`/user/${search.character_name}`}
                     className="flex items-center"
                     onClick={() => setIsFocused(false)}
                   >
-                    <span className="w-35px h-35px mr-2">
+                    <span className="mr-2 h-35px w-35px">
                       <Image
                         src={search.character_image}
                         alt={search.character_name}
@@ -112,7 +112,7 @@ const SearchBox = () => {
                   </Link>
                   <div>
                     <button
-                      className="px-3 py-1 text-sm rounded hover:bg-zinc-300 dark:hover:bg-zinc-800"
+                      className="rounded px-3 py-1 text-sm hover:bg-zinc-300 dark:hover:bg-zinc-800"
                       onClick={() => deleteRecentSearch(search.character_name)}
                     >
                       X

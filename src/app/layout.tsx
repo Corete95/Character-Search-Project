@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
+import type { Viewport } from "next";
 import { Inter } from "next/font/google";
-import Head from "next/head";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ReactqueryProvider from "@/providers/ReactqueryProvider";
 import RecoilWrapperProvider from "@/providers/RecoilWrapperProvider";
 import Providers from "@/components/Providers";
+import NavigationSchemaScript from "@/components/NavigationSchemaScript";
 import dayjs from "dayjs";
 import localFont from "next/font/local";
 import GoogleAnalytics from "@/lib/GoogleAnalytics";
 import "dayjs/locale/ko";
 import "react-tooltip/dist/react-tooltip.css";
 import "./globals.css";
-import NavigationSchemaScript from "@/components/NavigationSchemaScript";
 
 dayjs.locale("ko");
 const inter = Inter({ subsets: ["latin"] });
@@ -52,11 +52,13 @@ export const metadata: Metadata = {
       },
     ],
   },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 };
 
 const pretendard = localFont({

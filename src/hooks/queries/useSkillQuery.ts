@@ -21,6 +21,10 @@ export const fetchSkill = async (ocid: string, skill: string): Promise<any> => {
 };
 
 const conversion = (item: any) => {
+  if (!item) {
+    return null;
+  }
+
   const ownedLinkData = item?.character_owned_link_skill;
 
   const newItem = { ...item };
@@ -30,7 +34,11 @@ const conversion = (item: any) => {
     "character_link_skill_preset_2",
     "character_link_skill_preset_3",
   ].forEach((key) => {
-    newItem[key] = [ownedLinkData, ...item[key]];
+    if (Array.isArray(item[key])) {
+      newItem[key] = [ownedLinkData, ...item[key]];
+    } else {
+      newItem[key] = [ownedLinkData];
+    }
   });
 
   return newItem;

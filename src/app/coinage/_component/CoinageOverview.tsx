@@ -15,8 +15,8 @@ const CoinageOverview = () => {
   if (isError) return <div>에러</div>;
 
   return (
-    <div>
-      <div className="text-lg text-center font-bold mb-3 mt-1">
+    <div className="mx-auto max-w-1200">
+      <div className="mb-3 mt-1 text-center text-lg font-bold">
         메이플 주화 {day} 시세
       </div>
       <ChartComponent data={data} />

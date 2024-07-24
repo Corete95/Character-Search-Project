@@ -6,8 +6,8 @@ const layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div>
       <div className="relative">
-        <div className="max-w-1200 mx-auto flexCenter">
-          <div className="h-[420px] mobile:h-[570px] absolute w-full top-0">
+        <div className="flexCenter mx-auto max-w-1200">
+          <div className="absolute top-0 h-[420px] w-full mobile:h-[570px]">
             <Image
               alt=""
               src="/images/main.jpg"
@@ -15,9 +15,9 @@ const layout = ({ children }: { children: React.ReactNode }) => {
               fill
               priority
             />
-            <div className="absolute w-full h-full top-0 left-0 dark:bg-[#00000080]"></div>
+            <div className="absolute left-0 top-0 h-full w-full dark:bg-[#00000080]"></div>
           </div>
-          <div className="flex justify-between items-center w-full h-200px z-10">
+          <div className="z-10 flex h-200px w-full items-center justify-between">
             <TopButton />
           </div>
         </div>

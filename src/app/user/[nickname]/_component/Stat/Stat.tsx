@@ -46,7 +46,7 @@ const Stat = ({
     };
 
     const filteredSearch = search.filter(
-      (item: SearchProps) => item.name !== name
+      (item: SearchProps) => item.name !== name,
     );
     filteredSearch.unshift(newData);
     const limitedSearchArray = filteredSearch.slice(0, 10);
@@ -59,7 +59,7 @@ const Stat = ({
     {
       title: "HYPER STAT",
       content: <HyperStat hyper={hyper} />,
-      sizeStyle: "desktop:w-3/12 responsive_2 ",
+      sizeStyle: "desktop:w-[23%] responsive_2 ",
       blockStyle:
         "w-full bg-white_gray_100 dark:bg-dark_bg_100 pt-0 p-4 rounded-xl shadow-md border border-userBorder dark:border-0",
     },
@@ -67,13 +67,13 @@ const Stat = ({
       title: "STAT",
       content: <UserStat user={user} />,
       sizeStyle:
-        "desktop:w-3/6 responsive_1 rounded-xl p-4 bg-white_gray_100 dark:bg-dark_bg_100 shadow-md border border-userBorder dark:border-0",
+        "desktop:w-[49%] responsive_1 rounded-xl p-4 bg-white_gray_100 dark:bg-dark_bg_100 shadow-md border border-userBorder dark:border-0",
       blockStyle: "",
     },
     {
       title: "ABILITY",
       content: <Ability ability={ability} />,
-      sizeStyle: "desktop:w-3/12 responsive_3",
+      sizeStyle: "desktop:w-[23%] responsive_3",
       blockStyle:
         "w-full pt-0 p-4 rounded-xl bg-white_gray_100 dark:bg-dark_bg_100 shadow-md border border-userBorder dark:border-0",
     },
@@ -83,15 +83,15 @@ const Stat = ({
 
   return (
     <div className="px-2">
-      <div className="flex justify-center items-center w-3/6 m-auto tablet:w-full mobile:w-full">
-        <div className="w-full bg-white_gray_100 dark:bg-dark_bg_100 pt-0 p-4 rounded-xl shadow-md border border-userBorder dark:border-0">
-          <div className="text-lime-500 dark:text-title py-2">
+      <div className="m-auto flex w-[49%] items-center justify-center mobile:w-full tablet:w-full">
+        <div className="w-full rounded-xl border border-userBorder bg-white_gray_100 p-4 pt-0 shadow-md dark:border-0 dark:bg-dark_bg_100">
+          <div className="py-2 text-lime-500 dark:text-title">
             CHARACTER INFO
           </div>
           <UserInfo info={info} />
         </div>
       </div>
-      <div className="flex flex-wrap mt-4 tablet:flex-col mobile:flex-col">
+      <div className="mt-4 flex flex-wrap mobile:flex-col tablet:flex-col">
         {statContent.map((item) => (
           <InfoCard
             key={item.title}

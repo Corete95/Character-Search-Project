@@ -5,23 +5,23 @@ import { Card, Skeleton } from "@nextui-org/react";
 
 const Loading = () => {
   return (
-    <div className="w-full p-0 ">
-      <Card className="max-w-full h-[350px] space-y-5 p-3 " radius="md">
-        <Skeleton className="w-full h-full rounded-lg">
-          <div className="rounded-lg bg-default-300 mb-3"></div>
+    <div className="mx-auto max-w-1200 p-0">
+      <Card className="h-[350px] max-w-full space-y-5 p-3" radius="md">
+        <Skeleton className="h-full w-full rounded-lg">
+          <div className="mb-3 rounded-lg bg-default-300"></div>
         </Skeleton>
       </Card>
-      <div className="max-w-[600px] mx-auto mb-8">
-        <div className="flex justify-center gap-3 my-4">
-          <Card className="w-[300px] h-[60px] space-y-5 p-3 " radius="md">
-            <Skeleton className="w-full h-full rounded-lg">
-              <div className="rounded-lg bg-default-300 mb-3"></div>
+      <div className="mx-auto mb-8 max-w-[600px]">
+        <div className="my-4 flex justify-center gap-3">
+          <Card className="h-[60px] w-[300px] space-y-5 p-3" radius="md">
+            <Skeleton className="h-full w-full rounded-lg">
+              <div className="mb-3 rounded-lg bg-default-300"></div>
             </Skeleton>
           </Card>
         </div>
-        <Card className="max-w-full h-[550px] space-y-5 p-3 " radius="md">
-          <Skeleton className="w-full h-full rounded-lg">
-            <div className="rounded-lg bg-default-300 mb-3"></div>
+        <Card className="h-[550px] max-w-full space-y-5 p-3" radius="md">
+          <Skeleton className="h-full w-full rounded-lg">
+            <div className="mb-3 rounded-lg bg-default-300"></div>
           </Skeleton>
         </Card>
       </div>

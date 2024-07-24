@@ -8,7 +8,7 @@ const Skill = ({ ocid }: { ocid: string }) => {
   const { skill, link, pending, error } = useSkillQuery(ocid);
 
   const hyperCheck = skill.filter((item: SkillType) =>
-    ["hyperpassive", "hyperactive"].includes(item.character_skill_grade),
+    ["hyperpassive", "hyperactive"].includes(item?.character_skill_grade),
   );
 
   const tabs = [

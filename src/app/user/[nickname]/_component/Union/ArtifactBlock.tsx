@@ -14,6 +14,7 @@ const ArtifactBlock = ({
   artifact: ArtrifactType;
   common: any;
 }) => {
+  console.log("artifact", artifact);
   return (
     <div className="userContainer flex flex-col gap-2 p-2">
       <div className="rounded bg-[#94a3b84d] p-1 text-center font-bold">
@@ -30,7 +31,7 @@ const ArtifactBlock = ({
         </div>
       </div>
       <div className="rounded bg-[#94a3b84d]">
-        <div className="flex flex-wrap justify-between gap-y-2 p-2">
+        <div className="flex flex-wrap gap-[6px] gap-y-2 p-2">
           {artifact.union_artifact_crystal.map((item, index) => (
             <div
               key={index}
@@ -93,7 +94,7 @@ const ArtifactBlock = ({
               <span className="flexCenter w-8 rounded bg-[#e9eaed] text-11px font-bold dark:bg-slate-500">
                 Lv.{item.level}
               </span>
-              <span>{item.name}</span>
+              <span className="line-clamp-1">{item.name}</span>
             </div>
           ))}
         </div>

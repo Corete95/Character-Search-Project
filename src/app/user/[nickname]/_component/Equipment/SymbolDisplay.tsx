@@ -69,7 +69,7 @@ const SymbolDisplay = ({ symbols }: Props) => {
           </p>
         )}
       </div>
-      <div className="flex flex-wrap justify-center">
+      <div className="flex flex-wrap">
         {filteredSymbols.map((symbol, index) => (
           <SymbolDetails
             key={index}
