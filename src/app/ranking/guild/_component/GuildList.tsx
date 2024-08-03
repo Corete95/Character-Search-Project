@@ -27,7 +27,7 @@ const GuildList = ({ initialParams }: { initialParams: InitialParams }) => {
         case "guild_name":
           return (
             <Link
-              href={`/user/${user.guild_name}`}
+              href={`/guild/${user.guild_name}/${user?.world_name}`}
               className="flex items-center gap-1 mobile:text-xs"
             >
               <Image
