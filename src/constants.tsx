@@ -1,5 +1,7 @@
 import { SideNavItem } from "./types";
 
+const baseUrl = new URL("https://mesoya.vercel.app");
+
 export const SIDENAV_ITEMS: SideNavItem[] = [
   {
     title: "메인",
@@ -30,8 +32,6 @@ export const SIDENAV_ITEMS: SideNavItem[] = [
     submenu: false,
   },
 ];
-
-const baseUrl = new URL("https://mesoya.vercel.app");
 
 export const navigationSchemaItems = [
   {

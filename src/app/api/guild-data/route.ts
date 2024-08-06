@@ -15,7 +15,7 @@ const fetchOcid = async (name: string) => {
   }
 };
 
-const fetchBasic = async (ocid: string) => {
+const fetchBasic: any = async (ocid: string) => {
   try {
     const response = await api.get(`character/basic?ocid=${ocid}`);
     return response.data;
@@ -28,21 +28,68 @@ const fetchBasic = async (ocid: string) => {
 };
 
 export async function POST(request: any) {
-  const { names = [] } = await request.json();
+  const { names = [], master } = await request.json();
+  const batchSize = 20;
 
   try {
-    const ocidPromises = names.map((name: string) => fetchOcid(name));
-    const ocidResults = await Promise.all(ocidPromises);
+    const results = [];
 
-    const ocids = ocidResults
-      .filter((result) => result && result.ocid)
-      .map((result) => result.ocid);
+    for (let i = 0; i < names.length; i += batchSize) {
+      const batch = names.slice(i, i + batchSize);
 
-    const basicPromises = ocids.map((ocid) => fetchBasic(ocid));
-    const basicResults = await Promise.all(basicPromises);
+      const ocidPromises = batch.map((name: string) => fetchOcid(name));
+      const ocidResults = await Promise.all(ocidPromises);
 
-    return NextResponse.json({ data: basicResults });
+      const ocids = ocidResults
+        .filter((result) => result && result.ocid)
+        .map((result) => result.ocid);
+
+      const basicPromises = ocids.map((ocid) => fetchBasic(ocid));
+      const basicResults = await Promise.all(basicPromises);
+
+      results.push(...basicResults);
+    }
+    const masterResult = await results.find(
+      (result) => result.character_name === master,
+    );
+    const reorderedResults = masterResult
+      ? [masterResult, ...results.filter((r) => r !== masterResult)]
+      : results;
+
+    const uniqueResults = Array.from(
+      new Set(reorderedResults.map((result) => JSON.stringify(result))),
+    ).map((str) => JSON.parse(str));
+
+    return NextResponse.json({ data: uniqueResults });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
+  // const { names = [], master } = await request.json();
+
+  // try {
+  //   const ocidPromises = names.map((name: string) => fetchOcid(name));
+  //   const ocidResults = await Promise.all(ocidPromises);
+
+  //   const ocids = ocidResults
+  //     .filter((result) => result && result.ocid)
+  //     .map((result) => result.ocid);
+
+  //   const basicPromises = ocids.map((ocid) => fetchBasic(ocid));
+  //   const basicResults = await Promise.all(basicPromises);
+
+  //   const masterResult = await basicResults.find(
+  //     (result) => result.character_name === master,
+  //   );
+  //   const reorderedResults = masterResult
+  //     ? [masterResult, ...basicResults]
+  //     : basicResults;
+
+  //   const uniqueResults = Array.from(
+  //     new Set(reorderedResults.map((result) => JSON.stringify(result))),
+  //   ).map((str) => JSON.parse(str));
+
+  //   return NextResponse.json({ data: uniqueResults });
+  // } catch (error: any) {
+  //   return NextResponse.json({ error: error.message }, { status: 500 });
+  // }
 }

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useFetchData = (list:any, api:string) => {
+const useFetchData = (list: any, master: string, api: string) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -13,7 +13,7 @@ const useFetchData = (list:any, api:string) => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ names: list }),
+          body: JSON.stringify({ names: list, master }),
         });
         const result = await response.json();
         if (result.data) {

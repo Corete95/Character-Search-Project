@@ -25,3 +25,30 @@ export interface InitialParams {
   ranking_type?: string;
   [key: string]: any;
 }
+
+export interface GuildSkillType {
+  skill_name: string;
+  skill_description: string;
+  skill_level: number;
+  skill_effect: string;
+  skill_icon: string;
+}
+
+export interface GuildDataType {
+  title: string;
+  content: string;
+}
+
+interface Character {
+  character_name: string;
+  character_level: number;
+  character_class: string;
+}
+
+interface SortFunction {
+  (a: Character, b: Character): number;
+}
+
+export interface SortFunctionsType {
+  [key: string]: SortFunction;
+}
