@@ -45,6 +45,14 @@ const OverallList = ({ initialParams }: { initialParams: InitialParams }) => {
           return (
             <div className="mobile:hidden">{user.character_popularity}</div>
           );
+        case "character_guildname":
+          return (
+            <Link
+              href={`/guild/${user.character_guildname}/${user.world_name}`}
+            >
+              {user.character_guildname}
+            </Link>
+          );
         default:
           return getKeyValue(user, columnKey);
       }

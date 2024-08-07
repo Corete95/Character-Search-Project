@@ -11,11 +11,15 @@ import {
   fetchGuildId,
   fetchGuildRanking,
 } from "@/hooks/queries/useGuildBasicQuery";
+import { generateMeta } from "./_constants/generateMeta";
 import dayjs from "@/lib/dayjs-ssr";
 
-export const metadata: Metadata = {
-  title: "메소야 길드 | Mesoya",
-  description: "메소야 길드 페이지",
+export const generateMetadata = async ({
+  params,
+}: {
+  params: { name: string; world: string };
+}): Promise<Metadata> => {
+  return await generateMeta(params.name, params.world);
 };
 
 const page = async ({ params }: any) => {

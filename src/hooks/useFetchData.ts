@@ -29,8 +29,9 @@ const useFetchData = (list: any, master: string, api: string) => {
     };
 
     fetchData();
-  }, [list]);
+  }, [list, master, api]);
 
+  console.log("12313");
   return { data, isLoading, isError };
 };
 

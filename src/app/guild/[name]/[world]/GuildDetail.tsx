@@ -15,7 +15,7 @@ const GuildDetail = ({ params }: any) => {
     params.name,
     params.world,
   );
-  // console.log("data,", data);
+
   return (
     <div className="">
       <div className="relative">
@@ -37,7 +37,7 @@ const GuildDetail = ({ params }: any) => {
           <section className="userContainer grid grid-cols-2 desktop:grid-cols-5">
             {guildData?.map((item: GuildDataType, index: number) => (
               <div
-                className={`flex h-100px flex-col justify-center border-b-1 border-r-1 border-[#e9eaed] pl-5 font-bold dark:border-[#e9eaed1c] ${index === 0 ? "mobile:col-start-1 mobile:col-end-3" : ""}`}
+                className={`flex h-100px flex-col justify-center border-b-1 border-r-1 border-[#e9eaed] pl-5 font-bold dark:border-[#e9eaed1c] mobile:h-70px ${index === 0 ? "mobile:col-start-1 mobile:col-end-3" : ""}`}
                 key={`${item.title}+${index}`}
               >
                 <p className="text-sm text-zinc-500">{item.title}</p>
