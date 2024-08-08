@@ -8,9 +8,9 @@ import MenuHeader from "./MenuHeader";
 const Header = () => {
   return (
     <header className="bg-white dark:bg-dark">
-      <div className="w-full max-w-1200 min-h-64px mx-auto pt-2 mobile:px-2.5">
+      <div className="mx-auto min-h-64px w-full max-w-1200 pt-2 mobile:px-2.5">
         <nav className="flex items-center gap-5">
-          <h1 className="hidden">메소야 Mesoya 검색</h1>
+          <div className="hidden">메소야 Mesoya 검색</div>
           <div className="mr-5">
             <Link href="/" className="flex items-center gap-1">
               <Image
@@ -19,9 +19,9 @@ const Header = () => {
                 height={44}
                 alt="로고 이미지"
                 priority
-                className="mobile:w-6 mobile:h-6"
+                className="mobile:h-6 mobile:w-6"
               />
-              <span className="font-bold text-xl flex mobile:text-15px">
+              <span className="flex text-xl font-bold mobile:text-15px">
                 Mesoya
               </span>
             </Link>
