@@ -54,7 +54,7 @@ const GuildList = ({ list, master }: Props) => {
       </div>
     );
 
-  console.log("datadata", data);
+
 
   return (
     <div className="-ml-3 p-4">

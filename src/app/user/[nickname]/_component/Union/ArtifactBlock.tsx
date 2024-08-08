@@ -14,7 +14,7 @@ const ArtifactBlock = ({
   artifact: ArtrifactType;
   common: any;
 }) => {
-  console.log("artifact", artifact);
+
   return (
     <div className="userContainer flex flex-col gap-2 p-2">
       <div className="rounded bg-[#94a3b84d] p-1 text-center font-bold">
