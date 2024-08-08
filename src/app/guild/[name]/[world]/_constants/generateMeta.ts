@@ -22,7 +22,7 @@ export const generateMeta = async (
         title: `${guildData.guild_name}@${guildData.world_name} 메이플 길드 정보 | 메소야`,
         description:
           "메이플스토리,캐릭터 검색,전적 검색,메소야,큐브,장비,전투력,길드,랭킹,주화,무릉,유니온",
-        url: `https://mesoya.vercel.app/guild/${decodeURIComponent(
+        url: `${process.env.NEXT_PUBLIC_SITE_NAME}/guild/${decodeURIComponent(
           guildData.guild_name,
         )}/${decodeURIComponent(guildData.world_name)}`,
       },
@@ -38,7 +38,7 @@ export const generateMeta = async (
         title: `에러 - 메이플 길드 정보 메소야 검색  | 메소야`,
         description:
           "메이플스토리,캐릭터 검색,전적 검색,메소야,큐브,장비,전투력,길드,랭킹,주화,무릉,유니온",
-        url: `https://mesoya.vercel.app`,
+        url: `${process.env.NEXT_PUBLIC_SITE_NAME}`,
         images: [
           {
             url: "/images/main.jpg",

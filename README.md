@@ -3,12 +3,11 @@
 </p>
 
 </br>
-  <h3 align="center"><a href="https://mesoya.vercel.app">Mesoya 바로가기</a></h1>
+  <h3 align="center"><a href="https://mesoya.kr">Mesoya 바로가기</a></h1>
   <h1 align="center">캐릭터 정보 검색 서비스</h2>
   <h3 align="center">개발 진행중...ing</h3>
 
 </br>
-
 
 ## 프로젝트 소개
 

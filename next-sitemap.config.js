@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: "https://mesoya.vercel.app",
+  siteUrl: `${process.env.NEXT_PUBLIC_SITE_NAME}`,
   generateRobotsTxt: true,
   sitemapSize: 7000,
   changefreq: "daily",

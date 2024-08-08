@@ -1,6 +1,6 @@
 import { SideNavItem } from "./types";
 
-const baseUrl = new URL("https://mesoya.vercel.app");
+const baseUrl = new URL(`${process.env.NEXT_PUBLIC_SITE_NAME}`);
 
 export const SIDENAV_ITEMS: SideNavItem[] = [
   {
@@ -20,15 +20,15 @@ export const SIDENAV_ITEMS: SideNavItem[] = [
     ],
   },
   {
-    title: "주화",
-    path: "/coinage",
-    disabled: false,
+    title: "길드",
+    path: "/guild",
+    disabled: true,
     submenu: false,
   },
   {
-    title: "큐브",
-    path: "/cube",
-    disabled: true,
+    title: "주화",
+    path: "/coinage",
+    disabled: false,
     submenu: false,
   },
 ];
