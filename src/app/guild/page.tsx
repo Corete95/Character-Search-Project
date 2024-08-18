@@ -1,7 +1,12 @@
 import React from "react";
+import GuildSearch from "./_component/GuildSearch";
 
 const page = () => {
-  return <div className="mx-auto h-[380px] max-w-1200">길드</div>;
+  return (
+    <div className='max-w-1200" mx-auto min-h-[700px]'>
+      <GuildSearch />
+    </div>
+  );
 };
 
 export default page;

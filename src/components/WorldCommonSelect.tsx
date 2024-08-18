@@ -11,6 +11,8 @@ interface Props {
     url: string;
   }[];
   selectedKey: string | null;
+  styles?: string;
+  transparent?: boolean;
   onChange: (value: string) => void;
 }
 
@@ -19,6 +21,8 @@ const WorldCommonSelect = ({
   placeholder,
   items,
   selectedKey,
+  styles,
+  transparent,
   onChange,
 }: Props) => {
   return (
@@ -27,10 +31,17 @@ const WorldCommonSelect = ({
       label={label}
       placeholder={placeholder}
       labelPlacement="inside"
-      classNames={{
-        base: "max-w-48",
-        trigger: "h-12",
-      }}
+      className={`h-12 max-w-48 ${styles}`}
+      classNames={
+        transparent && {
+          label: "!import:text-black dark:!text-black",
+          trigger: "h-full bg-transparent data-[hover=true]:bg-transparent ",
+          value: "text-gray-500 dark:!text-black",
+          listbox:
+            "bg-white dark:bg-[#272727] text-gray-700 dark:text-gray-300",
+          base: "data-[hover=true]:bg-gray-100 dark:data-[hover=true]:bg-[#3a3a3a] ",
+        }
+      }
       selectedKeys={selectedKey ? [selectedKey] : []}
       onChange={(e) => onChange(e.target.value)}
       renderValue={(select) => {
@@ -40,12 +51,12 @@ const WorldCommonSelect = ({
               alt={item.data.name}
               className="flex-shrink-0"
               src={item.data.url}
-              width={20}
-              height={20}
+              width={16}
+              height={16}
               priority
             />
             <div className="flex flex-col">
-              <span>{item.data.name}</span>
+              <span className="text-gray-500 text-sm">{item.data.name}</span>
             </div>
           </div>
         ));
@@ -53,7 +64,7 @@ const WorldCommonSelect = ({
     >
       {(user) => (
         <SelectItem key={user.id} textValue={user.name}>
-          <div className="flex gap-2 items-center">
+          <div className="flex items-center gap-2">
             <Image
               alt={user.name}
               className="flex-shrink-0"

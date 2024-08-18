@@ -14,7 +14,7 @@ const GuildSkillList = ({ title, data, type }: Props) => {
     <div>
       <p className="mb-2 text-sm text-zinc-500">{title}</p>
       <div className="flex max-h-[156px] cursor-pointer flex-wrap gap-2 overflow-y-auto rounded-md">
-        {data.map((skill, index) => (
+        {data?.map((skill, index) => (
           <div
             className="bg-slate-200 hover:bg-slate-400 dark:bg-slate-500"
             key={skill.skill_name}

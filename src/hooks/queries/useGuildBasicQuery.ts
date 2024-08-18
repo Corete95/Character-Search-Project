@@ -35,7 +35,7 @@ export const fetchGuildRanking = async (
       ),
     );
     const responses = await Promise.all(requests);
-    return responses.map((response) => response.data.ranking[0]);
+    return responses.map((response) => response.data?.ranking?.[0] ?? {});
   } catch (error) {
     handleAxiosError(error);
   }
@@ -64,19 +64,35 @@ export const useGuildBasicQuery = (
     enabled: !!id?.oguild_id,
   });
 
+  const getRankingContent = (rankingItem: any) => {
+    return rankingItem?.ranking !== undefined
+      ? `${rankingItem.ranking} 위`
+      : "정보 없음";
+  };
+  
   const mergedData =
     data && rankings
       ? [
           { title: "길드마스터", content: data.guild_master_name },
-          { title: "명성치 월드 랭킹", content: `${rankings[0].ranking} 위` },
-          { title: "지하수로 월드 랭킹", content: `${rankings[1].ranking} 위` },
+          {
+            title: "명성치 월드 랭킹",
+            content: getRankingContent(rankings[0]),
+          },
+          {
+            title: "지하수로 월드 랭킹",
+            content: getRankingContent(rankings[1]),
+          },
           { title: "길드원 수 ", content: `${data.guild_member_count} 명` },
           {
             title: "길드 포인트 ",
-            content: `명성치 : ${rankings[0].guild_point.toLocaleString()}점 / 지하수로: ${rankings[1].guild_point.toLocaleString()}점`,
+            content:
+              rankings[0]?.guild_point !== undefined &&
+              rankings[1]?.guild_point !== undefined
+                ? `명성치 : ${rankings[0]?.guild_point?.toLocaleString()}점 / 지하수로: ${rankings[1]?.guild_point?.toLocaleString()}점`
+                : "정보 없음",
           },
         ]
-      : data;
+      : null;
 
   return { data, guildData: mergedData, isLoading, isError, error };
 };

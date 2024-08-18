@@ -41,8 +41,8 @@ const GuildDetail = ({ params }: any) => {
                 key={`${item.title}+${index}`}
               >
                 <p className="text-sm text-zinc-500">{item.title}</p>
-                {item.content.includes("/") ? (
-                  item.content.split("/").map((content) => (
+                {item.content?.includes("/") ? (
+                  item.content?.split("/").map((content) => (
                     <p className="text-[15px] mobile:text-xs" key={content}>
                       {content}
                     </p>
@@ -56,13 +56,13 @@ const GuildDetail = ({ params }: any) => {
           <section className="userContainer mt-3">
             <div className="flex flex-col gap-2 p-2">
               <GuildSkillList
-                title={`길드 노블레스 스킬(노블 :${data.guild_noblesse_skill.reduce((total: number, skill: GuildSkillType) => total + skill.skill_level, 0)}점)`}
-                data={data.guild_noblesse_skill}
+                title={`길드 노블레스 스킬(노블 :${data?.guild_noblesse_skill.reduce((total: number, skill: GuildSkillType) => total + skill.skill_level, 0)}점)`}
+                data={data?.guild_noblesse_skill}
                 type={"nolbe"}
               />
               <GuildSkillList
                 title={"길드 스킬"}
-                data={data.guild_skill}
+                data={data?.guild_skill}
                 type={"guild"}
               />
             </div>

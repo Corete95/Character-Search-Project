@@ -49,7 +49,7 @@ export async function POST(request: any) {
   try {
     const results = [];
 
-    for (let i = 0; i < names.length; i += BATCHSIZE) {
+    for (let i = 0; i < names?.length; i += BATCHSIZE) {
       const batch = names.slice(i, i + BATCHSIZE);
 
       const ocidPromises = batch.map((name: string) =>
