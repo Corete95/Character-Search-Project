@@ -14,7 +14,7 @@ const GuildSearch = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (selectWorld === "전체월드") {
-      return;
+      return router.push(`/guild/${value}`);
     }
     router.push(`/guild/${value}/${selectWorld}`);
   };
@@ -31,7 +31,7 @@ const GuildSearch = () => {
             placeholder="선택"
             items={GUILDLIST["common"]}
             selectedKey={selectWorld}
-            styles="absolute top-1/2 -translate-y-1/2 focus:outline-none max-w-32 h-56px "
+            styles="absolute top-1/2 -translate-y-1/2 focus:outline-none !max-w-32 h-56px "
             transparent={true}
             onChange={(value) => setSelectWorld(value)}
           />

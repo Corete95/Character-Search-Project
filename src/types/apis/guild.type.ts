@@ -5,6 +5,7 @@ export interface GuildListType {
   guild_level: number;
   guild_mark: string;
   guild_point: number;
+  guild_member_count?: number;
   ranking: number;
   guild_master_name: string;
   key: number;

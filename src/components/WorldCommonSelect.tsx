@@ -34,7 +34,8 @@ const WorldCommonSelect = ({
       className={`h-12 max-w-48 ${styles}`}
       classNames={
         transparent && {
-          label: "!import:text-black dark:!text-black",
+          label: "!text-black dark:!text-black",
+          selectorIcon: "dark:!text-black",
           trigger: "h-full bg-transparent data-[hover=true]:bg-transparent ",
           value: "text-gray-500 dark:!text-black",
           listbox:

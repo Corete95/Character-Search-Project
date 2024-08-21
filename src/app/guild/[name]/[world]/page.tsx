@@ -13,6 +13,7 @@ import {
 } from "@/hooks/queries/useGuildBasicQuery";
 import { generateMeta } from "./_constants/generateMeta";
 import dayjs from "@/lib/dayjs-ssr";
+import { notFound } from 'next/navigation';
 
 export const generateMetadata = async ({
   params,
@@ -31,6 +32,11 @@ const page = async ({ params }: any) => {
     queryFn: () => fetchGuildId(params.name, params.world),
   });
 
+
+  if (!guildId || !guildId.oguild_id) {
+    notFound();
+  }
+  
   if (guildId?.oguild_id) {
     await queryClient.fetchQuery({
       queryKey: ["guild-basic", guildId?.oguild_id],
