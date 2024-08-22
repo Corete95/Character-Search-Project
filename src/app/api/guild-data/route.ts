@@ -1,10 +1,13 @@
 import { NextResponse } from "next/server";
 import api from "@/api/axios";
 import { handleAxiosError } from "@/lib/utils";
+import NodeCache from "node-cache";
 
-const TIMEOUT = 10000;
-const MAX_RETRIES = 3;
-const BATCHSIZE = 20;
+const TIMEOUT = 5000;
+const MAX_RETRIES = 2;
+const BATCHSIZE = 50;
+
+const cache = new NodeCache({ stdTTL: 600 });
 
 const fetchWithRetry = async (
   fetchFn: () => Promise<any>,
@@ -25,18 +28,18 @@ const fetchWithRetry = async (
   }
 };
 
-const fetchOcid = async (name: string) => {
-  try {
-    const response = await api.get(`id?character_name=${name}`);
-    return response.data;
-  } catch (error) {
-    handleAxiosError(error);
-  }
-};
+const fetchData = async (
+  endpoint: string,
+  param: string,
+  paramName: string,
+) => {
+  const cacheKey = `${endpoint}:${param}`;
+  const cachedData = cache.get(cacheKey);
+  if (cachedData) return cachedData;
 
-const fetchBasic = async (ocid: string) => {
   try {
-    const response = await api.get(`character/basic?ocid=${ocid}`);
+    const response = await api.get(`${endpoint}?${paramName}=${param}`);
+    cache.set(cacheKey, response.data);
     return response.data;
   } catch (error) {
     handleAxiosError(error);
@@ -53,28 +56,23 @@ export async function POST(request: any) {
       const batch = names.slice(i, i + BATCHSIZE);
 
       const ocidPromises = batch.map((name: string) =>
-        fetchWithRetry(() => fetchOcid(name)).catch((error) => {
-          return null;
-        }),
+        fetchWithRetry(() => fetchData("id", name, "character_name")),
       );
 
       const ocidResults = await Promise.all(ocidPromises);
 
-      const ocids = ocidResults
-        .filter((result): result is { ocid: string } => result && result.ocid)
-        .map((result) => result.ocid);
+      const validOcidResults = ocidResults.filter(
+        (result): result is { ocid: string } => result && result.ocid,
+      );
 
-      const basicPromises = ocids.map((ocid) =>
-        fetchWithRetry(() => fetchBasic(ocid)).catch((error) => {
-          return null;
-        }),
+      const basicPromises = validOcidResults.map((result) =>
+        fetchWithRetry(() =>
+          fetchData("character/basic", result.ocid, "ocid"),
+        ).catch(() => null),
       );
 
       const basicResults = await Promise.all(basicPromises);
-      const validBasicResults = basicResults.filter(
-        (result) => result !== null,
-      );
-      results.push(...validBasicResults);
+      results.push(...basicResults.filter((result) => result !== null));
     }
 
     return NextResponse.json({ data: results });

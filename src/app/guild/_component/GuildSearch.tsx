@@ -1,10 +1,10 @@
 "use client";
 
-import { GUILDLIST } from "@/app/ranking/guild/_constants/constants";
 import WorldCommonSelect from "@/components/WorldCommonSelect";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { IoIosSearch } from "react-icons/io";
+import { SERVERLIST } from "../[name]/_constants/constants";
 
 const GuildSearch = () => {
   const router = useRouter();
@@ -29,7 +29,7 @@ const GuildSearch = () => {
           <WorldCommonSelect
             label={"월드"}
             placeholder="선택"
-            items={GUILDLIST["common"]}
+            items={SERVERLIST}
             selectedKey={selectWorld}
             styles="absolute top-1/2 -translate-y-1/2 focus:outline-none !max-w-32 h-56px "
             transparent={true}
@@ -40,9 +40,9 @@ const GuildSearch = () => {
             value={value}
             onChange={(e) => setValue(e.target.value)}
             placeholder="길드 이름을 입력해주세요."
-            className="border-gray-300 text-gray-900 w-full rounded-lg border bg-white py-3 pl-32 pr-12 shadow-sm focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500 dark:text-black"
+            className="text-gray-900 w-full rounded-lg bg-white py-3 pl-32 pr-12 shadow-sm focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500 dark:text-black"
           />
-          <button className="text-gray-400 absolute right-4 top-1/2 -translate-y-1/2 hover:text-orange-500">
+          <button className="text-gray-400 absolute right-4 top-1/2 -translate-y-1/2 hover:text-orange-500 dark:text-black">
             <IoIosSearch size={20} />
           </button>
         </form>

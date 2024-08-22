@@ -5,6 +5,7 @@ import Image from "next/image";
 import { SortFunctionsType } from "@/types/apis/guild.type";
 import { CiSearch } from "react-icons/ci";
 import { Spinner } from "@nextui-org/react";
+import useDebounce from "@/hooks/useDebounce";
 interface Props {
   list: string[];
   master: string;
@@ -18,6 +19,7 @@ const GuildList = ({ list, master }: Props) => {
   );
   const [filterState, setFilterState] = useState("레벨순");
   const [searchTerm, setSearchTerm] = useState("");
+  const debouncedSearchTerm = useDebounce(searchTerm, 300);
 
   const sortFunctions: SortFunctionsType = useMemo(
     () => ({
@@ -34,11 +36,20 @@ const GuildList = ({ list, master }: Props) => {
   }, [data, filterState, sortFunctions]);
 
   const filteredCharacters = useMemo(() => {
-    if (!searchTerm) return sortedCharacters;
+    if (!debouncedSearchTerm) return sortedCharacters;
     return sortedCharacters.filter((item) =>
-      item.character_name.toLowerCase().includes(searchTerm.toLowerCase()),
+      item.character_name
+        .toLowerCase()
+        .includes(debouncedSearchTerm.toLowerCase()),
     );
-  }, [sortedCharacters, searchTerm]);
+  }, [sortedCharacters, debouncedSearchTerm]);
+
+  // const filteredCharacters = useMemo(() => {
+  //   if (!searchTerm) return sortedCharacters;
+  //   return sortedCharacters.filter((item) =>
+  //     item.character_name.toLowerCase().includes(searchTerm.toLowerCase()),
+  //   );
+  // }, [sortedCharacters, searchTerm]);
 
   if (isLoading)
     return (
@@ -53,8 +64,6 @@ const GuildList = ({ list, master }: Props) => {
         오류입니다. 새로고침을 해주세요.
       </div>
     );
-
-
 
   return (
     <div className="-ml-3 p-4">

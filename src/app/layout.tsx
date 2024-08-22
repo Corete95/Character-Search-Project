@@ -20,9 +20,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "메소야 | Mesoya",
   description:
-    "메이플스토리,캐릭터 검색,전적 검색,메소야,큐브,장비,전투력,길드,랭킹,주화,무릉,유니온",
+    "메이플스토리,캐릭터 검색,전적 검색,메소야,메소야kr,큐브,장비,전투력,길드,랭킹,주화,무릉,유니온",
   keywords:
-    "메이플스토리,캐릭터 검색,전적 검색,메소야,큐브,장비,전투력,길드,랭킹,주화,무릉,유니온",
+    "메이플스토리,캐릭터 검색,전적 검색,메소야,메소야kr,큐브,장비,전투력,길드,랭킹,주화,무릉,유니온",
   applicationName: "Mesoya",
   creator: "Mesoya",
   metadataBase: new URL(`${process.env.NEXT_PUBLIC_SITE_NAME}`),

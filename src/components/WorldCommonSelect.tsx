@@ -55,6 +55,7 @@ const WorldCommonSelect = ({
               width={16}
               height={16}
               priority
+              unoptimized
             />
             <div className="flex flex-col">
               <span className="text-gray-500 text-sm">{item.data.name}</span>

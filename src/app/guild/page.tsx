@@ -4,7 +4,9 @@ import GuildSearch from "./_component/GuildSearch";
 const page = () => {
   return (
     <div className="mx-auto min-h-[700px] max-w-1200">
-      <GuildSearch />
+      <div className="mobile:px-2">
+        <GuildSearch />
+      </div>
     </div>
   );
 };
