@@ -82,14 +82,16 @@ const Equipment = ({ ocid }: { ocid: string }) => {
                   onClick={() => handleItemClick(item)}
                 >
                   {item?.item_icon && (
-                    <Image
-                      src={item.item_icon || ""}
-                      alt={item.item_equipment_slot}
-                      width={25}
-                      height={25}
-                      priority
-                      unoptimized
-                    />
+                    <div className="relative h-25px w-25px min-w-25px">
+                      <Image
+                        src={item.item_icon || ""}
+                        alt={item.item_equipment_slot}
+                        fill
+                        style={{ objectFit: "contain" }}
+                        priority
+                        unoptimized
+                      />
+                    </div>
                   )}
                 </div>
               ))}

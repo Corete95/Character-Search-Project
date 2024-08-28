@@ -21,8 +21,6 @@ const Skill = ({ ocid }: { ocid: string }) => {
     },
   ];
 
-  if (pending) return <div>로딩중</div>;
-
   return (
     <div className="flex flex-wrap gap-3 px-2">
       {tabs.filter(Boolean).map((item, index) => (

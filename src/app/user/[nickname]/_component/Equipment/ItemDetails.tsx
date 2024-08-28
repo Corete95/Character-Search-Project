@@ -60,14 +60,16 @@ const ItemDetails = ({ item, lock }: Props) => {
             gradeColors[item.potential_option_grade || "default"]
           }`}
         >
-          <Image
-            src={item.item_icon}
-            alt={item.item_name}
-            width={45}
-            height={45}
-            priority
-            unoptimized
-          />
+          <div className="relative h-45px w-45px min-w-45px">
+            <Image
+              src={item.item_icon}
+              alt={item.item_name}
+              fill
+              style={{ objectFit: "contain" }}
+              priority
+              unoptimized
+            />
+          </div>
         </div>
         {!isMatch && (
           <p className={`pl-2 text-xs`}>

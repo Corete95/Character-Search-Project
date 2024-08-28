@@ -40,7 +40,7 @@ const GuildSearch = () => {
             value={value}
             onChange={(e) => setValue(e.target.value)}
             placeholder="길드 이름을 입력해주세요."
-            className="text-gray-900 w-full rounded-lg bg-white py-3 pl-32 pr-12 shadow-sm focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500 dark:text-black"
+            className="text-gray-900 w-full rounded-lg bg-white py-3 pl-36 pr-12 shadow-sm focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500 dark:text-black"
           />
           <button className="text-gray-400 absolute right-4 top-1/2 -translate-y-1/2 hover:text-orange-500 dark:text-black">
             <IoIosSearch size={20} />

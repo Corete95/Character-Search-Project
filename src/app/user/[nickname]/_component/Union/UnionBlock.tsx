@@ -78,6 +78,8 @@ const UnionBlock = ({ union, common }: any) => {
             alt="Union Raider Map"
             layout="fill"
             objectFit="contain"
+            priority
+            unoptimized
           />
           <div className="absolute grid h-full w-full grid-cols-[repeat(22,minmax(4px,1fr))] grid-rows-[repeat(20,minmax(4px,1fr))]">
             {unionData.union_block.map((block, index) =>
