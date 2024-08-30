@@ -44,13 +44,6 @@ const GuildList = ({ list, master }: Props) => {
     );
   }, [sortedCharacters, debouncedSearchTerm]);
 
-  // const filteredCharacters = useMemo(() => {
-  //   if (!searchTerm) return sortedCharacters;
-  //   return sortedCharacters.filter((item) =>
-  //     item.character_name.toLowerCase().includes(searchTerm.toLowerCase()),
-  //   );
-  // }, [sortedCharacters, searchTerm]);
-
   if (isLoading)
     return (
       <div className="flexCenter mx-auto mt-4 max-w-1200 dark:text-white">

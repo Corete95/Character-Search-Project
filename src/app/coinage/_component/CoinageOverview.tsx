@@ -13,7 +13,7 @@ const CoinageOverview = () => {
 
   if (isLoading) return <Loading />;
   if (isError) return <div>에러</div>;
-
+  console.log("data", data);
   return (
     <div className="mx-auto max-w-1200">
       <div className="mb-3 mt-1 text-center text-lg font-bold">
