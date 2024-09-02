@@ -5,10 +5,10 @@ import {
 } from "@/types/apis/coninage.type";
 
 export const calculatePriceChanges = (
-  data: PriceDataType[]
+  data: PriceDataType[],
 ): FormattedPriceDataType[] => {
   const daysOfWeek = ["일", "월", "화", "수", "목", "금", "토"];
-
+  console.log("????q23", data);
   return data
     .map((item, index, array) => {
       const date = new Date(item.time);
@@ -65,7 +65,7 @@ const formatNumberWithCommas = (number: number) =>
   number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
 export const calculatePriceChangePercentage = (
-  data: FormattedPriceDataType[]
+  data: FormattedPriceDataType[],
 ) => {
   const startPrice = data.at(-1).price;
   const endPrice = data[0].price;

@@ -8,6 +8,7 @@ const fetchCoinage = async (): Promise<PriceDataType[]> => {
   if (error) {
     throw new Error(error.message);
   }
+  console.log("???", data);
   return data;
 };
 
