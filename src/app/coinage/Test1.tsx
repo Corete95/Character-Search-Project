@@ -25,6 +25,14 @@ const Test1: React.FC<Test1Props> = ({ data }) => {
         },
         textColor: isDarkMode ? "white" : "black",
       },
+      grid: {
+        vertLines: {
+          color: isDarkMode ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)",
+        },
+        horzLines: {
+          color: isDarkMode ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)",
+        },
+      },
       width: chartContainerRef.current.clientWidth,
       height: 400,
       rightPriceScale: {
@@ -34,6 +42,7 @@ const Test1: React.FC<Test1Props> = ({ data }) => {
           bottom: 0.25,
         },
       },
+
       crosshair: {
         mode: CrosshairMode.Normal,
       },
@@ -50,7 +59,7 @@ const Test1: React.FC<Test1Props> = ({ data }) => {
     candleSeries.applyOptions({
       priceFormat: {
         type: "custom",
-        formatter: (price: number) => price.toLocaleString("ko-KR"),
+        formatter: (price: number) => `${price.toLocaleString("ko-KR")}원`,
       },
     });
 
@@ -78,15 +87,14 @@ const Test1: React.FC<Test1Props> = ({ data }) => {
     chart.timeScale().fitContent();
     const totalBars = newTransformedData.length;
 
-    // 보여질 캔들의 개수를 50개로 설정하고, 최신 데이터부터 보여줍니다.
     const visibleBars = 60;
     const firstVisibleBar = Math.max(0, totalBars - visibleBars);
 
     chart.timeScale().setVisibleLogicalRange({
       from: firstVisibleBar,
-      to: totalBars - 1, // 배열 인덱스는 0부터 시작하므로 1을 뺍니다.
+      to: totalBars - 1,
     });
-    // 툴팁 생성
+
     if (!toolTipRef.current) {
       const toolTip = document.createElement("div");
       toolTip.style.position = "absolute";
@@ -121,28 +129,37 @@ const Test1: React.FC<Test1Props> = ({ data }) => {
           const changeColor = dataPoint.change >= 0 ? upColor : downColor;
           toolTipRef.current!.style.display = "block";
           toolTipRef.current!.innerHTML = `
-          <div style="display:flex justify-content:center">
-            <div style="font-size:18px">${dataPoint.time}</div>
-            <div>고가: ${dataPoint.high.toLocaleString("ko-KR")}</div>
-            <div style="color: ${changeColor}">
-              전일 대비: ${dataPoint.change.toLocaleString("ko-KR")} (${dataPoint.changePercent}%)
-            </div>
+            <div style="display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+              <div style="font-size:16px">⏱️ ${dataPoint.time}</div>
+              <hr/>
+              <div style="font-weight:bold; font-size:16px">${dataPoint.high.toLocaleString("ko-KR")}원</div>
+              <div style="color: ${changeColor}">
+                ${dataPoint.change.toLocaleString("ko-KR")} (${dataPoint.changePercent}%)
+              </div>
             </div>
           `;
+
+          const tooltipWidth = toolTipRef.current!.offsetWidth;
+          const tooltipHeight = toolTipRef.current!.offsetHeight;
           const chartRect = chartContainerRef.current!.getBoundingClientRect();
-          const toolTipWidth = toolTipRef.current!.offsetWidth;
-          const toolTipHeight = toolTipRef.current!.offsetHeight;
 
-          let left = param.point.x + chartRect.left;
-          let top = param.point.y + chartRect.top - toolTipHeight;
+          let left = param.point.x + 10; // 마우스 커서 오른쪽에 10px 간격
+          let top = param.point.y - tooltipHeight / 2; // 마우스 커서 중앙에 맞춤
 
-          // 툴팁이 차트 영역을 벗어나지 않도록 조정
-          // if (left + toolTipWidth > chartRect.right) {
-          //   left = chartRect.right - toolTipWidth;
-          // }
-          // if (top < chartRect.top) {
-          //   top = param.point.y + chartRect.top + 10; // 포인터 아래로 이동
-          // }
+          // 툴팁이 차트 오른쪽 경계를 벗어나지 않도록 조정
+          if (left + tooltipWidth > chartRect.width) {
+            left = param.point.x - tooltipWidth - 10; // 마우스 커서 왼쪽에 표시
+          }
+
+          // 툴팁이 차트 위쪽 경계를 벗어나지 않도록 조정
+          if (top < 0) {
+            top = 0;
+          }
+
+          // 툴팁이 차트 아래쪽 경계를 벗어나지 않도록 조정
+          if (top + tooltipHeight > chartRect.height) {
+            top = chartRect.height - tooltipHeight;
+          }
 
           toolTipRef.current!.style.left = `${left}px`;
           toolTipRef.current!.style.top = `${top}px`;
