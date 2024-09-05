@@ -1,3 +1,4 @@
+import { Time } from "lightweight-charts";
 export interface PriceDataType {
   id: number;
   time: string;
@@ -21,4 +22,14 @@ export interface CoinDataType {
   id: number;
   time: string;
   price: number;
+}
+
+export interface CandleDataType {
+  time: Time;
+  open: number;
+  high: number;
+  low: number;
+  close: number;
+  change: number;
+  changePercent: string;
 }

@@ -10,7 +10,7 @@ export const calculatePriceChanges = (
   const daysOfWeek = ["일", "월", "화", "수", "목", "금", "토"];
   console.log("????q23", data);
   return data
-    .map((item, index, array) => {
+    ?.map((item, index, array) => {
       const date = new Date(item.time);
       const dayName = daysOfWeek[date.getDay()];
       const formattedDate = `${item.time} (${dayName})`;
@@ -67,8 +67,8 @@ const formatNumberWithCommas = (number: number) =>
 export const calculatePriceChangePercentage = (
   data: FormattedPriceDataType[],
 ) => {
-  const startPrice = data.at(-1).price;
-  const endPrice = data[0].price;
+  const startPrice = data?.at(-1).price;
+  const endPrice = data[0]?.price;
   const priceDifference = endPrice - startPrice;
   const percentageIncrease = (priceDifference / startPrice) * 100;
 
