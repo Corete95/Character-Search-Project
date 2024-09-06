@@ -8,7 +8,7 @@ import dayjs from "dayjs";
 import ChartComponent from "./ChartComponent";
 import CardComponent from "./CardComponent";
 import {
-  calculatePriceChangePercentage,
+  analyzePriceData,
   calculatePriceChanges,
 } from "../_constants/conversion";
 import Image from "next/image";
@@ -19,10 +19,11 @@ const CoinageOverview = () => {
   const [view, setView] = useState("card");
 
   const tableData = data ? calculatePriceChanges(data) : [];
-  const goldPrice =
-    tableData.length > 0 ? calculatePriceChangePercentage(tableData) : null;
-  const isPositive = Number(goldPrice?.percentageIncrease) > 0;
-  const trendColor = isPositive ? "text-red-500" : "text-blue-500";
+  const goldPrice = tableData.length > 0 ? analyzePriceData(tableData) : null;
+  const trendColor =
+    Number(goldPrice?.percentageIncrease) > 0
+      ? "text-red-500"
+      : "text-blue-500";
 
   if (isLoading) return <Loading />;
   if (isError) return <div>에러</div>;
@@ -67,7 +68,7 @@ const CoinageOverview = () => {
             </button>
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
+        <div className="grid max-h-[1000px] grid-cols-2 gap-4 overflow-auto lg:grid-cols-3">
           {view === "card" &&
             tableData.map((item) => <CardComponent key={item.key} {...item} />)}
         </div>

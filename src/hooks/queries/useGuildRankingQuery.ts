@@ -60,6 +60,5 @@ export const useGuildRankingQuery = (date: string, name: string) => {
   if (!isLoading && !data) {
     notFound();
   }
-  console.log("data", data);
   return { data, isLoading, isError, error };
 };

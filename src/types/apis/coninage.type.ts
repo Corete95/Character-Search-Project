@@ -33,3 +33,11 @@ export interface CandleDataType {
   change: number;
   changePercent: string;
 }
+
+export interface TableDataType {
+  date: string;
+  key: number;
+  percentage_change: string | number;
+  price: number;
+  price_change: string | number;
+}

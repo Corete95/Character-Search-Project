@@ -42,7 +42,7 @@ const fetchData = async (
     cache.set(cacheKey, response.data);
     return response.data;
   } catch (error) {
-    handleAxiosError(error);
+    return null;
   }
 };
 
@@ -56,7 +56,9 @@ export async function POST(request: any) {
       const batch = names.slice(i, i + BATCHSIZE);
 
       const ocidPromises = batch.map((name: string) =>
-        fetchWithRetry(() => fetchData("id", name, "character_name")),
+        fetchWithRetry(() => fetchData("id", name, "character_name")).catch(
+          () => null,
+        ),
       );
 
       const ocidResults = await Promise.all(ocidPromises);
@@ -72,6 +74,7 @@ export async function POST(request: any) {
       );
 
       const basicResults = await Promise.all(basicPromises);
+
       results.push(...basicResults.filter((result) => result !== null));
     }
 

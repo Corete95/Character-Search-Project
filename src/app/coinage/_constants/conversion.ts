@@ -2,13 +2,13 @@ import {
   CandlestickDataType,
   PriceDataType,
   FormattedPriceDataType,
+  TableDataType,
 } from "@/types/apis/coninage.type";
 
 export const calculatePriceChanges = (
   data: PriceDataType[],
 ): FormattedPriceDataType[] => {
   const daysOfWeek = ["일", "월", "화", "수", "목", "금", "토"];
-  console.log("????q23", data);
   return data
     ?.map((item, index, array) => {
       const date = new Date(item.time);
@@ -61,7 +61,7 @@ export const conversion = (data: PriceDataType[]): CandlestickDataType[] => {
   });
 };
 
-const formatNumberWithCommas = (number: number) =>
+export const formatNumberWithCommas = (number: number) =>
   number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
 export const calculatePriceChangePercentage = (
@@ -76,5 +76,26 @@ export const calculatePriceChangePercentage = (
   return {
     priceDifference: `${sign}${formatNumberWithCommas(priceDifference)}`,
     percentageIncrease: `${sign}${percentageIncrease.toFixed(2)}`,
+  };
+};
+
+export const analyzePriceData = (data: TableDataType[]) => {
+  const minPrice = Math.min(...data.map((item) => item.price));
+  const latestDate = new Date(
+    Math.max(
+      ...data.map((item) => new Date(item.date.split(" ")[0]).getTime()),
+    ),
+  );
+  const latestData = data.find(
+    (item) =>
+      new Date(item.date.split(" ")[0]).getTime() === latestDate.getTime(),
+  );
+
+  const priceDifference = latestData.price - minPrice;
+  const percentageDifference = (priceDifference / minPrice) * 100;
+  const sign = priceDifference > 0 ? "+" : "";
+  return {
+    priceDifference: `${sign}${formatNumberWithCommas(priceDifference)}`,
+    percentageIncrease: `${sign}${percentageDifference.toFixed(2)}`,
   };
 };

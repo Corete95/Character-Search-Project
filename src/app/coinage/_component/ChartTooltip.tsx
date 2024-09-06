@@ -51,7 +51,7 @@ export const ChartTooltip: React.FC<ChartTooltipProps> = ({
         <div style="display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
           <div style="font-size:16px">⏱️ ${dataPoint.time}</div>
           <hr/>
-          <div style="font-weight:bold; font-size:16px">${dataPoint.high.toLocaleString("ko-KR")}원</div>
+          <div style="font-weight:bold; font-size:16px">${dataPoint.close.toLocaleString("ko-KR")}원</div>
           <div style="color: ${changeColor}">
             ${dataPoint.change.toLocaleString("ko-KR")} (${dataPoint.changePercent}%)
           </div>
