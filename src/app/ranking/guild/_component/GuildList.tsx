@@ -5,7 +5,7 @@ import { getKeyValue } from "@nextui-org/react";
 import { useSearchParams } from "next/navigation";
 import { GUILD_COLUMNS } from "../_constants/constants";
 import { useGuildQuery } from "@/hooks/queries/useGuildQuery";
-import { formatNumber } from "@/utility/utils";
+import { formatNumber } from "@/utilitys/utils";
 import { GuildListType, InitialParams } from "@/types/apis/guild.type";
 import dayjs from "dayjs";
 import Image from "next/image";

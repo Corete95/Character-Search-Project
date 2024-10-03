@@ -14,7 +14,6 @@ const ArtifactBlock = ({
   artifact: ArtrifactType;
   common: any;
 }) => {
-
   return (
     <div className="userContainer flex flex-col gap-2 p-2">
       <div className="rounded bg-[#94a3b84d] p-1 text-center font-bold">
@@ -27,7 +26,7 @@ const ArtifactBlock = ({
         <div className="h-10 border-r-1"></div>
         <div className="flex flex-col justify-center font-bold">
           <p>아티팩트 포인트 : {common.union_artifact_point}</p>
-          <p>아이팩트 AP : {artifact.union_artifact_remain_ap}</p>
+          <p>아티팩트 AP : {artifact.union_artifact_remain_ap}</p>
         </div>
       </div>
       <div className="rounded bg-[#94a3b84d]">

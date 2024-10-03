@@ -1,12 +1,12 @@
 import { useSuspenseQueries } from "@tanstack/react-query";
-import { errorStatus } from "../../utility/utils";
+import { errorStatus } from "../../utilitys/utils";
 import api from "@/api/axios";
 import axios from "axios";
 
 export const fetchData = async (
   endpoint: string,
   ocid: string,
-  date: string
+  date: string,
 ): Promise<any> => {
   try {
     const { data } = await api.get(`${endpoint}?ocid=${ocid}`);
@@ -31,7 +31,7 @@ export const useNicknameQuery = (ocid: string, date: string) => {
     "union",
   ];
   const endpoints = keys.map((key) =>
-    key === "union" ? "user/union" : `character/${key}`
+    key === "union" ? "user/union" : `character/${key}`,
   );
 
   const queryResults = useSuspenseQueries({

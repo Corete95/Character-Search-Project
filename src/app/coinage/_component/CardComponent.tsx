@@ -1,4 +1,4 @@
-import { formatNumber } from "@/utility/utils";
+import { formatNumber } from "@/utilitys/utils";
 import React from "react";
 import { MdTrendingUp, MdTrendingDown } from "react-icons/md";
 

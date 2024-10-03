@@ -1,5 +1,5 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { errorStatus } from "../../utility/utils";
+import { errorStatus } from "../../utilitys/utils";
 import api from "@/api/axios";
 import axios from "axios";
 

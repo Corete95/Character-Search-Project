@@ -3,7 +3,7 @@ import { calculatePriceChanges } from "../_constants/conversion";
 import { CoinDataType } from "@/types/apis/coninage.type";
 import { getKeyValue } from "@nextui-org/react";
 import { COINAGE_COLUMNS } from "@/app/coinage/_constants/constants";
-import { formatNumber } from "@/utility/utils";
+import { formatNumber } from "@/utilitys/utils";
 import GenericTable from "@/components/GenericTable";
 
 interface ChartComponentProps {

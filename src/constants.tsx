@@ -31,6 +31,12 @@ export const SIDENAV_ITEMS: SideNavItem[] = [
     disabled: false,
     submenu: false,
   },
+  {
+    title: "유틸",
+    path: "/utilitys",
+    disabled: false,
+    submenu: false,
+  },
 ];
 
 export const navigationSchemaItems = [

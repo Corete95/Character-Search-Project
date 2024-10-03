@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import api from "../../api/axios";
 
-import { errorStatus } from "../../utility/utils";
+import { errorStatus } from "../../utilitys/utils";
 
 export const fetchGuild = async (params: Record<string, string | number>) => {
   try {

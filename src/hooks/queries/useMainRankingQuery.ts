@@ -2,10 +2,10 @@ import { useQueries } from "@tanstack/react-query";
 import axios from "axios";
 import api from "../../api/axios";
 import { RankingListType } from "@/types/apis/rank.type";
-import { errorStatus } from "../../utility/utils";
+import { errorStatus } from "../../utilitys/utils";
 
 export const fetchMainRanking = async (
-  params: Record<string, string | number>
+  params: Record<string, string | number>,
 ) => {
   try {
     const response = await api.get("ranking/overall", {
@@ -31,7 +31,7 @@ const conversion = (data: RankingListType[]) => {
 };
 
 export const useMainRankingQuery = (
-  params: Record<string, string | number>
+  params: Record<string, string | number>,
 ) => {
   const queryResult = useQueries({
     queries: [0, 1].map((key) => ({

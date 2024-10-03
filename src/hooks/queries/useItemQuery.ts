@@ -1,5 +1,5 @@
 import { useQueries } from "@tanstack/react-query";
-import { errorStatus } from "../../utility/utils";
+import { errorStatus } from "../../utilitys/utils";
 import { ItemEquipment, ItemEquipmenType } from "@/types/apis/item.type";
 import axios from "axios";
 import api from "../../api/axios";
@@ -7,7 +7,7 @@ import api from "../../api/axios";
 export const fetchItem = async (
   endpoint: string,
   ocid: string,
-  day: string
+  day: string,
 ): Promise<any> => {
   try {
     const { data } = await api.get(`character/${endpoint}?ocid=${ocid}`);

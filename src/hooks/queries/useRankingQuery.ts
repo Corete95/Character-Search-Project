@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import api from "../../api/axios";
 import { RankingListType } from "@/types/apis/rank.type";
-import { errorStatus } from "../../utility/utils";
+import { errorStatus } from "../../utilitys/utils";
 
 export const fetchRanking = async (params: Record<string, string | number>) => {
   try {
@@ -15,7 +15,7 @@ export const fetchRanking = async (params: Record<string, string | number>) => {
     });
 
     const response = await api.get(
-      `ranking/overall?${searchParams.toString()}`
+      `ranking/overall?${searchParams.toString()}`,
     );
     return response.data;
   } catch (error) {

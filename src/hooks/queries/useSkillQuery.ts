@@ -1,5 +1,5 @@
 import { useQueries } from "@tanstack/react-query";
-import { errorStatus } from "../../utility/utils";
+import { errorStatus } from "../../utilitys/utils";
 import axios from "axios";
 import api from "../../api/axios";
 

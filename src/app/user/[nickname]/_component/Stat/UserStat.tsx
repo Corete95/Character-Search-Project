@@ -1,13 +1,13 @@
 import React from "react";
 import { UserStatType } from "@/types/apis/stat";
-import { geKoreanNumber } from "@/utility/utils";
+import { geKoreanNumber } from "@/utilitys/utils";
 import StatBlock from "../common/StatBlock";
 import StatList from "../common/StatList";
 import {
   bottomUserStat,
   middleUserStat,
   topUserStat,
-} from "@/utility/userStatUtil";
+} from "@/utilitys/userStatUtil";
 
 interface Props {
   user: UserStatType;
